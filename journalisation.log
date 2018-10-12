@@ -1,0 +1,40 @@
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+ERROR - Une exception est survenue lors du choix du jeu
+INFO - --------Le jeu a démarré------
+ERROR - Une exception est survenue lors du choix du jeu. Le joueur a entré comme choix : 0
+INFO - --------Le jeu a démarré------
+ERROR - Une exception est survenue lors du choix du jeu. Le joueur a entré comme choix : java.util.Scanner[delimiters=\p{javaWhitespace}+][position=0][match valid=false][need input=false][source closed=false][skipped=false][group separator=\ ][decimal separator=\,][positive prefix=][negative prefix=\Q-\E][positive suffix=][negative suffix=][NaN string=\QNaN\E][infinity string=\Q∞\E]
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 2
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu numéro 1
