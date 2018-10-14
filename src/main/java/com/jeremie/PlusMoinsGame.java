@@ -45,10 +45,9 @@ public class PlusMoinsGame implements GameMode {
         String randomNumber;
         randomNumber = String.valueOf(randomNumberAndSelectedNumber(nbCases));
         displaySolutionForDev(randomNumber); // if mode dev then display solution
-        System.out.print("Merci faire votre proposition : ");
         do {
-            System.out.println();
-            System.out.println("Il vous reste encore " + nbTry + " tentatives");
+            System.out.print("Merci faire votre proposition (");
+            System.out.println("il vous reste encore " + (nbTry) + " tentatives) : ");
             myAnswer = sc.nextLine();
             System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
             compareAndDisplayPlacement(myAnswer, randomNumber);
@@ -57,9 +56,9 @@ public class PlusMoinsGame implements GameMode {
                 System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison : " + myAnswer);
             }
             nbTry--;
+            System.out.println(" ");
         } while (!find && nbTry != 0);
         if(!find){
-            System.out.println();
             System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + randomNumber);
         }
     }
