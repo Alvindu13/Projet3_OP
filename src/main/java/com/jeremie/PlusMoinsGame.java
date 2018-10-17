@@ -1,5 +1,6 @@
 package com.jeremie;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PlusMoinsGame implements GameMode {
@@ -10,6 +11,9 @@ public class PlusMoinsGame implements GameMode {
     private Scanner sc;
     private boolean find;
     private boolean devMode;
+    private boolean[] equal;
+    private boolean[] more;
+    private boolean[] less;
 
     /**
      * @param nbCases size of the combination.
@@ -21,20 +25,38 @@ public class PlusMoinsGame implements GameMode {
         this.nbCases = nbCases;
         this.nbTry = nbTry;
         this.find = false;
+        this.equal = new boolean[nbCases];
+        this.more = new boolean[nbCases];
+        this.less = new boolean[nbCases];
         sc = new Scanner(System.in);
     }
 
     /**
      * Calculation of a random number.
-     * @param nbCases size of the combination.
      * @return the random number.
      */
-    private int randomNumberAndSelectedNumber(int nbCases) { //revoir cette méthode
+    private int randomNumberAndSelectedNumber() { //revoir cette méthode
         int bMin = (int) Math.pow(10, nbCases - 1);
         int bMax = (int) Math.pow(10, nbCases);
         int randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
         return randomNumber;
     }
+
+
+    /**
+     *
+     * @param yourAnswer
+     * @param computerAnswer
+     */
+    /*
+    private void randomNumbers(String yourAnswer, String ordiAnswer) { //revoir cette méthode
+        for(int index = 0 ; index < nbCases; index++) {
+            int bMin = Character.getNumericValue(ordiAnswer.charAt(index));
+            int bMax = Character.getNumericValue(yourAnswer.charAt(index));
+            int randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
+            System.out.println(randomNumber);
+        }
+    }*/
 
     /**
      * Start challenge mode, The user propose a secret combination that the computer have to find.
@@ -43,7 +65,7 @@ public class PlusMoinsGame implements GameMode {
     public void challengeMode() {
         String myAnswer;
         String randomNumber;
-        randomNumber = String.valueOf(randomNumberAndSelectedNumber(nbCases));
+        randomNumber = String.valueOf(randomNumberAndSelectedNumber());
         displaySolutionForDev(randomNumber); // if mode dev then display solution
         do {
             System.out.print("Merci faire votre proposition (");
@@ -69,19 +91,23 @@ public class PlusMoinsGame implements GameMode {
     @Override
     public void defenseMode() {
         String yourResponseThatOrdiFind;
-        String ordiAnswer;
+        String computerAnswer;
         int tentative = 1;
         System.out.print("Merci de choisir le nombre à 4 chiffres que l'ordinateur doit trouver : ");
         yourResponseThatOrdiFind = sc.nextLine();
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + yourResponseThatOrdiFind);
+        computerAnswer = String.valueOf(randomNumberAndSelectedNumber());
+        comparePlacement(computerAnswer, yourResponseThatOrdiFind);
+        System.out.print("Proposition " + tentative + " : " + computerAnswer + " vérification des placements : ");
         while(!find && tentative <= nbTry){
-            ordiAnswer = String.valueOf(randomNumberAndSelectedNumber(nbCases));
-            System.out.print("Proposition " + tentative + " : " + ordiAnswer + " vérification des placements : ");
-            compareAndDisplayPlacement(ordiAnswer, yourResponseThatOrdiFind);
+            computerAnswer = computerReflexion(equal, more, less, yourResponseThatOrdiFind, computerAnswer);
+            System.out.print("Proposition " + (tentative+1) + " : " + computerAnswer + " vérification des placements : ");
+            compareAndDisplayPlacement(computerAnswer, yourResponseThatOrdiFind);
+            comparePlacement(computerAnswer, yourResponseThatOrdiFind);
             System.out.println();
-            if (ordiAnswer.contains(yourResponseThatOrdiFind)) {
+            if (computerAnswer.contains(yourResponseThatOrdiFind)) {
                 find = true;
-                System.out.print("\n" + "L'ordi a trouvé la bonne combinaison : " + ordiAnswer);
+                System.out.print("\n" + "L'ordi a trouvé la bonne combinaison : " + computerAnswer);
             }
             tentative++;
         }
@@ -90,15 +116,52 @@ public class PlusMoinsGame implements GameMode {
     }
 
     /**
+     * The computer is thinking about proposing an answer based on the indicators/
+     * @param equal Array which catch with a boolean equal values between combination and answer
+     * @param more  Array which catch with a boolean for greater number values between combination and answer
+     * @param less  Array which catch with a boolean for smaller number values between combination and answer
+     */
+
+    public String computerReflexion(boolean[] equal, boolean[] more, boolean[] less, String yourResponseThatOrdiFind, String computerAnswer){
+        char[] computerAnswers = new char[nbCases];
+        String answer = "";
+        for(int index = 0; index < nbCases; index++){
+            computerAnswers[index] = computerAnswer.charAt(index);
+        }
+        for(int index = 0; index < nbCases; index++){
+            int entier = 0;
+            int newEntier = 0;
+            if(equal[index] == true){
+                computerAnswers[index] = yourResponseThatOrdiFind.charAt(index);
+            }
+            else if(more[index] == true){
+                entier = Character.getNumericValue(computerAnswer.charAt(index));
+                newEntier = entier + 1;
+                computerAnswers[index] = Character.forDigit(newEntier,10);
+            }
+            else if(less[index] == true){
+                entier = Character.getNumericValue(computerAnswer.charAt(index));
+                newEntier = entier - 1;
+                computerAnswers[index] = Character.forDigit(newEntier,10);
+            }
+            answer += computerAnswers[index];
+        }
+        return answer;
+    }
+
+    /**
      * Start duel mode. Switch between user and computer to search a random combination.
      */
     @Override
     public void duelMode() {
         int nombre = 0;
+        int tentative = 1;
         String randomNumberAtFind;
         String myAnswer;
-        String ordiAnswer;
-        randomNumberAtFind = String.valueOf(randomNumberAndSelectedNumber(nbCases));
+        String computerAnswer;
+
+        randomNumberAtFind = String.valueOf(randomNumberAndSelectedNumber());
+        computerAnswer = String.valueOf(randomNumberAndSelectedNumber());
         displaySolutionForDev(randomNumberAtFind);
         do {
             if (nombre % 2 == 0) {
@@ -112,13 +175,24 @@ public class PlusMoinsGame implements GameMode {
                 }
             } else {
                 System.out.println("C'est au tour de l'ordinateur ! ");
-                ordiAnswer = String.valueOf(randomNumberAndSelectedNumber(nbCases));
-                System.out.print("L'ordinateur propose : " + ordiAnswer + " -> réponse : ");
-                compareAndDisplayPlacement(ordiAnswer, randomNumberAtFind);
-                if (ordiAnswer.contains(randomNumberAtFind)) {
-                    find = true;
-                    System.out.print("\n" + "C'est l'ordi qui a trouvé la bonne combinaison : " + ordiAnswer);
+                if(tentative == 1) {
+                    System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
+                    compareAndDisplayPlacement(computerAnswer, randomNumberAtFind);
                 }
+
+                comparePlacement(computerAnswer, randomNumberAtFind);
+                computerAnswer = computerReflexion(equal, more, less, randomNumberAtFind, computerAnswer);
+
+                if(tentative > 1){
+                    System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
+                    compareAndDisplayPlacement(computerAnswer, randomNumberAtFind);
+                }
+                if (computerAnswer.contains(randomNumberAtFind)) {
+                    find = true;
+                    System.out.print("\n" + "C'est l'ordi qui a trouvé la bonne combinaison : " + computerAnswer);
+
+                }
+                tentative++;
             }
             nombre++;
             System.out.println("\n");
@@ -137,18 +211,35 @@ public class PlusMoinsGame implements GameMode {
     }
 
     /**
-     * Compare la réponse à la combinaison et affiche des indications de placements +/-.
-     * @param answer votre réponse ou celle de l'ordinateur selon le jeu.
-     * @param combinaison la combinaison secrète
+     * Comparison between answer and combination.
+     * @param answer your answer or computer answer.
+     * @param combination secret combination.
      */
-    private void compareAndDisplayPlacement(String answer, String combinaison) {
+    private void compareAndDisplayPlacement(String answer, String combination) {
         for (int i = 0; i < answer.length(); i++) {
-            if (answer.charAt(i) == combinaison.charAt(i)) {
+            if (answer.charAt(i) == combination.charAt(i)) {
                 System.out.print("=");
-            } else if (answer.charAt(i) < combinaison.charAt(i)) {
+            } else if (answer.charAt(i) < combination.charAt(i)) {
                 System.out.print("+");
-            } else if (answer.charAt(i) > combinaison.charAt(i)) {
+            } else if (answer.charAt(i) > combination.charAt(i)) {
                 System.out.print("-");
+            }
+        }
+    }
+
+    /**
+     * Comparison between answer and combination.
+     * @param answer your answer or computer answer.
+     * @param combination secret combination.
+     */
+    private void comparePlacement(String answer, String combination) {
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) == combination.charAt(i)) {
+                equal[i] = true;
+            } else if (answer.charAt(i) < combination.charAt(i)) {
+                more[i] = true;
+            } else if (answer.charAt(i) > combination.charAt(i)) {
+                less[i] = true;
             }
         }
     }
