@@ -1,5 +1,4 @@
 package com.jeremie;
-import java.util.Scanner;
 
 public class PlusMoins extends BaseGame {
 

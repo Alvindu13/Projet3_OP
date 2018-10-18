@@ -20,7 +20,7 @@ public class GameSelector {
     private int nbAvailableColours;
     private boolean devMode;
     private Scanner sc = new Scanner(System.in);
-    private static Logger logger = Logger.getLogger(GameSelector.class);
+    private Logger logger = Logger.getLogger(GameSelector.class);
 
     /**
      * @param dev dev mode (args[0] = true, args[1] = false)
