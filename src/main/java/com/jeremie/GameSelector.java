@@ -13,8 +13,8 @@ import java.util.Scanner;
 
 
 public class GameSelector {
-    private MastermindGame mastermindGame;
-    private PlusMoinsGame plusMoinsGame;
+    private Mastermind mastermindGame;
+    private PlusMoins plusMoinsGame;
     private int nbCases;
     private int nbTry;
     private int nbAvailableColours;
@@ -25,8 +25,8 @@ public class GameSelector {
     /**
      * @param dev dev mode (args[0] = true, args[1] = false)
      */
-    public GameSelector(String[] dev) {
-        this.devMode = Boolean.parseBoolean(dev[1]); //switch for dev mode true or false
+    public GameSelector(boolean dev) {
+        this.devMode = dev; //switch for dev mode true or false
     }
 
     /**
@@ -37,7 +37,7 @@ public class GameSelector {
         logger.info("--------Le jeu a démarré------");
         int numberGame = 0;
         int gameMode = 0;
-        numberGame = gameChoise();
+        numberGame = gamechoice();
         gameMode = gameMode();
         gameRun(numberGame, gameMode);
     }
@@ -52,18 +52,20 @@ public class GameSelector {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         while (str.contains("OK")) {
+            logger.info("--------Le joueur vient de relancer le jeu------");
             this.numberRun();
         }
         System.out.println("Je vous remercie d'avoir joué. À bientôt ! ");
+        logger.info("--------Le joueur vient de quitter le jeu------");
     }
 
     /**
      * Display available games and selected a game.
      */
 
-    public int gameChoise()  {
+    public int gamechoice()  {
         int numberGame = 0;
-        boolean numberChoiseIsGood;
+        boolean numberchoiceIsGood;
         System.out.println("Veuillez choisir le jeu que vous voulez lancer : ");
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
         for (int i = 0; i < 2; i++)
@@ -71,11 +73,12 @@ public class GameSelector {
         do {
             try {
                 numberGame = sc.nextInt();
-                logger.info("Le joueur a choisi le jeu numéro " + numberGame);
+                logger.info("Le joueur a choisi le jeu : " + numberGame);
                 if (numberGame >= 1 && numberGame <= 2) {
-                    numberChoiseIsGood = true;
+                    numberchoiceIsGood = true;
                 } else {
-                    numberChoiseIsGood = false;
+                    logger.error("Le joueur n'a pas entré un numéro valide pour le choix du jeu :  " + numberGame);
+                    numberchoiceIsGood = false;
                     System.out.println("Vous devez saisir un nombre valide");
                 }
 
@@ -83,10 +86,10 @@ public class GameSelector {
                 logger.error("Une exception est survenue lors du choix du jeu.");
                 sc.next();
                 System.out.println("Vous devez saisir un nombre, correspondant au jeu choisi");
-                numberChoiseIsGood = false;
+                numberchoiceIsGood = false;
 
             }
-        } while (!numberChoiseIsGood);
+        } while (!numberchoiceIsGood);
         return numberGame;
     }
 
@@ -99,7 +102,7 @@ public class GameSelector {
 
             this.readParameters();
             if (numberGame == 1){
-                plusMoinsGame = new PlusMoinsGame(nbCases, nbTry, devMode);
+                plusMoinsGame = new PlusMoins(nbCases, nbTry, devMode);
                 switch (gameMode){
                     case 1: plusMoinsGame.challengeMode();
                     break;
@@ -110,7 +113,7 @@ public class GameSelector {
                 }
             }
             if (numberGame == 2) {
-                mastermindGame = new MastermindGame(nbCases, nbTry, nbAvailableColours, devMode);
+                mastermindGame = new Mastermind(nbCases, nbTry, nbAvailableColours, devMode);
                 switch(gameMode) {
                     case 1:
                         mastermindGame.challengeMode();
@@ -123,6 +126,7 @@ public class GameSelector {
                         break;
                 }
             }
+        logger.info("--------Le jeu est terminé------");
         this.retry();
     }
 
@@ -132,18 +136,19 @@ public class GameSelector {
      */
     public int gameMode() {
 
-        int choise;
+        int choice;
         String[] arrayMode = {"1 - Mode Challenger : vous devez trouver la combinaison secrète de l'ordinateur", "2 - Mode Défenseur : où c'est à l'ordinateur de trouver votre combinaison secrète ", "3 - Mode duel : où l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné"};
         System.out.println("Veuillez choisir le mode de jeu :");
         for (int index = 0; index < arrayMode.length; index++)
             System.out.println(arrayMode[index]);
-        choise = sc.nextInt();
-        if (choise < 0 || choise > 3) {
+        choice = sc.nextInt();
+        logger.info("Le joueur a choisi le mode de jeu :  " + choice);
+        if (choice < 0 || choice > 3) {
             System.out.println("Merci de rentrer un nombre valide parmis la liste ci-dessous :  ");
             gameMode();
         }
         System.out.println(" ");
-        return choise;
+        return choice;
     }
 
     /**
@@ -157,6 +162,7 @@ public class GameSelector {
             this.nbTry = Integer.parseInt(prop.getProperty("nombre.essai"));
             this.nbAvailableColours = Integer.parseInt(prop.getProperty("mastermind.nombre.couleurs"));
         } catch (FileNotFoundException e) {
+            logger.fatal("Le fichier config.properties a levé une exception.");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

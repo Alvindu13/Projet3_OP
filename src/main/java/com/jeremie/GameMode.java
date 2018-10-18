@@ -7,6 +7,4 @@ public interface GameMode {
     void defenseMode();
 
     void duelMode();
-
-    void displaySolutionForDev(String combinaisonSecrète);
 }

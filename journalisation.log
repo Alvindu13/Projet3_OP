@@ -202,3 +202,29 @@ INFO - --------Le jeu a démarré------
 INFO - Le joueur a choisi le jeu numéro 1
 INFO - --------Le jeu a démarré------
 INFO - Le joueur a choisi le jeu numéro 1
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu : 1
+INFO - Le joueur a choisi le mode de jeu :  3
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu : 1
+INFO - Le joueur a choisi le mode de jeu :  1
+INFO - --------Le jeu a démarré------
+ERROR - Une exception est survenue lors du choix du jeu.
+ERROR - Une exception est survenue lors du choix du jeu.
+INFO - Le joueur a choisi le jeu : 1
+INFO - Le joueur a choisi le mode de jeu :  1
+INFO - --------Le jeu est terminé------
+INFO - --------Le joueur vient de relancer le jeu------
+INFO - --------Le jeu a démarré------
+ERROR - Une exception est survenue lors du choix du jeu.
+INFO - Le joueur a choisi le jeu : 1
+INFO - Le joueur a choisi le mode de jeu :  3
+INFO - --------Le jeu a démarré------
+INFO - --------Le jeu a démarré------
+INFO - --------Le jeu a démarré------
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu : 2
+INFO - Le joueur a choisi le mode de jeu :  3
+INFO - --------Le jeu a démarré------
+INFO - Le joueur a choisi le jeu : 1
+INFO - Le joueur a choisi le mode de jeu :  3

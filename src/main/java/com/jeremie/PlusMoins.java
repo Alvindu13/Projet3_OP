@@ -1,16 +1,10 @@
 package com.jeremie;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class PlusMoinsGame implements GameMode {
+public class PlusMoins extends BaseGame {
 
 
-    private int nbCases;
-    private int nbTry;
-    private Scanner sc;
     private boolean find;
-    private boolean devMode;
     private boolean[] equal;
     private boolean[] more;
     private boolean[] less;
@@ -20,15 +14,12 @@ public class PlusMoinsGame implements GameMode {
      * @param nbTry maximum try/turn to find combination.
      * @param devMode enable display combination when the game at started in dev mode.
      */
-    public PlusMoinsGame(int nbCases, int nbTry, boolean devMode) {
-        this.devMode = devMode;
-        this.nbCases = nbCases;
-        this.nbTry = nbTry;
+    public PlusMoins(int nbCases, int nbTry, boolean devMode) {
+        super(nbCases, nbTry, devMode);
         this.find = false;
         this.equal = new boolean[nbCases];
         this.more = new boolean[nbCases];
         this.less = new boolean[nbCases];
-        sc = new Scanner(System.in);
     }
 
     /**
@@ -68,11 +59,11 @@ public class PlusMoinsGame implements GameMode {
         randomNumber = String.valueOf(randomNumberAndSelectedNumber());
         displaySolutionForDev(randomNumber); // if mode dev then display solution
         do {
-            System.out.print("Merci faire votre proposition (");
+            System.out.print("Merci de faire votre proposition (");
             System.out.println("il vous reste encore " + (nbTry) + " tentatives) : ");
             myAnswer = sc.nextLine();
             System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
-            compareAndDisplayPlacement(myAnswer, randomNumber);
+            compareAndDisplayIndicatorsPlacement(myAnswer, randomNumber);
             if (myAnswer.contains(randomNumber)) {
                 find = true;
                 System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison : " + myAnswer);
@@ -102,7 +93,7 @@ public class PlusMoinsGame implements GameMode {
         while(!find && tentative <= nbTry){
             computerAnswer = computerReflexion(equal, more, less, yourResponseThatOrdiFind, computerAnswer);
             System.out.print("Proposition " + (tentative+1) + " : " + computerAnswer + " vérification des placements : ");
-            compareAndDisplayPlacement(computerAnswer, yourResponseThatOrdiFind);
+            compareAndDisplayIndicatorsPlacement(computerAnswer, yourResponseThatOrdiFind);
             comparePlacement(computerAnswer, yourResponseThatOrdiFind);
             System.out.println();
             if (computerAnswer.contains(yourResponseThatOrdiFind)) {
@@ -114,6 +105,89 @@ public class PlusMoinsGame implements GameMode {
         if(!find)
             System.out.print("\n" + "L'ordi n'a pas trouvé la bonne combinaison, qui est : " + yourResponseThatOrdiFind);
     }
+
+    /**
+     * Start duel mode. Switch between user and computer to search a random combination.
+     */
+    @Override
+    public void duelMode() {
+        int nombre = 0;
+        int tentative = 1;
+        String randomNumberAtFind;
+        String myAnswer;
+        String computerAnswer;
+
+        randomNumberAtFind = String.valueOf(randomNumberAndSelectedNumber());
+        computerAnswer = String.valueOf(randomNumberAndSelectedNumber());
+        displaySolutionForDev(randomNumberAtFind);
+        do {
+            if (nombre % 2 == 0) {
+                System.out.print("C'est à votre tour : ");
+                myAnswer = sc.nextLine();
+                System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
+                compareAndDisplayIndicatorsPlacement(myAnswer, randomNumberAtFind);
+                if (myAnswer.contains(randomNumberAtFind)) {
+                    find = true;
+                    System.out.print("\n" + "Bravo vous avez trouvé la bonne combinaison : " + myAnswer);
+                }
+            } else {
+                System.out.println("C'est au tour de l'ordinateur ! ");
+                if(tentative == 1) {
+                    System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
+                    compareAndDisplayIndicatorsPlacement(computerAnswer, randomNumberAtFind);
+                }
+                comparePlacement(computerAnswer, randomNumberAtFind);
+                computerAnswer = computerReflexion(equal, more, less, randomNumberAtFind, computerAnswer);
+                if(tentative > 1){
+                    System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
+                    compareAndDisplayIndicatorsPlacement(computerAnswer, randomNumberAtFind);
+                }
+                if (computerAnswer.contains(randomNumberAtFind)) {
+                    find = true;
+                    System.out.print("\n" + "C'est l'ordi qui a trouvé la bonne combinaison : " + computerAnswer);
+                }
+                tentative++;
+            }
+            nombre++;
+            System.out.println("\n");
+        } while (!find);
+    }
+
+
+    /**
+     * Comparison between answer and combination.
+     * @param answer your answer or computer answer.
+     * @param combination secret combination.
+     */
+    private void compareAndDisplayIndicatorsPlacement(String answer, String combination) {
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) == combination.charAt(i)) {
+                System.out.print("=");
+            } else if (answer.charAt(i) < combination.charAt(i)) {
+                System.out.print("+");
+            } else if (answer.charAt(i) > combination.charAt(i)) {
+                System.out.print("-");
+            }
+        }
+    }
+
+    /**
+     * Comparison between answer and combination.
+     * @param answer your answer or computer answer.
+     * @param combination secret combination.
+     */
+    private void comparePlacement(String answer, String combination) {
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) == combination.charAt(i)) {
+                equal[i] = true;
+            } else if (answer.charAt(i) < combination.charAt(i)) {
+                more[i] = true;
+            } else if (answer.charAt(i) > combination.charAt(i)) {
+                less[i] = true;
+            }
+        }
+    }
+
 
     /**
      * The computer is thinking about proposing an answer based on the indicators/
@@ -147,101 +221,6 @@ public class PlusMoinsGame implements GameMode {
             answer += computerAnswers[index];
         }
         return answer;
-    }
-
-    /**
-     * Start duel mode. Switch between user and computer to search a random combination.
-     */
-    @Override
-    public void duelMode() {
-        int nombre = 0;
-        int tentative = 1;
-        String randomNumberAtFind;
-        String myAnswer;
-        String computerAnswer;
-
-        randomNumberAtFind = String.valueOf(randomNumberAndSelectedNumber());
-        computerAnswer = String.valueOf(randomNumberAndSelectedNumber());
-        displaySolutionForDev(randomNumberAtFind);
-        do {
-            if (nombre % 2 == 0) {
-                System.out.print("C'est à votre tour : ");
-                myAnswer = sc.nextLine();
-                System.out.print("Votre réponse : " + myAnswer + " -> réponse : ");
-                compareAndDisplayPlacement(myAnswer, randomNumberAtFind);
-                if (myAnswer.contains(randomNumberAtFind)) {
-                    find = true;
-                    System.out.print("\n" + "Bravo vous avez trouvé la bonne combinaison : " + myAnswer);
-                }
-            } else {
-                System.out.println("C'est au tour de l'ordinateur ! ");
-                if(tentative == 1) {
-                    System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
-                    compareAndDisplayPlacement(computerAnswer, randomNumberAtFind);
-                }
-
-                comparePlacement(computerAnswer, randomNumberAtFind);
-                computerAnswer = computerReflexion(equal, more, less, randomNumberAtFind, computerAnswer);
-
-                if(tentative > 1){
-                    System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
-                    compareAndDisplayPlacement(computerAnswer, randomNumberAtFind);
-                }
-                if (computerAnswer.contains(randomNumberAtFind)) {
-                    find = true;
-                    System.out.print("\n" + "C'est l'ordi qui a trouvé la bonne combinaison : " + computerAnswer);
-
-                }
-                tentative++;
-            }
-            nombre++;
-            System.out.println("\n");
-        } while (!find);
-    }
-
-    /**
-     * Dislay the combination when the game at started in dev mode only.
-     * @param combinaisonSecrète combination secret.
-     */
-    @Override
-    public void displaySolutionForDev(String combinaisonSecrète) {
-        if(devMode == true){
-            System.out.println("Mode Développeur activé. Voici la combinaison secrète : " + combinaisonSecrète);
-        }
-    }
-
-    /**
-     * Comparison between answer and combination.
-     * @param answer your answer or computer answer.
-     * @param combination secret combination.
-     */
-    private void compareAndDisplayPlacement(String answer, String combination) {
-        for (int i = 0; i < answer.length(); i++) {
-            if (answer.charAt(i) == combination.charAt(i)) {
-                System.out.print("=");
-            } else if (answer.charAt(i) < combination.charAt(i)) {
-                System.out.print("+");
-            } else if (answer.charAt(i) > combination.charAt(i)) {
-                System.out.print("-");
-            }
-        }
-    }
-
-    /**
-     * Comparison between answer and combination.
-     * @param answer your answer or computer answer.
-     * @param combination secret combination.
-     */
-    private void comparePlacement(String answer, String combination) {
-        for (int i = 0; i < answer.length(); i++) {
-            if (answer.charAt(i) == combination.charAt(i)) {
-                equal[i] = true;
-            } else if (answer.charAt(i) < combination.charAt(i)) {
-                more[i] = true;
-            } else if (answer.charAt(i) > combination.charAt(i)) {
-                less[i] = true;
-            }
-        }
     }
 }
 

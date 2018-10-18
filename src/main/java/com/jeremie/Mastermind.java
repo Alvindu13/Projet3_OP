@@ -3,16 +3,11 @@ package com.jeremie;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
-public class MastermindGame implements GameMode{
-    private int nbCases;
-    private int nbTry;
+public class Mastermind extends BaseGame {
     private int nbAvailableColors;
-    private Scanner sc;
     private char[] formatColoursGameS;
     private List<Character> formatColoursGame;
-    private boolean devMode;
 
 
     /**
@@ -22,14 +17,11 @@ public class MastermindGame implements GameMode{
      * @param devMode enable display combination when the game at started in dev mode.
      */
 
-    public MastermindGame( int nbCases, int nbTry, int nbAvailableColors, boolean devMode) {
-        this.nbCases = nbCases;
-        this.nbTry = nbTry;
+    public Mastermind(int nbCases, int nbTry, int nbAvailableColors, boolean devMode) {
+        super(nbCases, nbTry, devMode);
         this.nbAvailableColors = nbAvailableColors;
-        sc = new Scanner(System.in);
         formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         this.formatColoursGame = Arrays.asList('R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P');
-        this.devMode = devMode;
         displayAvailableColors();
     }
 
@@ -68,14 +60,14 @@ public class MastermindGame implements GameMode{
 
     public char[] randomColors(int nbCases) {
 
-        char [] randomClours = new char[nbCases];
+        char [] randomColours = new char[nbCases];
         for (int indexColour = 0; indexColour < nbCases; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
             int bMin = 0;
             int bMax = nbAvailableColors;
             int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
-            randomClours[indexColour] = formatColoursGameS[numRandom];
+            randomColours[indexColour] = formatColoursGameS[numRandom];
         }
-        return randomClours;
+        return randomColours;
     }
 
     /**
@@ -109,7 +101,7 @@ public class MastermindGame implements GameMode{
         for (int index = 0; index < nbCases; index++) {
                 answer[index] = myAnswer.charAt(index);
             }
-            // cette première boucle sert à trouver
+            // &cette première boucle sert à trouver
             // les éléments bien devinés et correctement placés.
             // Le tableau marque permet de marquer de tels
             // éléments pour qu'ils ne soient pas considérés
@@ -256,16 +248,6 @@ public class MastermindGame implements GameMode{
         }
     }
 
-    /**
-     * Dislay the combination when the game at started in dev mode only.
-     * @param combinaisonSecrète combination secret.
-     */
-    @Override
-    public void displaySolutionForDev(String combinaisonSecrète) {
-        if(devMode == true){
-            System.out.println("Mode Développeur activé. Voici la combinaison secrète : " + combinaisonSecrète);
-            System.out.println(" ");
-        }
-    }
+
 }
 
