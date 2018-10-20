@@ -166,7 +166,7 @@ public class Mastermind extends BaseGame {
             combinaisonSecretes += combinaisonSecrete[index];
         displaySolutionForDev(combinaisonSecretes);
         while(nbTry > 0 && !trouve) {
-            System.out.print("Merci de proposer une combinaison de couleurs : ");
+            System.out.print("Merci de faire votre proposition : ");
             myAnswer = sc.nextLine();
             trouve = compare(myAnswer, combinaisonSecrete, counter, 0);
             counter++;

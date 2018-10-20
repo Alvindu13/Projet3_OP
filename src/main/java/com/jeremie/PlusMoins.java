@@ -53,26 +53,15 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        String myAnswer;
-        String randomNumber;
-        randomNumber = String.valueOf(randomNumberAndSelectedNumber());
-        displaySolutionForDev(randomNumber); // if mode dev then display solution
+        String combination;
+        combination = String.valueOf(randomNumberAndSelectedNumber());
+        displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            System.out.print("Merci de faire votre proposition (");
-            System.out.println("il vous reste encore " + (nbTry) + " tentatives) : ");
-            myAnswer = sc.nextLine();
-            System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
-            compareAndDisplayIndicatorsPlacement(myAnswer, randomNumber);
-            if (myAnswer.contains(randomNumber)) {
-                find = true;
-                System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison : " + myAnswer);
-            }
-            nbTry--;
-            System.out.println(" ");
+            proposition(0, combination);
+            compareAndDisplayIndicatorsPlacement(myAnswer, combination);
+            System.out.println("\n");
+            result(combination);
         } while (!find && nbTry != 0);
-        if(!find){
-            System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + randomNumber);
-        }
     }
 
     /**
