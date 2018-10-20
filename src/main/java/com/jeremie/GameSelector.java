@@ -94,6 +94,28 @@ public class GameSelector {
     }
 
     /**
+     * Display different game modes.
+     * @return number choose of mode.
+     */
+    public int gameMode() {
+
+        int choice;
+        String[] arrayMode = {"1 - Mode Challenger : vous devez trouver la combinaison secrète de l'ordinateur", "2 - Mode Défenseur : où c'est à l'ordinateur de trouver votre combinaison secrète ", "3 - Mode duel : où l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné"};
+        System.out.println("Veuillez choisir le mode de jeu :");
+        for (int index = 0; index < arrayMode.length; index++)
+            System.out.println(arrayMode[index]);
+        choice = sc.nextInt();
+        logger.info("Le joueur a choisi le mode de jeu :  " + choice);
+        while (choice < 0 || choice > 3) {
+            System.out.println("Merci de rentrer un nombre valide parmis la liste ci-dessus :  ");
+            choice = sc.nextInt();
+        }
+        System.out.println(" ");
+        return choice;
+    }
+
+
+    /**
      * Run different games and modes depending on parameters.
      * @param numberGame Selected the game.
      * @param gameMode Selected game mode.
@@ -128,27 +150,6 @@ public class GameSelector {
             }
         logger.info("--------Le jeu est terminé------");
         this.retry();
-    }
-
-    /**
-     * Display different game modes.
-     * @return number choose of mode.
-     */
-    public int gameMode() {
-
-        int choice;
-        String[] arrayMode = {"1 - Mode Challenger : vous devez trouver la combinaison secrète de l'ordinateur", "2 - Mode Défenseur : où c'est à l'ordinateur de trouver votre combinaison secrète ", "3 - Mode duel : où l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné"};
-        System.out.println("Veuillez choisir le mode de jeu :");
-        for (int index = 0; index < arrayMode.length; index++)
-            System.out.println(arrayMode[index]);
-        choice = sc.nextInt();
-        logger.info("Le joueur a choisi le mode de jeu :  " + choice);
-        if (choice < 0 || choice > 3) {
-            System.out.println("Merci de rentrer un nombre valide parmis la liste ci-dessous :  ");
-            gameMode();
-        }
-        System.out.println(" ");
-        return choice;
     }
 
     /**
