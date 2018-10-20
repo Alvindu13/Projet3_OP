@@ -20,9 +20,6 @@ public abstract class BaseGame implements GameMode{
     protected char[] randomColors;
     protected char[] formatColoursGameS;
 
-    protected char[] getRandomColors() {
-        return randomColors;
-    }
 
     public BaseGame(int nbCases, int nbTry, boolean devMode) {
         this.devMode = devMode;
@@ -94,7 +91,7 @@ public abstract class BaseGame implements GameMode{
     }
 
     protected void choiceCombinationToComputer(){
-        System.out.print("Merci de choisir le nombre à 4 chiffres que l'ordinateur doit trouver : ");
+        System.out.print("Merci de choisir la combinaison à 4 chiffres que l'ordinateur doit trouver : ");
         myCombinationThatComputerFind = sc.nextLine();
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
     }

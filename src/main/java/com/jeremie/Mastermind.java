@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Mastermind extends BaseGame {
     private int nbAvailableColors;
-    private char[] formatColoursGameS;
     private List<Character> formatColoursGame;
+    private char[] computerAnswerChar;
 
 
     /**
@@ -22,6 +22,7 @@ public class Mastermind extends BaseGame {
         this.nbAvailableColors = nbAvailableColors;
         formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         this.formatColoursGame = Arrays.asList('R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P');
+        this.computerAnswerChar = new char[nbCases];
         displayAvailableColors();
     }
 
@@ -75,11 +76,7 @@ public class Mastermind extends BaseGame {
      * @param combinaison array containing secret combination.
      * @param nbCases size of the combination.
      */
-    public void displayCombination(char[] combinaison, int nbCases) {
-        for (int i = 0; i < nbCases; i++)
-            System.out.print(combinaison[i]);
-        System.out.println(" ");
-    }
+
 
     /**
      * Compare the answer of the USER or the COMPUTER with the combination.
@@ -164,29 +161,21 @@ public class Mastermind extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        boolean trouve = false;
-        int counter = 1;
-        String ordiAnswers = "";
-        char[] ordiAnswer = new char[nbCases];
-        String combinaisonSecretes = "";
-        char[] combinaisonSecrete = new char[nbCases];
-        System.out.println("Merci de proposer une combinaison que l'ordinateur va devoir trouver : ");
-        combinaisonSecretes = sc.nextLine();
+        randomNumberAndSelectedNumber("mastermind", nbAvailableColors);
+        choiceCombinationToComputer();
         for (int index = 0; index < nbCases; index++)
-            combinaisonSecrete[index] = combinaisonSecretes.charAt(index);
-        displaySolutionForDev(combinaisonSecretes);
-        while(nbTry > 0 && !trouve) {
-            ordiAnswers = "";
-            ordiAnswer = randomColors(nbCases);
+            randomColors[index] = myCombinationThatComputerFind.charAt(index);
+        displaySolutionForDev(myCombinationThatComputerFind);
+        while(nbTry > 0 && !find) {
+            computerAnswer = "";
+            computerAnswerChar = randomColors(nbCases);
             for (int index = 0; index < nbCases; index++)
-                ordiAnswers += ordiAnswer[index];
-            trouve = compare(ordiAnswers, combinaisonSecrete);
-            counter++;
+                computerAnswer += computerAnswerChar[index];
+            proposition("computer", computerAnswer, "defense", "mastermind", 0);
+            find = compare(computerAnswer, randomColors);
+            tentative++;
         }
-        if(trouve == true)
-            System.out.println("Bravo ! Vous avez trouvé la bonne combinaison  : " + combinaisonSecretes);
-        else
-            System.out.print("Dommage, vous n'avez pas trouvé la combinaison : " + combinaisonSecretes);
+       result(myCombinationThatComputerFind, computerAnswer, "computer");
     }
 
     /**
