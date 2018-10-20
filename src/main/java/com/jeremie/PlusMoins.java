@@ -43,13 +43,14 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        combination(); // a voir si c'est pas facultatif
+        combinationRandom("moreLess", 1); 
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            proposition("human", combination);
+            myAnswer = proposition("human", combination, "moreLess");
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println("\n");
-            result(combination);
+            find = result(combination, myAnswer);
+            nbTry--;
         } while (!find && nbTry != 0);
     }
 
@@ -58,32 +59,17 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        String yourResponseThatOrdiFind;
-        String computerAnswer;
-        int tentative = 1;
-        System.out.print("Merci de choisir le nombre à 4 chiffres que l'ordinateur doit trouver : ");
-        yourResponseThatOrdiFind = sc.nextLine();
-        System.out.println("L'ordinateur doit retrouver la réponse suivante : " + yourResponseThatOrdiFind);
-        combination();
+        choiceCombinationToComputer();
+        combinationRandom("moreLess", 2); //génère nouvelle combinaison
         computerAnswer = String.valueOf(combination);
-        comparePlacement(computerAnswer, yourResponseThatOrdiFind);
-        System.out.print("Proposition " + tentative + " : " + computerAnswer + " vérification des placements : ");
-        compareAndDisplayIndicatorsPlacement(computerAnswer, yourResponseThatOrdiFind);
-        System.out.println();
-        while(!find && tentative < nbTry){
-            computerAnswer = computerReflexion(equal, more, less, yourResponseThatOrdiFind, computerAnswer);
-            System.out.print("Proposition " + (tentative+1) + " : " + computerAnswer + " vérification des placements : ");
-            compareAndDisplayIndicatorsPlacement(computerAnswer, yourResponseThatOrdiFind);
-            comparePlacement(computerAnswer, yourResponseThatOrdiFind);
-            System.out.println();
-            if (computerAnswer.contains(yourResponseThatOrdiFind)) {
-                find = true;
-                System.out.print("\n" + "L'ordi a trouvé la bonne combinaison : " + computerAnswer);
-            }
+        while(!find && tentative <= nbTry) {
+            proposition("human", computerAnswer, "defense");
+            compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
+            find = result(myCombinationThatComputerFind, computerAnswer);
+            comparePlacement(computerAnswer, myCombinationThatComputerFind);
+            computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind, computerAnswer);
             tentative++;
         }
-        if(!find)
-            System.out.print("\n" + "L'ordi n'a pas trouvé la bonne combinaison, qui est : " + yourResponseThatOrdiFind);
     }
 
     /**
@@ -93,21 +79,17 @@ public class PlusMoins extends BaseGame {
     public void duelMode() {
         int nombre = 0;
         int tentative = 1;
-        String randomNumberAtFind;
-        String myAnswer;
-        String computerAnswer;
 
-        randomNumberAtFind = String.valueOf(combination);
-        combination();
+        combination = String.valueOf(combination);
         computerAnswer = String.valueOf(combination);
-        displaySolutionForDev(randomNumberAtFind);
+        displaySolutionForDev(combination);
         do {
             if (nombre % 2 == 0) {
                 System.out.print("C'est à votre tour : ");
                 myAnswer = sc.nextLine();
                 System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
-                compareAndDisplayIndicatorsPlacement(myAnswer, randomNumberAtFind);
-                if (myAnswer.contains(randomNumberAtFind)) {
+                compareAndDisplayIndicatorsPlacement(myAnswer, combination);
+                if (myAnswer.contains(combination)) {
                     find = true;
                     System.out.print("\n" + "Bravo vous avez trouvé la bonne combinaison : " + myAnswer);
                 }
@@ -115,15 +97,15 @@ public class PlusMoins extends BaseGame {
                 System.out.println("C'est au tour de l'ordinateur ! ");
                 if(tentative == 1) {
                     System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
-                    compareAndDisplayIndicatorsPlacement(computerAnswer, randomNumberAtFind);
+                    compareAndDisplayIndicatorsPlacement(computerAnswer, combination);
                 }
-                comparePlacement(computerAnswer, randomNumberAtFind);
-                computerAnswer = computerReflexion(equal, more, less, randomNumberAtFind, computerAnswer);
+                comparePlacement(computerAnswer, combination);
+                computerAnswer = computerReflexion(equal, more, less, combination, computerAnswer);
                 if(tentative > 1){
                     System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
-                    compareAndDisplayIndicatorsPlacement(computerAnswer, randomNumberAtFind);
+                    compareAndDisplayIndicatorsPlacement(computerAnswer, combination);
                 }
-                if (computerAnswer.contains(randomNumberAtFind)) {
+                if (computerAnswer.contains(combination)) {
                     find = true;
                     System.out.print("\n" + "C'est l'ordi qui a trouvé la bonne combinaison : " + computerAnswer);
                 }
@@ -150,6 +132,7 @@ public class PlusMoins extends BaseGame {
                 System.out.print("-");
             }
         }
+        System.out.println();
     }
 
     /**
