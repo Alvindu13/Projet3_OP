@@ -16,19 +16,29 @@ public abstract class BaseGame implements GameMode{
     protected int randomNumber;
     protected String myCombinationThatComputerFind;
     protected int tentative = 1;
+    protected int nbAvailableColors;
+    protected char[] randomColors;
+    protected char[] formatColoursGameS;
 
+    protected char[] getRandomColors() {
+        return randomColors;
+    }
 
     public BaseGame(int nbCases, int nbTry, boolean devMode) {
         this.devMode = devMode;
+        this.nbAvailableColors = nbAvailableColors;
         this.myCombinationThatComputerFind = myCombinationThatComputerFind;
         this.randomNumber = randomNumber;
         this.tentative = 1;
         this.nbCases = nbCases;
         this.nbTry = nbTry;
+        this.randomColors = new char[nbCases];
         this.combination = combination;
         this.logger = Logger.getLogger(BaseGame.class);
         this.sc = new Scanner(System.in);
         this.find = false;
+        formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
+
     }
 
     /**
@@ -46,26 +56,37 @@ public abstract class BaseGame implements GameMode{
      * Calculation of a random number.
      * @return the random number.
      */
-    private int randomNumberAndSelectedNumber(String game) { //revoir cette méthode
-        int bMin = (int) Math.pow(10, nbCases - 1);
-        int bMax = (int) Math.pow(10, nbCases);
-        randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
+    protected int randomNumberAndSelectedNumber(String game, int nbAvailableColors) { //revoir cette méthode
+        if(game.equals("moreless")) {
+            int bMin = (int) Math.pow(10, nbCases - 1);
+            int bMax = (int) Math.pow(10, nbCases);
+            randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
+            return randomNumber;
+        }
+        if(game.equals("mastermind")) {
+            for (int indexColour = 0; indexColour < nbCases; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
+                int bMin = 0;
+                int bMax = nbAvailableColors;
+                int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
+                randomColors[indexColour] = formatColoursGameS[numRandom];
+            }
+        }
         return randomNumber;
     }
 
     protected void combinationRandom(String game, int mode) {
         switch (game) {
             case "moreLess":
-                combination = String.valueOf(randomNumberAndSelectedNumber("moreLess"));
+                combination = String.valueOf(randomNumberAndSelectedNumber("moreLess", 0));
                 switch (mode) {
                     case 1:
                         this.combination = combination;
                         break;
                     case 2:
-                        computerAnswer = String.valueOf(randomNumberAndSelectedNumber("moreLess"));
+                        computerAnswer = String.valueOf(randomNumberAndSelectedNumber("moreLess", 0));
                         break;
                     case 3:
-                        computerAnswer = String.valueOf(randomNumberAndSelectedNumber("moreLess"));
+                        computerAnswer = String.valueOf(randomNumberAndSelectedNumber("moreLess", 0));
                         break;
                 }
 
@@ -78,7 +99,7 @@ public abstract class BaseGame implements GameMode{
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
     }
 
-    public String displayProposal(int n, String user, int counter, String combinationComputer){
+    protected String displayProposal(int n, String user, int counter, String combinationComputer){
         switch(user) {
             case "human":
                 if (n == 1 || n == 2) {

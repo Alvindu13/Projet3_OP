@@ -17,7 +17,7 @@ public class GameSelector {
     private PlusMoins plusMoinsGame;
     private int nbCases;
     private int nbTry;
-    private int nbAvailableColours;
+    private int nbAvailableColors;
     private boolean devMode;
     private Scanner sc = new Scanner(System.in);
     private Logger logger = Logger.getLogger(GameSelector.class);
@@ -135,7 +135,7 @@ public class GameSelector {
                 }
             }
             if (numberGame == 2) {
-                mastermindGame = new Mastermind(nbCases, nbTry, nbAvailableColours, devMode);
+                mastermindGame = new Mastermind(nbCases, nbTry, nbAvailableColors, devMode);
                 switch(gameMode) {
                     case 1:
                         mastermindGame.challengeMode();
@@ -161,7 +161,7 @@ public class GameSelector {
             prop.load(new FileReader("src/main/resources/config.properties"));
             this.nbCases = Integer.parseInt(prop.getProperty("nombre.cases"));
             this.nbTry = Integer.parseInt(prop.getProperty("nombre.essai"));
-            this.nbAvailableColours = Integer.parseInt(prop.getProperty("mastermind.nombre.couleurs"));
+            this.nbAvailableColors = Integer.parseInt(prop.getProperty("mastermind.nombre.couleurs"));
         } catch (FileNotFoundException e) {
             logger.fatal("Le fichier config.properties a levé une exception.");
             e.printStackTrace();

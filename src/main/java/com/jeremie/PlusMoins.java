@@ -1,5 +1,7 @@
 package com.jeremie;
 
+import java.util.Arrays;
+
 public class PlusMoins extends BaseGame {
 
 

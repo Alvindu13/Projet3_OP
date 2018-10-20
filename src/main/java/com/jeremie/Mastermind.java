@@ -147,17 +147,16 @@ public class Mastermind extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        String combinaisonSecretes = "";
-        char[] secretCombinationChar = new char[nbCases];
-        secretCombinationChar = randomColors(nbCases);
+        randomNumberAndSelectedNumber("mastermind", nbAvailableColors);
+        combination = "";
         for(int index = 0; index < nbCases; index++)
-            combinaisonSecretes += secretCombinationChar[index];
-        displaySolutionForDev(combinaisonSecretes);
+            combination += randomColors[index];
+        displaySolutionForDev(combination);
         while(nbTry > 0 && !find) {
             myAnswer = proposition("human", null, "challenge", "mastermind", 1);
-            find = compare(myAnswer, secretCombinationChar);
+            find = compare(myAnswer, randomColors);
         }
-        result(combinaisonSecretes, myAnswer, "human");
+        result(combination, myAnswer, "human");
     }
 
     /**
