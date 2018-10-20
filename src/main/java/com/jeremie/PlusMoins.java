@@ -21,16 +21,6 @@ public class PlusMoins extends BaseGame {
         this.less = new boolean[nbCases];
     }
 
-    /**
-     * Calculation of a random number.
-     * @return the random number.
-     */
-    private int randomNumberAndSelectedNumber() { //revoir cette méthode
-        int bMin = (int) Math.pow(10, nbCases - 1);
-        int bMax = (int) Math.pow(10, nbCases);
-        int randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
-        return randomNumber;
-    }
 
 
     /**
@@ -53,11 +43,10 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        String combination;
-        combination = String.valueOf(randomNumberAndSelectedNumber());
+        combination(); // a voir si c'est pas facultatif
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            proposition(0, combination);
+            proposition("human", combination);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println("\n");
             result(combination);
@@ -75,10 +64,13 @@ public class PlusMoins extends BaseGame {
         System.out.print("Merci de choisir le nombre à 4 chiffres que l'ordinateur doit trouver : ");
         yourResponseThatOrdiFind = sc.nextLine();
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + yourResponseThatOrdiFind);
-        computerAnswer = String.valueOf(randomNumberAndSelectedNumber());
+        combination();
+        computerAnswer = String.valueOf(combination);
         comparePlacement(computerAnswer, yourResponseThatOrdiFind);
         System.out.print("Proposition " + tentative + " : " + computerAnswer + " vérification des placements : ");
-        while(!find && tentative <= nbTry){
+        compareAndDisplayIndicatorsPlacement(computerAnswer, yourResponseThatOrdiFind);
+        System.out.println();
+        while(!find && tentative < nbTry){
             computerAnswer = computerReflexion(equal, more, less, yourResponseThatOrdiFind, computerAnswer);
             System.out.print("Proposition " + (tentative+1) + " : " + computerAnswer + " vérification des placements : ");
             compareAndDisplayIndicatorsPlacement(computerAnswer, yourResponseThatOrdiFind);
@@ -105,8 +97,9 @@ public class PlusMoins extends BaseGame {
         String myAnswer;
         String computerAnswer;
 
-        randomNumberAtFind = String.valueOf(randomNumberAndSelectedNumber());
-        computerAnswer = String.valueOf(randomNumberAndSelectedNumber());
+        randomNumberAtFind = String.valueOf(combination);
+        combination();
+        computerAnswer = String.valueOf(combination);
         displaySolutionForDev(randomNumberAtFind);
         do {
             if (nombre % 2 == 0) {
