@@ -78,6 +78,41 @@ public abstract class BaseGame implements GameMode{
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
     }
 
+    public String displayProposal(int n, String user, int counter, String combinationComputer){
+        switch(user) {
+            case "human":
+                if (n == 1 || n == 2) {
+                    System.out.print("C'est à votre tour : ");
+                    myAnswer = sc.nextLine();
+                    if (n == 1)
+                        System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
+                    if (n == 2)
+                        System.out.print("Votre proposition pour le tour " + counter +   " : " + myAnswer + " => ");
+                    return myAnswer;
+                }
+                if (n == 3 || n == 4) {
+                    System.out.print("Merci de faire votre proposition (");
+                    System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
+                    myAnswer = sc.nextLine();
+                    System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
+                    return myAnswer;
+                }
+                break;
+            case "computer":
+                if (n == 5)
+                    System.out.print("Proposition " + tentative + " : " + combinationComputer + " vérification des placements : ");
+                if (n == 6 || n == 7) {
+                    System.out.print("C'est au tour de l'ordinateur : \n");
+                    if (n == 6)
+                        System.out.print("L'ordinateur propose pour ce tour : " + computerAnswer + " -> réponse : ");
+                    if (n == 7)
+                        System.out.print("L'ordinateur propose pour ce tour : " + myAnswer + " => ");
+                }
+                break;
+        }
+        return "0";
+    }
+
     /**
      * Display some propositions possibles according combination, user type and mode selected.
      * @param user human or computer.
@@ -85,40 +120,37 @@ public abstract class BaseGame implements GameMode{
      * @param mode mode of the game.
      * @return
      */
-    protected String proposition(String user, String combinationComputer, String mode) {
-
+    protected String proposition(String user, String combinationComputer, String mode, String game, int counter) {
         switch (user) {
             case "human":
                 switch (mode) {
                     case "dual":
-                        System.out.print("C'est à votre tour : ");
-                        myAnswer = sc.nextLine();
-                        System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
+                        if (game.equals("moreLess"))
+                            myAnswer = displayProposal(1, "human", 0, null);
+                        else if (game.equals("mastermind"))
+                            myAnswer = displayProposal(2, "human", counter, null);
                         break;
-
                     case "challenge":
-                        System.out.print("Merci de faire votre proposition ( ");
-                        System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
-                        myAnswer = sc.nextLine();
-                        System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
+                        if (game.equals("mastermind"))
+                            myAnswer = displayProposal(3, "human", 0, null);
+                        else
+                            myAnswer = displayProposal(4, "human", 0, null);
                         break;
-
                 }
-                //return myAnswer;
+                return myAnswer;
             case "computer":
                 switch (mode) {
                     case "defense":
-                        System.out.print("Proposition " + tentative + " : " + combinationComputer + " vérification des placements : ");
+                        displayProposal(5, "computer", 0, combinationComputer);
                         break;
-
                     case "dual":
-                        System.out.println("C'est au tour de l'ordinateur ! ");
-                        System.out.print("L'ordinateur propose : " + computerAnswer + " -> réponse : ");
+                        if (game.equals("moreLess"))
+                            displayProposal(6, "computer", 0, computerAnswer);
+                        if(game.equals("mastermind"))
+                            displayProposal(7, "computer", 0, myAnswer);
                         break;
-
                 }
         }
-
         return "0";
     }
 

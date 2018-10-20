@@ -30,7 +30,7 @@ public class PlusMoins extends BaseGame {
         combinationRandom("moreLess", 1);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            proposition("human", combination, "challenge");
+            proposition("human", combination, "challenge","moreLess",0);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println();
             find = result(combination, myAnswer,"human");
@@ -47,7 +47,7 @@ public class PlusMoins extends BaseGame {
         combinationRandom("moreLess", 2); //génère nouvelle combinaison
         computerAnswer = String.valueOf(combination);
         while(!find && tentative <= nbTry) {
-            proposition("computer", computerAnswer, "defense");
+            proposition("computer", computerAnswer, "defense", "moreLess",0);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
             find = result(myCombinationThatComputerFind, computerAnswer,"computer");
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
@@ -68,11 +68,11 @@ public class PlusMoins extends BaseGame {
         displaySolutionForDev(combination);
         do {
             if (nombre % 2 == 0) {
-                proposition("human", null, "dual");
+                proposition("human", null, "dual","moreLess", 0);
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
                 find = result(combination, myAnswer, "human");
             } else {
-                proposition("computer", computerAnswer, "dual");
+                proposition("computer", computerAnswer, "dual","moreLess",0);
                 compareAndDisplayIndicatorsPlacement(computerAnswer, combination);
                 find = result(combination, computerAnswer,"computer");
                 comparePlacement(computerAnswer, combination);

@@ -60,14 +60,14 @@ public class Mastermind extends BaseGame {
 
     public char[] randomColors(int nbCases) {
 
-        char [] randomColours = new char[nbCases];
+        char [] randomColors = new char[nbCases];
         for (int indexColour = 0; indexColour < nbCases; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
             int bMin = 0;
             int bMax = nbAvailableColors;
             int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
-            randomColours[indexColour] = formatColoursGameS[numRandom];
+            randomColors[indexColour] = formatColoursGameS[numRandom];
         }
-        return randomColours;
+        return randomColors;
     }
 
     /**
@@ -89,10 +89,10 @@ public class Mastermind extends BaseGame {
      * @param user display the player (IA or COMPUTER).
      * @return find = true if the answer is equal with the combination.
      */
-    public boolean compare(String myAnswer, char[] combinaisonSecrete, int counter, int user ) {
+    public boolean compare(String myAnswer, char[] combinaisonSecrete) {
 
-        int[] reponse = new int[2];
-        boolean [] checkDoublon = new boolean[nbCases];
+        int[] result = new int[2];
+        boolean [] checkDuplicate = new boolean[nbCases];
         int PMP = 0; // Présent(s) Mal Placé(s)
         int findGoodPlace = 0;
         char[] answer = new char[nbCases];
@@ -109,10 +109,10 @@ public class Mastermind extends BaseGame {
             for (int index = 0; index < nbCases; index++) {
                 if (combinaisonSecrete[index] == answer[index]) {
                     findGoodPlace++;
-                    checkDoublon[index] = true;
+                    checkDuplicate[index] = true;
                 } else {
                     find = false;
-                    checkDoublon[index] = false;
+                    checkDuplicate[index] = false;
                 }
             }
             // la deuxième boucle suivante sert à identifier les
@@ -122,9 +122,9 @@ public class Mastermind extends BaseGame {
                     int j = 0;
                     boolean trouveMalPlace = false;
                     while ((j < nbCases) && !trouveMalPlace) {
-                        if (!checkDoublon[j] && (combinaisonSecrete[index] == answer[j])) {
+                        if (!checkDuplicate[j] && (combinaisonSecrete[index] == answer[j])) {
                             PMP++;
-                            checkDoublon[j] = true;
+                            checkDuplicate[j] = true;
                             trouveMalPlace = true;
                         }
                         j++;
@@ -132,17 +132,8 @@ public class Mastermind extends BaseGame {
                 }
             }
 
-            reponse[0] = findGoodPlace;
-            reponse[1] = PMP;
-            switch (user){
-                case 0 : //humain
-                    System.out.print("Votre proposition pour le tour " + counter +   " : " + myAnswer + " => ");
-                    break;
-                case 1 : //machine
-                    System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + myAnswer + " => ");
-                    break;
-
-            }
+            result[0] = findGoodPlace;
+            result[1] = PMP;
             System.out.print(findGoodPlace + " bien placé(s), ");
             System.out.println(PMP + " présent(s). \n");
             nbTry--;
@@ -156,27 +147,17 @@ public class Mastermind extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        boolean trouve = false;
-        int counter = 1;
-        String myAnswer = "";
         String combinaisonSecretes = "";
-        char[] combinaisonSecrete = new char[nbCases];
-        combinaisonSecrete = randomColors(nbCases);
+        char[] secretCombinationChar = new char[nbCases];
+        secretCombinationChar = randomColors(nbCases);
         for(int index = 0; index < nbCases; index++)
-            combinaisonSecretes += combinaisonSecrete[index];
+            combinaisonSecretes += secretCombinationChar[index];
         displaySolutionForDev(combinaisonSecretes);
-        while(nbTry > 0 && !trouve) {
-            System.out.print("Merci de faire votre proposition : ");
-            myAnswer = sc.nextLine();
-            trouve = compare(myAnswer, combinaisonSecrete, counter, 0);
-            counter++;
+        while(nbTry > 0 && !find) {
+            myAnswer = proposition("human", null, "challenge", "mastermind", 1);
+            find = compare(myAnswer, secretCombinationChar);
         }
-        if(trouve == true)
-            System.out.println("Bravo ! Vous avez trouvé la bonne combinaison  : " + myAnswer);
-        else {
-            System.out.print("Dommage, vous n'avez pas trouvé la combinaison : ");
-            displayCombination(combinaisonSecrete, nbCases);
-        }
+        result(combinaisonSecretes, myAnswer, "human");
     }
 
     /**
@@ -200,7 +181,7 @@ public class Mastermind extends BaseGame {
             ordiAnswer = randomColors(nbCases);
             for (int index = 0; index < nbCases; index++)
                 ordiAnswers += ordiAnswer[index];
-            trouve = compare(ordiAnswers, combinaisonSecrete, counter, 1);
+            trouve = compare(ordiAnswers, combinaisonSecrete);
             counter++;
         }
         if(trouve == true)
@@ -228,7 +209,7 @@ public class Mastermind extends BaseGame {
             if (nombre % 2 == 0) {
                 System.out.print("C'est à votre tour : ");
                 myAnswer = sc.nextLine();
-                find = compare(myAnswer, combinaisonSecrete, counter1, 0);
+                find = compare(myAnswer, combinaisonSecrete);
                 if (find)
                     System.out.print("\n" + "Bravo vous avez trouvé la bonne combinaison : " + myAnswer);
                 counter1++;
@@ -238,7 +219,7 @@ public class Mastermind extends BaseGame {
                 ordiAnswer = randomColors(nbCases);
                 for (int index = 0; index < nbCases; index++)
                     ordiAnswers += ordiAnswer[index];
-                find = compare(ordiAnswers, combinaisonSecrete, counter2, 1);
+                find = compare(ordiAnswers, combinaisonSecrete);
                 if (find)
                     System.out.print("\n" + "C'est l'ordi qui a trouvé la bonne combinaison : " + ordiAnswer);
                 counter2++;
