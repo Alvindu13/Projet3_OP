@@ -38,7 +38,7 @@ public abstract class BaseGame implements GameMode{
         this.logger = Logger.getLogger(BaseGame.class);
         this.sc = new Scanner(System.in);
         this.find = false;
-        formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
+        this.formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         this.counter1 = 1;
         this.counter2 = 1;
 
@@ -59,7 +59,7 @@ public abstract class BaseGame implements GameMode{
      * Calculation of a random number.
      * @return the random number.
      */
-    protected int combinationRandom(String game, int nbAvailableColors) { //revoir cette méthode
+    protected void combinationRandom(String game, int nbAvailableColors) { //revoir cette méthode
         if(game.equals("moreLess")) {
             int bMin = (int) Math.pow(10, nbCases - 1);
             int bMax = (int) Math.pow(10, nbCases);
@@ -73,9 +73,11 @@ public abstract class BaseGame implements GameMode{
                 randomCombinationColors[indexColour] = formatColoursGameS[numRandom];
             }
         }
-        return randomNumber;
     }
 
+    /**
+     * This method enabled to choice the combination that ordi have to find for the defense mode.
+     */
 
     protected void choiceCombinationToComputer(){
         System.out.print("Merci de choisir la combinaison à 4 chiffres que l'ordinateur doit trouver : ");
@@ -85,11 +87,17 @@ public abstract class BaseGame implements GameMode{
         System.out.println();
     }
 
+    /**
+     *
+     * @param counter
+     * @param answer
+     * @param cases
+     */
     public void displayYourResult(int counter, String answer, int cases){
 
         switch(cases) {
             case 1:
-                System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse :  ");
+                System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse : ");
                 break;
             case 2:
                 System.out.print("Votre proposition : " + answer + " -> réponse : ");
@@ -98,29 +106,19 @@ public abstract class BaseGame implements GameMode{
                 System.out.print("Proposition " + tentative + " : " + answer + " vérification des placements : ");
                 break;
             case 4:
-                System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse :  ");
+                System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse : ");
                 break;
-
-
         }
-            /*
-                    System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse :  ");
-                }
-                else if (gameAndMode.equals("mastermindAndChallenge") || gameAndMode.equals("moreLessAndChallenge")) {
-                    System.out.print("Votre proposition : " + answer + " -> réponse : ");
-                }
-                break;
-            case "computer":
-                if (gameAndMode.equals("defense"))
-                    System.out.print("Proposition " + tentative + " : " + answer + " vérification des placements : ");
-                else if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
-                    System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse :  ");
-                }
-                break;
-        }*/
-
 }
 
+    /**
+     * Display some propositions possibles according combination, user type and mode selected.
+     * @param gameAndMode
+     * @param user
+     * @param counter
+     * @param combinationComputer
+     * @return
+     */
 
     protected void displayProposal(String gameAndMode, String user, int counter, String combinationComputer){
         int cases = 0;
@@ -153,49 +151,7 @@ public abstract class BaseGame implements GameMode{
                 break;
         }
     }
-/*
-    /**
-     * Display some propositions possibles according combination, user type and mode selected.
-     * @param user human or computer.
-     * @param mode mode of the game.
-     * @return
-     */
 
-/*
-    protected void proposition(String user, String answer, String mode, String game, int counter) {
-        System.out.println(answer);
-        switch (user) {
-            case "human":
-                switch (mode) {
-                    case "dual":
-                        if (game.equals("moreLess"))
-                            displayProposal("moreLessAndDual", "human", counter, answer);
-                        else if (game.equals("mastermind"))
-                            displayProposal("mastermindAndDual", "human", counter, answer);
-                        break;
-                    case "challenge":
-                        if (game.equals("mastermind"))
-                            displayProposal("mastermindAndChallenge", "human", 0, answer);
-                        else if (game.equals("moreLess"))
-                            displayProposal("moreLessAndChallenge", "human", 0, answer);
-                        break;
-                }
-                //return myAnswer;
-            case "computer":
-                switch (mode) {
-                    case "defense":
-                        displayProposal("defense", "computer", 0, answer);
-                        break;
-                    case "dual":
-                        if (game.equals("moreLess"))
-                            displayProposal("moreLessAndDual", "computer", counter, answer);
-                        else if(game.equals("mastermind"))
-                            displayProposal("mastermindAndDual", "computer", counter, answer);
-                        break;
-                }
-        }
-        //return "0";
-    }*/
 
     /**
      * Display a sentance according result of the game.
@@ -213,16 +169,21 @@ public abstract class BaseGame implements GameMode{
             case "human":
                 if(find)
                     System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison avant l'ordinateur ! La combinaison : " + answer);
-                if (!find && nbTry == 0)
+                else if (!find && nbTry == 0 )
                     System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + combination);
                 break;
             case "computer":
                 if(find)
                     System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse. Vous pouvez le féliciter ! La réponse :  " + answer);
-                if (!find && nbTry == 0)
+                else if (!find && nbTry == 0 || !find && tentative == 5 ){
+                    System.out.println();
                     System.out.println("Malheureusement pour l'ordinateur, il n'a pas pu trouver la bonne réponse... La réponse était :  " + combination);
+                }
                 break;
         }
         return find;
     }
 }
+
+
+

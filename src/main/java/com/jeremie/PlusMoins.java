@@ -35,8 +35,8 @@ public class PlusMoins extends BaseGame {
             displayProposal("moreLessAndChallenge", "human", 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println();
-            find = result(combination, myAnswer,"human");
             nbTry--;
+            find = result(combination, myAnswer,"human");
         } while (!find && nbTry != 0);
     }
 
@@ -82,7 +82,6 @@ public class PlusMoins extends BaseGame {
                 find = result(combination, computerAnswer,"computer");
                 comparePlacement(computerAnswer, combination);
                 computerAnswer = computerReflexion(equal, more, less, combination);
-                tentative++;
             }
             nombre++;
             System.out.println("");
