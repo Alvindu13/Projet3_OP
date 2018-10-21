@@ -2,7 +2,6 @@ package com.jeremie;
 
 
 import org.apache.log4j.Logger;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,17 +15,23 @@ public class GameSelector {
     private Mastermind mastermindGame;
     private PlusMoins plusMoinsGame;
     private int nbCases;
+    private int gameMode;
+    private int numberGame;
     private int nbTry;
     private int nbAvailableColors;
     private boolean devMode;
-    private Scanner sc = new Scanner(System.in);
-    private Logger logger = Logger.getLogger(GameSelector.class);
+    private Scanner sc;
+    private Logger logger;
 
     /**
      * @param dev dev mode (args[0] = true, args[1] = false)
      */
     public GameSelector(boolean dev) {
         this.devMode = dev; //switch for dev mode true or false
+        this.gameMode = 0;
+        this.numberGame = 0;
+        this.sc = new Scanner(System.in);
+        this.logger = Logger.getLogger(GameSelector.class);
     }
 
     /**
@@ -35,8 +40,6 @@ public class GameSelector {
     public void numberRun() {
 
         logger.info("--------Le jeu a démarré------");
-        int numberGame = 0;
-        int gameMode = 0;
         numberGame = gamechoice();
         gameMode = gameMode();
         gameRun(numberGame, gameMode);
@@ -46,17 +49,18 @@ public class GameSelector {
      * Retry game.
      */
     public void retry() {
-
         System.out.println();
         System.out.println("Voulez-vous rejouer ? Si oui, veuillez entrer OK. Si non, appuyez sur n'importe quelle touche puis sur entrée");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
+        System.out.println();
         while (str.contains("OK")) {
             logger.info("--------Le joueur vient de relancer le jeu------");
             this.numberRun();
         }
         System.out.println("Je vous remercie d'avoir joué. À bientôt ! ");
         logger.info("--------Le joueur vient de quitter le jeu------");
+
     }
 
     /**

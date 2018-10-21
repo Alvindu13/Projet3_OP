@@ -1,6 +1,5 @@
 package com.jeremie;
 
-import java.util.Arrays;
 
 public class PlusMoins extends BaseGame {
 
@@ -29,10 +28,11 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        combinationRandom("moreLess", 1);
+        combinationRandom("moreLess", 0);
+        combination = String.valueOf(randomNumber);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            proposition("human", combination, "challenge","moreLess",0);
+            displayProposal("moreLessAndChallenge", "human", 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println();
             find = result(combination, myAnswer,"human");
@@ -46,14 +46,14 @@ public class PlusMoins extends BaseGame {
     @Override
     public void defenseMode() {
         choiceCombinationToComputer();
-        combinationRandom("moreLess", 2); //génère nouvelle combinaison
-        computerAnswer = String.valueOf(combination);
+        combinationRandom("moreLess", 0); //génère nouvelle combinaison
+        computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {
-            proposition("computer", computerAnswer, "defense", "moreLess",0);
+            displayProposal("moreLessAndDefense", "computer", 0, computerAnswer);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
             find = result(myCombinationThatComputerFind, computerAnswer,"computer");
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
-            computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind, computerAnswer);
+            computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             tentative++;
         }
     }
@@ -64,21 +64,24 @@ public class PlusMoins extends BaseGame {
     @Override
     public void duelMode() {
         int nombre = 0;
-        combination = String.valueOf(combination);
-        combinationRandom("moreLess", 3);
-        computerAnswer = String.valueOf(computerAnswer);
+        combinationRandom("moreLess", 0); //génère nouvelle combinaison aléatoire pour fixer la combinaison à trouver
+        combination = String.valueOf(randomNumber);
+        combinationRandom("moreLess", 0); //génère une combinaison aléatoire qui sera la réponse du PC
+        computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
         do {
             if (nombre % 2 == 0) {
-                proposition("human", null, "dual","moreLess", 0);
+                displayProposal("moreLessAndDuel", "human", counter1, null);
+                counter1++;
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
                 find = result(combination, myAnswer, "human");
             } else {
-                proposition("computer", computerAnswer, "dual","moreLess",0);
+                displayProposal("moreLessAndDuel", "computer", counter2, computerAnswer);
+                counter2++;
                 compareAndDisplayIndicatorsPlacement(computerAnswer, combination);
                 find = result(combination, computerAnswer,"computer");
                 comparePlacement(computerAnswer, combination);
-                computerAnswer = computerReflexion(equal, more, less, combination, computerAnswer);
+                computerAnswer = computerReflexion(equal, more, less, combination);
                 tentative++;
             }
             nombre++;
@@ -128,7 +131,7 @@ public class PlusMoins extends BaseGame {
      * @param less  Array which catch with a boolean for smaller number values between combination and answer
      */
 
-    public String computerReflexion(boolean[] equal, boolean[] more, boolean[] less, String yourResponseThatOrdiFind, String computerAnswer){
+    public String computerReflexion(boolean[] equal, boolean[] more, boolean[] less, String yourResponseThatOrdiFind){
         char[] computerAnswers = new char[nbCases];
         String answer = "";
         for(int index = 0; index < nbCases; index++){

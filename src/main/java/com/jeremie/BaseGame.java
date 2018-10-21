@@ -6,6 +6,7 @@ import java.util.Scanner;
 public abstract class BaseGame implements GameMode{
     private boolean devMode;
     protected int nbCases;
+    protected int number;
     protected int nbTry;
     protected Scanner sc;
     protected Logger logger;
@@ -17,24 +18,29 @@ public abstract class BaseGame implements GameMode{
     protected String myCombinationThatComputerFind;
     protected int tentative = 1;
     protected int nbAvailableColors;
-    protected char[] randomColors;
+    protected char[] randomCombinationColors;
     protected char[] formatColoursGameS;
+    protected int counter1;
+    protected int counter2;
 
 
     public BaseGame(int nbCases, int nbTry, boolean devMode) {
         this.devMode = devMode;
+        this.number = 0;
         this.nbAvailableColors = nbAvailableColors;
         this.myCombinationThatComputerFind = myCombinationThatComputerFind;
         this.randomNumber = randomNumber;
         this.tentative = 1;
         this.nbCases = nbCases;
         this.nbTry = nbTry;
-        this.randomColors = new char[nbCases];
-        this.combination = combination;
+        this.randomCombinationColors = new char[nbCases];
+        this.combination = "";
         this.logger = Logger.getLogger(BaseGame.class);
         this.sc = new Scanner(System.in);
         this.find = false;
         formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
+        this.counter1 = 1;
+        this.counter2 = 1;
 
     }
 
@@ -53,124 +59,143 @@ public abstract class BaseGame implements GameMode{
      * Calculation of a random number.
      * @return the random number.
      */
-    protected int randomNumberAndSelectedNumber(String game, int nbAvailableColors) { //revoir cette méthode
-        if(game.equals("moreless")) {
+    protected int combinationRandom(String game, int nbAvailableColors) { //revoir cette méthode
+        if(game.equals("moreLess")) {
             int bMin = (int) Math.pow(10, nbCases - 1);
             int bMax = (int) Math.pow(10, nbCases);
             randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
-            return randomNumber;
         }
-        if(game.equals("mastermind")) {
+        else if(game.equals("mastermind")) {
             for (int indexColour = 0; indexColour < nbCases; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
                 int bMin = 0;
                 int bMax = nbAvailableColors;
                 int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
-                randomColors[indexColour] = formatColoursGameS[numRandom];
+                randomCombinationColors[indexColour] = formatColoursGameS[numRandom];
             }
         }
         return randomNumber;
     }
 
-    protected void combinationRandom(String game, int mode) {
-        switch (game) {
-            case "moreLess":
-                combination = String.valueOf(randomNumberAndSelectedNumber("moreLess", 0));
-                switch (mode) {
-                    case 1:
-                        this.combination = combination;
-                        break;
-                    case 2:
-                        computerAnswer = String.valueOf(randomNumberAndSelectedNumber("moreLess", 0));
-                        break;
-                    case 3:
-                        computerAnswer = String.valueOf(randomNumberAndSelectedNumber("moreLess", 0));
-                        break;
-                }
-
-        }
-    }
 
     protected void choiceCombinationToComputer(){
         System.out.print("Merci de choisir la combinaison à 4 chiffres que l'ordinateur doit trouver : ");
         myCombinationThatComputerFind = sc.nextLine();
+        System.out.println();
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
+        System.out.println();
     }
 
-    protected String displayProposal(int n, String user, int counter, String combinationComputer){
-        switch(user) {
-            case "human":
-                if (n == 1 || n == 2) {
-                    System.out.print("C'est à votre tour : ");
-                    myAnswer = sc.nextLine();
-                    if (n == 1)
-                        System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
-                    if (n == 2)
-                        System.out.print("Votre proposition pour le tour " + counter +   " : " + myAnswer + " => ");
-                    return myAnswer;
+    public void displayYourResult(int counter, String answer, int cases){
+
+        switch(cases) {
+            case 1:
+                System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse :  ");
+                break;
+            case 2:
+                System.out.print("Votre proposition : " + answer + " -> réponse : ");
+                break;
+            case 3:
+                System.out.print("Proposition " + tentative + " : " + answer + " vérification des placements : ");
+                break;
+            case 4:
+                System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse :  ");
+                break;
+
+
+        }
+            /*
+                    System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse :  ");
                 }
-                if (n == 3 || n == 4) {
-                    System.out.print("Merci de faire votre proposition (");
-                    System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
-                    myAnswer = sc.nextLine();
-                    System.out.print("Votre proposition : " + myAnswer + " -> réponse : ");
-                    return myAnswer;
+                else if (gameAndMode.equals("mastermindAndChallenge") || gameAndMode.equals("moreLessAndChallenge")) {
+                    System.out.print("Votre proposition : " + answer + " -> réponse : ");
                 }
                 break;
             case "computer":
-                if (n == 5)
-                    System.out.print("Proposition " + tentative + " : " + combinationComputer + " vérification des placements : ");
-                if (n == 6 || n == 7) {
-                    System.out.print("C'est au tour de l'ordinateur : \n");
-                    if (n == 6)
-                        System.out.print("L'ordinateur propose pour ce tour : " + computerAnswer + " -> réponse : ");
-                    if (n == 7)
-                        System.out.print("L'ordinateur propose pour ce tour : " + myAnswer + " => ");
+                if (gameAndMode.equals("defense"))
+                    System.out.print("Proposition " + tentative + " : " + answer + " vérification des placements : ");
+                else if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
+                    System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse :  ");
+                }
+                break;
+        }*/
+
+}
+
+
+    protected void displayProposal(String gameAndMode, String user, int counter, String combinationComputer){
+        int cases = 0;
+        switch(user) {
+            case "human":
+                if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
+                    System.out.print("C'est à votre tour : ");
+                    myAnswer = sc.nextLine();
+                    cases = 1;
+                    displayYourResult(counter, myAnswer, cases);
+                }
+                else if (gameAndMode.equals("mastermindAndChallenge") || gameAndMode.equals("moreLessAndChallenge")) {
+                    System.out.print("Merci de faire votre proposition (");
+                    System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
+                    myAnswer = sc.nextLine();
+                    cases = 2;
+                    displayYourResult(counter, myAnswer, cases);
+                }
+                break;
+            case "computer":
+                if (gameAndMode.equals("moreLessAndDefense") || gameAndMode.equals("mastermindAndDefense")){
+                    cases = 3;
+                    displayYourResult(counter, combinationComputer, cases);
+                }
+                else if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
+                    System.out.print("C'est au tour de l'ordinateur ! \n");
+                    cases = 4;
+                    displayYourResult(counter, combinationComputer, cases);
                 }
                 break;
         }
-        return "0";
     }
-
+/*
     /**
      * Display some propositions possibles according combination, user type and mode selected.
      * @param user human or computer.
-     * @param combinationComputer random combination generated by computer.
      * @param mode mode of the game.
      * @return
      */
-    protected String proposition(String user, String combinationComputer, String mode, String game, int counter) {
+
+/*
+    protected void proposition(String user, String answer, String mode, String game, int counter) {
+        System.out.println(answer);
         switch (user) {
             case "human":
                 switch (mode) {
                     case "dual":
                         if (game.equals("moreLess"))
-                            myAnswer = displayProposal(1, "human", 0, null);
+                            displayProposal("moreLessAndDual", "human", counter, answer);
                         else if (game.equals("mastermind"))
-                            myAnswer = displayProposal(2, "human", counter, null);
+                            displayProposal("mastermindAndDual", "human", counter, answer);
                         break;
                     case "challenge":
                         if (game.equals("mastermind"))
-                            myAnswer = displayProposal(3, "human", 0, null);
-                        else
-                            myAnswer = displayProposal(4, "human", 0, null);
+                            displayProposal("mastermindAndChallenge", "human", 0, answer);
+                        else if (game.equals("moreLess"))
+                            displayProposal("moreLessAndChallenge", "human", 0, answer);
                         break;
                 }
-                return myAnswer;
+                //return myAnswer;
             case "computer":
                 switch (mode) {
                     case "defense":
-                        displayProposal(5, "computer", 0, combinationComputer);
+                        displayProposal("defense", "computer", 0, answer);
                         break;
                     case "dual":
                         if (game.equals("moreLess"))
-                            displayProposal(6, "computer", 0, computerAnswer);
-                        if(game.equals("mastermind"))
-                            displayProposal(7, "computer", 0, myAnswer);
+                            displayProposal("moreLessAndDual", "computer", counter, answer);
+                        else if(game.equals("mastermind"))
+                            displayProposal("mastermindAndDual", "computer", counter, answer);
                         break;
                 }
         }
-        return "0";
-    }
+        //return "0";
+    }*/
 
     /**
      * Display a sentance according result of the game.
@@ -180,15 +205,14 @@ public abstract class BaseGame implements GameMode{
      * @return a boolean according the result.
      */
     protected boolean result(String combination, String answer, String user){
-        if (answer.contains(combination)) {
+        if (answer.contains(combination))
             find = true;
-        }
         else
             find = false;
         switch(user) {
             case "human":
                 if(find)
-                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison : " + answer);
+                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison avant l'ordinateur ! La combinaison : " + answer);
                 if (!find && nbTry == 0)
                     System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + combination);
                 break;
