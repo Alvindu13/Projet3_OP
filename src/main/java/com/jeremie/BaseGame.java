@@ -177,7 +177,7 @@ public abstract class BaseGame implements GameMode{
                     case "numCombi":
                         while (myAnswer.length() != nbCases || !myAnswer.matches("^\\d+$")) {
                             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                            System.out.println("Merci de saisir un nombre à 4 chiffres : ");
+                            System.out.println("Merci de saisir un nombre à " + nbCases + " chiffres : ");
                             myAnswer = sc.nextLine();
                         }
                         break;
@@ -195,7 +195,7 @@ public abstract class BaseGame implements GameMode{
                     case "numCombiToComputer":
                         while (myCombinationThatComputerFind.length() != nbCases || !myCombinationThatComputerFind.matches("^\\d+$")) {
                             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                            System.out.println("Merci de saisir un nombre à 4 chiffres : ");
+                            System.out.println("Merci de saisir un nombre à " + nbCases + " chiffres : ");
                             myCombinationThatComputerFind = sc.nextLine();
                         }
                         break;
