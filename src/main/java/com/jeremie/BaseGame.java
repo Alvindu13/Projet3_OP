@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public abstract class BaseGame implements GameMode{
     private boolean devMode;
+    private char[] formatColoursGameS;
     protected int nbCases;
     protected int number;
     protected int nbTry;
@@ -17,9 +18,7 @@ public abstract class BaseGame implements GameMode{
     protected int randomNumber;
     protected String myCombinationThatComputerFind;
     protected int tentative = 1;
-    protected int nbAvailableColors;
     protected char[] randomCombinationColors;
-    protected char[] formatColoursGameS;
     protected int counter1;
     protected int counter2;
 
@@ -27,7 +26,6 @@ public abstract class BaseGame implements GameMode{
     public BaseGame(int nbCases, int nbTry, boolean devMode) {
         this.devMode = devMode;
         this.number = 0;
-        this.nbAvailableColors = nbAvailableColors;
         this.myCombinationThatComputerFind = myCombinationThatComputerFind;
         this.randomNumber = randomNumber;
         this.tentative = 1;

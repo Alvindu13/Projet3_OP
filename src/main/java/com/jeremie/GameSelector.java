@@ -17,7 +17,6 @@ public class GameSelector {
     private int gameMode;
     private int numberGame;
     private int nbTry;
-    private int choice;
     private int nbAvailableColors;
     private boolean numberchoiceIsGood;
     private boolean devMode;
@@ -31,7 +30,6 @@ public class GameSelector {
         this.devMode = dev; //switch for dev mode true or false
         this.gameMode = 0;
         this.numberGame = 0;
-        this.choice = 0;
         this.numberchoiceIsGood = false;
         this.sc = new Scanner(System.in);
         this.logger = Logger.getLogger(GameSelector.class);
@@ -126,8 +124,6 @@ public class GameSelector {
 
     /**
      * Run different games and modes depending on parameters.
-     * @param numberGame Selected the game.
-     * @param gameMode Selected game mode.
      */
     public void gameRun(){
 

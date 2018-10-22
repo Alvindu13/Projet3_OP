@@ -10,7 +10,6 @@ public class Mastermind extends BaseGame {
     private String combinationFixeMastermind; //combinaison fixée après avoir était générée
     private char[] combinationFixeMastermindArray;
 
-
     /**
      * @param nbCases size of the combination.
      * @param nbTry maximum try/turn to find combination.
