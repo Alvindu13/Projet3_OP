@@ -7,7 +7,9 @@
 
     <appender name="logginggame" class="org.apache.log4j.RollingFileAppender">
         <param name="file" value="journalisation.log"/>
-        <layout class="org.apache.log4j.SimpleLayout"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] (%F:%M:%L) %m%n" />
+        </layout>
     </appender>
 
 

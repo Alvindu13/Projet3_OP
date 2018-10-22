@@ -101,10 +101,10 @@ public class Mastermind extends BaseGame {
     }
 
     /**
-     *
+     * Cast method.
      * @param stringVariable
      * @param charArray
-     * @return
+     * @return stringVariable with the contents of array.
      */
     public String castMethodArrayToString(String stringVariable, char[] charArray){
         for(int index = 0; index < nbCases; index++)
@@ -113,10 +113,10 @@ public class Mastermind extends BaseGame {
     }
 
     /**
-     *
+     * Cast method.
      * @param charArray
      * @param stringVariable
-     * @return
+     * @return charArray with the contents of string.
      */
     public char[] castMethodStringToArray (char[] charArray, String stringVariable){
         for(int index = 0; index < nbCases; index++)
@@ -147,7 +147,7 @@ public class Mastermind extends BaseGame {
     @Override
     public void defenseMode() {
         combinationFixeMastermind = castMethodArrayToString(combinationFixeMastermind, randomCombinationColors);
-        choiceCombinationToComputer();
+        choiceCombinationToComputer("stringCombiToComputer");
         combinationFixeMastermindArray = castMethodStringToArray(combinationFixeMastermindArray, myCombinationThatComputerFind);
         while(nbTry > 0 && !find) {
             computerAnswer = "";

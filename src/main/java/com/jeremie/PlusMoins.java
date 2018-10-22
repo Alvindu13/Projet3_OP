@@ -45,7 +45,7 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer();
+        choiceCombinationToComputer("numCombiToComputer");
         combinationRandom("moreLess", 0); //génère nouvelle combinaison
         computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {

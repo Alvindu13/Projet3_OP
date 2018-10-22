@@ -79,21 +79,29 @@ public abstract class BaseGame implements GameMode{
      * This method enabled to choice the combination that ordi have to find for the defense mode.
      */
 
-    protected void choiceCombinationToComputer(){
+    protected void choiceCombinationToComputer(String cases){
         System.out.print("Merci de choisir la combinaison à 4 chiffres que l'ordinateur doit trouver : ");
         myCombinationThatComputerFind = sc.nextLine();
+        switch(cases) {
+            case "numCombiToComputer":
+                testAnswer("numCombiToComputer", "computer");
+                break;
+            case "stringCombiToComputer":
+                testAnswer("stringCombiToComputer", "computer");
+                break;
+        }
         System.out.println();
         System.out.println("L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
         System.out.println();
     }
 
     /**
-     *
-     * @param counter
-     * @param answer
-     * @param cases
+     * Display a sentence with your answer every turn.
+     * @param counter parameter only in duel mode for count every turn up to find the combination.
+     * @param answer your answer or computer answer.
+     * @param cases possibles cases.
      */
-    public void displayYourResult(int counter, String answer, int cases){
+    public void displayResultSentence(int counter, String answer, int cases){
 
         switch(cases) {
             case 1:
@@ -114,10 +122,9 @@ public abstract class BaseGame implements GameMode{
     /**
      * Display some propositions possibles according combination, user type and mode selected.
      * @param gameAndMode
-     * @param user
-     * @param counter
-     * @param combinationComputer
-     * @return
+     * @param user you or computer.
+     * @param counter to count turns.
+     * @param combinationComputer computer answer.
      */
 
     protected void displayProposal(String gameAndMode, String user, int counter, String combinationComputer){
@@ -127,29 +134,85 @@ public abstract class BaseGame implements GameMode{
                 if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
                     System.out.print("C'est à votre tour : ");
                     myAnswer = sc.nextLine();
+                    if(gameAndMode.equals("moreLessAndDuel"))
+                        testAnswer("numCombi", "human");
+                    else if(gameAndMode.equals("mastermindAndDuel"))
+                        testAnswer("stringCombi","human");
                     cases = 1;
-                    displayYourResult(counter, myAnswer, cases);
+                    displayResultSentence(counter, myAnswer, cases);
                 }
-                else if (gameAndMode.equals("mastermindAndChallenge") || gameAndMode.equals("moreLessAndChallenge")) {
+                else if (gameAndMode.equals("moreLessAndChallenge") || gameAndMode.equals("mastermindAndChallenge")) {
                     System.out.print("Merci de faire votre proposition (");
                     System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
                     myAnswer = sc.nextLine();
+                    if(gameAndMode.equals("moreLessAndChallenge"))
+                        testAnswer("numCombi","human");
+                    else if(gameAndMode.equals("mastermindAndChallenge"))
+                        testAnswer("stringCombi","human");
                     cases = 2;
-                    displayYourResult(counter, myAnswer, cases);
+                    displayResultSentence(counter, myAnswer, cases);
                 }
                 break;
             case "computer":
                 if (gameAndMode.equals("moreLessAndDefense") || gameAndMode.equals("mastermindAndDefense")){
                     cases = 3;
-                    displayYourResult(counter, combinationComputer, cases);
+                    displayResultSentence(counter, combinationComputer, cases);
                 }
                 else if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
                     System.out.print("C'est au tour de l'ordinateur ! \n");
                     cases = 4;
-                    displayYourResult(counter, combinationComputer, cases);
+                    displayResultSentence(counter, combinationComputer, cases);
                 }
                 break;
         }
+    }
+
+    /**
+     * Regex to check if the answer format is correct.
+     * @param cases possibles cases (number or string combi).
+     */
+    protected void testAnswer(String cases, String user) {
+        System.out.println();
+        switch(user) {
+            case "human":
+                switch (cases) {
+                    case "numCombi":
+                        while (myAnswer.length() != nbCases || !myAnswer.matches("^\\d+$")) {
+                            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+                            System.out.println("Merci de saisir un nombre à 4 chiffres : ");
+                            myAnswer = sc.nextLine();
+                        }
+                        break;
+                    case "stringCombi":
+                        while (myAnswer.length() != nbCases || !myAnswer.matches("^[A-Z]+$")) {
+                            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+                            System.out.println("Merci de saisir un une combinaison à " + nbCases + " lettres MAJ (ex : RJBM).");
+                            myAnswer = sc.nextLine();
+                        }
+                        break;
+                }
+                break;
+            case "computer":
+                switch(cases) {
+                    case "numCombiToComputer":
+                        while (myCombinationThatComputerFind.length() != nbCases || !myCombinationThatComputerFind.matches("^\\d+$")) {
+                            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+                            System.out.println("Merci de saisir un nombre à 4 chiffres : ");
+                            myCombinationThatComputerFind = sc.nextLine();
+                        }
+                        break;
+                    case "stringCombiToComputer":
+                        while (myCombinationThatComputerFind.length() != nbCases || !myCombinationThatComputerFind.matches("^[A-Z]+$")) {
+                            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+                            System.out.println("Merci de saisir un une combinaison à " + nbCases + " lettres MAJ (ex : RJBM).");
+                            myCombinationThatComputerFind = sc.nextLine();
+                        }
+                        break;
+                }
+                break;
+        }
+
+
     }
 
 

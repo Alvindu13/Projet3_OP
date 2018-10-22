@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -46,7 +45,7 @@ public class GameSelector {
         logger.info("--------Le jeu a démarré------");
         gamechoice();
         gameMode();
-        gameRun(numberGame, gameMode);
+        gameRun();
     }
 
     /**
@@ -130,7 +129,7 @@ public class GameSelector {
      * @param numberGame Selected the game.
      * @param gameMode Selected game mode.
      */
-    public void gameRun(int numberGame, int gameMode){
+    public void gameRun(){
 
             this.readParameters();
             if (numberGame == 1){
