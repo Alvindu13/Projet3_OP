@@ -238,7 +238,7 @@ public abstract class BaseGame implements GameMode{
             case "computer":
                 if(find)
                     System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse. Vous pouvez le féliciter ! La réponse :  " + answer);
-                else if (!find && nbTry == 0 || !find && tentative == 5 ){
+                else if (!find && nbTry == 0 || !find && tentative == nbTry ){
                     System.out.println();
                     System.out.println("Malheureusement pour l'ordinateur, il n'a pas pu trouver la bonne réponse... La réponse était :  " + combination);
                 }
