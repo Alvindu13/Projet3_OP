@@ -18,7 +18,9 @@ public class GameSelector {
     private int gameMode;
     private int numberGame;
     private int nbTry;
+    private int choice;
     private int nbAvailableColors;
+    private boolean numberchoiceIsGood;
     private boolean devMode;
     private Scanner sc;
     private Logger logger;
@@ -30,6 +32,8 @@ public class GameSelector {
         this.devMode = dev; //switch for dev mode true or false
         this.gameMode = 0;
         this.numberGame = 0;
+        this.choice = 0;
+        this.numberchoiceIsGood = false;
         this.sc = new Scanner(System.in);
         this.logger = Logger.getLogger(GameSelector.class);
     }
@@ -40,8 +44,8 @@ public class GameSelector {
     public void numberRun() {
 
         logger.info("--------Le jeu a démarré------");
-        numberGame = gamechoice();
-        gameMode = gameMode();
+        gamechoice();
+        gameMode();
         gameRun(numberGame, gameMode);
     }
 
@@ -67,55 +71,57 @@ public class GameSelector {
      * Display available games and selected a game.
      */
 
-    public int gamechoice()  {
-        int numberGame = 0;
-        boolean numberchoiceIsGood;
+    public void gamechoice()  {
         System.out.println("Veuillez choisir le jeu que vous voulez lancer : ");
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
         for (int i = 0; i < 2; i++)
             System.out.println(i + 1 + " - " + gameCh[i]);
-        do {
-            try {
-                numberGame = sc.nextInt();
-                logger.info("Le joueur a choisi le jeu : " + numberGame);
-                if (numberGame >= 1 && numberGame <= 2) {
-                    numberchoiceIsGood = true;
-                } else {
-                    logger.error("Le joueur n'a pas entré un numéro valide pour le choix du jeu :  " + numberGame);
-                    numberchoiceIsGood = false;
-                    System.out.println("Vous devez saisir un nombre valide");
-                }
-
-            } catch (InputMismatchException e) {
-                logger.error("Une exception est survenue lors du choix du jeu.");
-                sc.next();
-                System.out.println("Vous devez saisir un nombre, correspondant au jeu choisi");
-                numberchoiceIsGood = false;
-
-            }
-        } while (!numberchoiceIsGood);
-        return numberGame;
+        numberGame = manageException(numberGame, 2);
+        logger.info("Le joueur a choisi le mode : " + numberGame);
     }
 
     /**
      * Display different game modes.
      * @return number choose of mode.
      */
-    public int gameMode() {
+    public void gameMode() {
 
-        int choice;
         String[] arrayMode = {"1 - Mode Challenger : vous devez trouver la combinaison secrète de l'ordinateur", "2 - Mode Défenseur : où c'est à l'ordinateur de trouver votre combinaison secrète ", "3 - Mode duel : où l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné"};
         System.out.println("Veuillez choisir le mode de jeu :");
         for (int index = 0; index < arrayMode.length; index++)
             System.out.println(arrayMode[index]);
-        choice = sc.nextInt();
-        logger.info("Le joueur a choisi le mode de jeu :  " + choice);
-        while (choice < 0 || choice > 3) {
-            System.out.println("Merci de rentrer un nombre valide parmis la liste ci-dessus :  ");
-            choice = sc.nextInt();
-        }
+        gameMode = manageException(gameMode, 3);
+        logger.info("Le joueur a choisi le mode : " + gameMode);
         System.out.println(" ");
-        return choice;
+    }
+
+
+    /**
+     * Function wich enable to manage exceptions
+     * @param value
+     * @return
+     */
+    private int manageException(int value, int numberChoice){
+        do {
+            try {
+                value = sc.nextInt();
+                if (value >= 1 && value <= numberChoice) {
+                    numberchoiceIsGood = true;
+                } else {
+                    logger.error("Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  " + value);
+                    numberchoiceIsGood = false;
+                    System.out.println("Vous devez saisir un nombre valide.");
+                }
+
+            } catch (RuntimeException e) {
+                logger.error("Une exception est survenue lors du choix du jeu.");
+                sc.next();
+                System.out.println("Vous devez saisir un nombre valide parmis la liste ci-dessus.");
+                numberchoiceIsGood = false;
+
+            }
+        } while (!numberchoiceIsGood);
+        return value;
     }
 
 

@@ -68,10 +68,6 @@ public class Mastermind extends BaseGame {
         char[] answer = new char[nbCases];
         find = true;
         answer = castMethodStringToArray(answer, myAnswer);
-        /*
-        for (int index = 0; index < nbCases; index++)
-                answer[index] = myAnswer.charAt(index);
-        */
             // permet de marquer les éléments bien devinés bien placés.
             for (int index = 0; index < nbCases; index++) {
                 if (combinaisonSecrete[index] == answer[index]) {
