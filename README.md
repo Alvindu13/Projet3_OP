@@ -1,17 +1,14 @@
-Bonjour,
-
-
 <h1>INTRODUCTION</h1>
 
 Mon programme est un projet réalisé dans le cadre de mon parcours Développeur D'applications JAVA avec OpenClassrooms.
 Le programme est un ensemble de 2 jeux proposant chacun 3 modes de jeu différents.
-Vous pourrez donc jouer aux jeux suivants :
+<p>Vous pourrez donc jouer aux jeux suivants :</p>
 
 - PlusMoins
 - Mastermind
 
 Vous pourrez sélectionner le jeu au lancement de l'application.
-Chaque jeu possède 3 modes de jeu :
+<p>Chaque jeu possède 3 modes de jeu :</p>
 
 - Le mode Challenge : Vous devrez retrouver une combinaison de chiffres ou de couleurs aléatoire générer par l'ordinateur en un nombre limité d'essai,
 - Le mode Defense : Vous devrez proposer une combinaison secrète que l'ordinateur va devoir retrouver en un nombre limité d'essai,
@@ -47,3 +44,5 @@ Le projet a été codé sur IntelliJ.
 Vous pouvez si vous le souhaitez utiliser un IDE ou bien vous pouvez le programme à partir de votre console en utilisant l'application javac de la façon suivante :
 
  javac -d classes/ sources/MonFichierACompiler.java
+ 
+ 
