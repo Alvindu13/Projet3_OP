@@ -94,9 +94,14 @@ java -classpath classes/ MonFichierACompiler
 <h1>4.Ressources</h1>
 
 <p>Le programme dispose des ressources suivantes :</p> 
-- config.properties : regroupe les paramètres cités dans la partie "paramètres".
-- log4j.xml : le contenu de ce fichier permet de générer un journal des évènements survenus pendant l'exécution du programme.
-- pom.xml : contient une dépendance pour le logging.
+
+<ul>
+<li>config.properties : regroupe les paramètres cités dans la partie "paramètres".</li>
+<li>log4j.xml : le contenu de ce fichier permet de générer un journal des évènements survenus pendant l'exécution du programme.</li>
+<li>pom.xml : contient une dépendance pour le logging.</li>
+</ul>
+
+
 
 
  
