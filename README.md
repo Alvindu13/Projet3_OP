@@ -47,7 +47,7 @@ Vous y retrouver notemment les paramètres pour :
 
 - activer le mode développeur,
 - La taille de la combinaison,
-- Le nombre de couleurs disponibles pour le mastermind (MAX : 10),
+- Le nombre de couleurs disponibles pour le mastermind (<strong>MAX : 10</strong>),
 - Le nombre de tentative pour trouver la solution.
 
 Des paramètres ont été assignés par défaut.
@@ -58,7 +58,7 @@ Vous avez à disposition un mode développeur vous permettant de vous rendre vis
 Par défaut le mode développeur n'est pas activé.
 Pour activer ce mode développeur vous avez 2 possibilités.
 
-- La première est de passer en argument la valeur true. Pour cela il faut que vous rendre sur l'edit configuration de votre IDE et    assigner à la valeur true dans Program arguments.
+- La première est de passer en argument la valeur true. Pour cela il faut vous rendre sur l'edit configuration de la main class sur votre IDE et assigner à la valeur true dans Program arguments.
 - La seconde est d'assigner une valeur "true" au paramètre dev.mode du fichier config.properties
 
 ATTENTION : Le passage par argument est prioritaire. Ainsi si l'argument est sur "true" et que sur le fichier config, le dev.mode est sur "false", alors c'est la valeur de l'argument qui remporte la dualité et c'est sa valeur qui sera sélectionnée. En revanche, si aucune valeur n'a été assigné à l'argument, alors la valeur par défaut sera celle du fichier config si le dev.mode possède une valeur. Si aucune valeur n'est assigné à aucune de ces méthodes, alors la valeur sera "false" par défaut.
