@@ -18,7 +18,7 @@ Le projet a été programmé sur IntelliJ.
 
 <h1>1.Récupération du projet</h1>
 
-Nous allons voir comment récupérer le projet sur l'IDE (Environnement De Développement) IntelliJ directement ou à partir de la console.
+Nous allons voir étape par étape comment récupérer le projet sur l'IDE (Environnement De Développement) IntelliJ directement ou à partir de la console. Si vous savez déjà comment faire, je vous invite à vous rendre directement à la partie 2 au sujet des paramètres.
 
 <h2>1.1 IDE : IntelliJ</h2>
 Il est possible de récupérer le projet directement sur votre IDE. Je vais vous donner les étapes à suivre pour réaliser cette copie sur IntelliJ.
@@ -66,27 +66,26 @@ ATTENTION : Le passage par argument est prioritaire. Ainsi si l'argument est sur
 <h1>3 Lancement du programme</h1>
 
 Vous pouvez lancer le programme de plusieurs façons. Nous allons voir comment le lancer depuis votre IDE et depuis la console.
-Nous allons voir comment le compiler et l'exécuter que ce soit sur l'IDE IntelliJ ou sur votre console.
-
+Nous allons voir comment le compiler et l'exécuter que ce soit sur l'IDE IntelliJ ou sur votre console. 
 <h2>3.1 Compilation</h2>
 
-<h2>3.1.1 IDE : IntelliJ</h2>
+<h3>3.1.1 IDE : IntelliJ</h3>
 
 Vous pouvez si vous le souhaitez utiliser un IDE comme Eclipse, IntelliJ ou encore NetBeans.
 Une fois sur votre IDE, vous pouvez selon l'IDE compilé depuis les onglets, ou un icone en raccourcis sur votre compilateur, ou encore en fait directement un clic droit sur la classe principale et choisir de compiler à partir de là.
 Pour IntelliJ vous avez les 3 possibilités.
 
-<h2>3.1.2 Console</h2>
+<h3>3.1.2 Console</h3>
 Vous pouvez aussi démarrer le programme depuis votre console en utilisant l'application javac avec la ligne de commande suivante :
  javac -d classes/ sources/MonFichierACompiler.java
  
-<h1>3.2 Exécution</h1>
+<h2>3.2 Exécution</h2>
 
-<h2>3.2.1 IDE : IntelliJ</h2>
+<h3>3.2.1 IDE : IntelliJ</h3>
 
-Pour démarrer le programme sur IntelliJ il faut avant tout le compiler. Toutefois, la commande run permet de compiler et d'exécuter le programme suite à la compilation.
+Pour démarrer le programme sur IntelliJ il faut avant tout le compiler. Toutefois, la commande run permet de compiler et d'exécuter le programme suite à la compilation. De la même façon que pour compiler, vous trouverez la commande run à proximité de la commande compile. Sur IntelliJ, son icône de raccourcis est une flèche verte.
 
-<h2>3.2.2 Console</h2>
+<h3>3.2.2 Console</h3>
 
 À partir de la console, vous devez obligatoirement faire la première étape de compilation manuellement, et ensuite faire l'étape d'exécution. Nous avons déjà vu la ligne de commande pour la compilation, voici celle pour l'exécution :
 java -classpath classes/ MonFichierACompiler
