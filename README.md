@@ -21,7 +21,7 @@ Le projet a été programmé sur IntelliJ.
 Nous allons voir étape par étape comment récupérer le projet sur l'IDE (Environnement De Développement) IntelliJ directement ou à partir de la console. Si vous savez déjà comment faire, je vous invite à vous rendre directement à la partie 2 au sujet des paramètres.
 
 <h2>1.1 IDE : IntelliJ</h2>
-Il est possible de récupérer le projet directement sur votre IDE. Je vais vous donner les étapes à suivre pour réaliser cette copie sur IntelliJ.
+<p>Il est possible de récupérer le projet directement sur votre IDE. Je vais vous donner les étapes à suivre pour réaliser cette copie sur IntelliJ.</p>
 
 <p>Pour récupérer le projet sur IntelliJ, vous devez :</p>
 
@@ -31,7 +31,8 @@ Il est possible de récupérer le projet directement sur votre IDE. Je vais vous
 - Étape 4 : Vous pouvez alors copier ce lien dans la ligne URL de votre IDE et choisir "clone"
 
 <h2>1.2 Console</h2>
-Depuis la console :
+
+<p>Depuis la console :</p>
 
 - Étape 1 : Choisir un dossier qui recevra le projet
 - Étape 2 : Il faut vous positionner sur le chemin de votre dossier avec la commande cd classpath/
