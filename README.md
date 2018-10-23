@@ -1,18 +1,18 @@
 <h1>INTRODUCTION</h1>
 
 Mon programme est un projet réalisé dans le cadre de mon parcours Développeur D'applications JAVA avec OpenClassrooms.
-Le programme est un ensemble de 2 jeux proposant chacun 3 modes de jeu différents.
+Le programme est un ensemble de 2 jeux proposant chacun 3 modes différents.
 <p>Vous pourrez donc jouer aux jeux suivants :</p>
 
 - PlusMoins
 - Mastermind
 
-Vous pourrez sélectionner le jeu au lancement de l'application.
+Vous pouvez sélectionner le jeu au lancement de l'application.
 <p>Chaque jeu possède 3 modes :</p>
 
 - Le mode Challenge : Vous devrez retrouver une combinaison de chiffres ou de couleurs aléatoire générée par l'ordinateur en un nombre limité d'essai,
 - Le mode Défenseur : Vous devrez proposer une combinaison secrète que l'ordinateur va devoir retrouver en un nombre limité d'essai,
-- Le mode Duel : Vous alternez avec l'ordinateur à chaque tour pour chercher une combinaison aléatoire sans minimum de tentative.
+- Le mode Duel : Vous alternerez avec l'ordinateur à chaque tour pour chercher une combinaison aléatoire sans minimum de tentative.
 
 Le projet a été programmé sur IntelliJ. 
 
@@ -90,8 +90,12 @@ Pour démarrer le programme sur IntelliJ il faut avant tout le compiler. Toutefo
 À partir de la console, vous devez obligatoirement faire la première étape de compilation manuellement, et ensuite faire l'étape d'exécution. Nous avons déjà vu la ligne de commande pour la compilation, voici celle pour l'exécution :
 java -classpath classes/ MonFichierACompiler
 
+<h1>4.Ressources</h1>
 
-
+<p>Le programme dispose des ressources suivantes :</p> 
+- config.properties : regroupe les paramètres cités dans la partie "paramètres".
+- log4j.xml : le contenu de ce fichier permet de générer un journal des évènements survenus pendant l'exécution du programme.
+- pom.xml : contient une dépendance pour le logging.
 
 
  
