@@ -1,6 +1,5 @@
 package com.jeremie;
 
-
 import org.apache.log4j.Logger;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,11 +8,10 @@ import java.util.Properties;
 import java.util.Scanner;
 
 
-
 public class GameSelector {
     private Mastermind mastermindGame;
     private PlusMoins plusMoinsGame;
-    private int nbCases;
+    private int nbSize;
     private int gameMode;
     private int numberGame;
     private int nbTry;
@@ -36,10 +34,9 @@ public class GameSelector {
     }
 
     /**
-     * Run all methods of the games.
+     * Run the main methods of the game.
      */
     public void numberRun() {
-
         logger.info("--------Le jeu a démarré------");
         gamechoice();
         gameMode();
@@ -52,22 +49,22 @@ public class GameSelector {
     public void retry() {
         System.out.println();
         System.out.println("Voulez-vous rejouer ? Si oui, veuillez entrer OK. Si non, appuyez sur n'importe quelle touche puis sur entrée");
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        System.out.println();
-        while (str.contains("OK")) {
+        String ansRetry = "";
+        sc = new Scanner(System.in);
+        ansRetry = sc.nextLine();
+        if (ansRetry.equals("OK")) {
             logger.info("--------Le joueur vient de relancer le jeu------");
             this.numberRun();
         }
-        System.out.println("Je vous remercie d'avoir joué. À bientôt ! ");
-        logger.info("--------Le joueur vient de quitter le jeu------");
-
+        else {
+            System.out.println("Je vous remercie d'avoir joué. À bientôt ! ");
+            logger.info("--------Le joueur vient de quitter le jeu------");
+        }
     }
 
     /**
-     * Display available games and selected a game.
+     * Display different games and selected from among them the game you want to play.
      */
-
     public void gamechoice()  {
         System.out.println("Veuillez choisir le jeu que vous voulez lancer : ");
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
@@ -78,8 +75,7 @@ public class GameSelector {
     }
 
     /**
-     * Display different game modes.
-     * @return number choose of mode.
+     * Display different game modes and selected from among them the mode for the game.
      */
     public void gameMode() {
 
@@ -92,10 +88,9 @@ public class GameSelector {
         System.out.println(" ");
     }
 
-
     /**
      * Function wich enable to manage exceptions
-     * @param value
+     * @param value number of possible values.
      * @return
      */
     private int manageException(int value, int numberChoice){
@@ -115,12 +110,10 @@ public class GameSelector {
                 sc.next();
                 System.out.println("Vous devez saisir un nombre valide parmis la liste ci-dessus.");
                 numberchoiceIsGood = false;
-
             }
         } while (!numberchoiceIsGood);
         return value;
     }
-
 
     /**
      * Run different games and modes depending on parameters.
@@ -129,7 +122,7 @@ public class GameSelector {
 
             this.readParameters();
             if (numberGame == 1){
-                plusMoinsGame = new PlusMoins(nbCases, nbTry, devMode);
+                plusMoinsGame = new PlusMoins(nbSize, nbTry, devMode);
                 switch (gameMode){
                     case 1: plusMoinsGame.challengeMode();
                     break;
@@ -140,7 +133,7 @@ public class GameSelector {
                 }
             }
             if (numberGame == 2) {
-                mastermindGame = new Mastermind(nbCases, nbTry, nbAvailableColors, devMode);
+                mastermindGame = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
                 switch(gameMode) {
                     case 1:
                         mastermindGame.challengeMode();
@@ -164,7 +157,7 @@ public class GameSelector {
         try {
             Properties prop = new Properties();
             prop.load(new FileReader("src/main/resources/config.properties"));
-            this.nbCases = Integer.parseInt(prop.getProperty("nombre.cases"));
+            this.nbSize = Integer.parseInt(prop.getProperty("nombre.cases"));
             this.nbTry = Integer.parseInt(prop.getProperty("nombre.essai"));
             this.nbAvailableColors = Integer.parseInt(prop.getProperty("mastermind.nombre.couleurs"));
         } catch (FileNotFoundException e) {

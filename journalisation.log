@@ -297,3 +297,291 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-10-23 20:41:59,702 [ERROR] (GameSelector.java:manageException:108) Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  4
 2018-10-23 20:42:00,549 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 1
 2018-10-23 20:42:00,559 [INFO ] (BaseGame.java:displaySolutionForDev:51) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-24 17:12:58,719 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:13:00,940 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:13:01,881 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 1
+2018-10-24 17:13:28,042 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:13:31,985 [INFO ] (GameSelector.java:retry:60) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:13:31,989 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:13:34,929 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 2
+2018-10-24 17:13:36,712 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:13:41,065 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:13:57,592 [INFO ] (GameSelector.java:retry:60) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:13:57,593 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:13:58,959 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:13:59,688 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:14:01,208 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:14:05,000 [INFO ] (GameSelector.java:retry:64) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:14:05,001 [INFO ] (GameSelector.java:retry:60) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:14:05,003 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:14:42,470 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:14:43,223 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:14:44,775 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:14:48,259 [INFO ] (GameSelector.java:retry:64) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:14:48,259 [INFO ] (GameSelector.java:retry:60) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:14:48,259 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:16:15,318 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:16:18,802 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:16:19,740 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:16:21,769 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:16:28,602 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:16:32,852 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:16:34,192 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:16:34,902 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:16:37,584 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:16:40,039 [INFO ] (GameSelector.java:retry:59) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:16:40,041 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:16:41,487 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:16:42,231 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:16:46,862 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:16:48,278 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:16:48,278 [INFO ] (GameSelector.java:retry:59) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:16:48,279 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:18:05,582 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:18:17,899 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:18:21,259 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:18:22,028 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:18:24,109 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:18:24,109 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:18:31,233 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:18:36,539 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:18:37,252 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:18:41,334 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:18:41,335 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:18:57,052 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:18:58,660 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:18:59,419 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:19:01,597 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:19:04,427 [INFO ] (GameSelector.java:retry:60) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:19:04,430 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:19:07,858 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 2
+2018-10-24 17:19:09,035 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:19:16,091 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:19:18,843 [INFO ] (GameSelector.java:retry:64) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:19:18,843 [INFO ] (GameSelector.java:retry:60) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:19:18,843 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:19:32,954 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:19:33,954 [INFO ] (GameSelector.java:gamechoice:78) Le joueur a choisi le mode : 1
+2018-10-24 17:19:35,240 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 2
+2018-10-24 17:19:39,441 [INFO ] (GameSelector.java:gameRun:156) --------Le jeu est terminé------
+2018-10-24 17:19:42,488 [INFO ] (GameSelector.java:retry:61) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:19:42,492 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:19:46,280 [INFO ] (GameSelector.java:gamechoice:78) Le joueur a choisi le mode : 1
+2018-10-24 17:19:47,184 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 2
+2018-10-24 17:19:49,585 [INFO ] (GameSelector.java:gameRun:156) --------Le jeu est terminé------
+2018-10-24 17:19:52,272 [INFO ] (GameSelector.java:retry:65) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:19:52,272 [INFO ] (GameSelector.java:retry:61) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:19:52,272 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:21:35,564 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:21:36,789 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:21:37,573 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:21:39,878 [INFO ] (GameSelector.java:gameRun:157) --------Le jeu est terminé------
+2018-10-24 17:21:40,859 [INFO ] (GameSelector.java:retry:66) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:21:43,656 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:21:44,747 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:21:47,139 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:21:48,430 [INFO ] (GameSelector.java:gameRun:157) --------Le jeu est terminé------
+2018-10-24 17:21:50,476 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:21:50,479 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:21:55,402 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:21:56,106 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:21:57,539 [INFO ] (GameSelector.java:gameRun:157) --------Le jeu est terminé------
+2018-10-24 17:22:07,465 [INFO ] (GameSelector.java:retry:66) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:22:07,465 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:22:07,465 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:22:29,035 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:24:15,799 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:24:16,965 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:24:20,197 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:24:21,768 [INFO ] (GameSelector.java:gameRun:157) --------Le jeu est terminé------
+2018-10-24 17:24:26,447 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:24:26,457 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:24:28,973 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:24:31,580 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:24:33,485 [INFO ] (GameSelector.java:gameRun:157) --------Le jeu est terminé------
+2018-10-24 17:24:34,493 [INFO ] (GameSelector.java:retry:66) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:24:34,493 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:24:34,493 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:25:02,446 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:25:03,955 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:25:06,091 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 1
+2018-10-24 17:25:08,494 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:25:09,220 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:25:09,812 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:25:11,462 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:25:14,059 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:25:14,061 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:25:16,395 [ERROR] (GameSelector.java:manageException:110) Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  3434
+2018-10-24 17:25:19,683 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:25:20,315 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:25:21,580 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:25:23,668 [INFO ] (GameSelector.java:retry:67) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:25:23,668 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:25:23,668 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:26:18,090 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:26:20,407 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:26:26,979 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:26:32,240 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:26:34,129 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:26:35,547 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:26:54,599 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:28:08,559 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:28:10,063 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:28:11,642 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:28:13,415 [INFO ] (GameSelector.java:retry:67) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:28:21,342 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:28:22,919 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:28:23,672 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:28:25,394 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:28:34,067 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:28:34,071 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:28:35,738 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:28:36,538 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:28:39,827 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:28:44,330 [INFO ] (GameSelector.java:retry:67) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:28:44,330 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:28:44,330 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:29:05,459 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:29:06,970 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:29:09,951 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:29:11,509 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:29:13,849 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:29:13,853 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:29:15,625 [INFO ] (GameSelector.java:gamechoice:80) Le joueur a choisi le mode : 1
+2018-10-24 17:29:16,809 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 2
+2018-10-24 17:29:19,930 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:30:05,610 [INFO ] (GameSelector.java:retry:67) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:33:08,329 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:33:08,329 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:33:08,351 [ERROR] (GameSelector.java:manageException:116) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:33:11,655 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:33:14,240 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:33:14,911 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:33:23,525 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:33:23,529 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:33:25,929 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:33:26,649 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:33:44,487 [INFO ] (GameSelector.java:retry:66) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:33:44,490 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:33:44,490 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:33:44,490 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:33:44,492 [ERROR] (GameSelector.java:manageException:115) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:33:45,977 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:33:47,507 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:33:49,304 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:33:54,968 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:33:54,972 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:34:04,456 [INFO ] (GameSelector.java:gamechoice:79) Le joueur a choisi le mode : 1
+2018-10-24 17:34:05,264 [INFO ] (GameSelector.java:gameMode:92) Le joueur a choisi le mode : 2
+2018-10-24 17:34:09,768 [INFO ] (GameSelector.java:retry:66) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:34:09,768 [INFO ] (GameSelector.java:gameRun:158) --------Le jeu est terminé------
+2018-10-24 17:34:09,768 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:34:09,768 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:35:03,532 [ERROR] (GameSelector.java:manageException:115) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:35:05,953 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:35:11,027 [ERROR] (?:manageException:116) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:35:11,083 [ERROR] (?:manageException:116) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:35:11,137 [ERROR] (GameSelector.java:manageException:111) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:35:14,425 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:35:16,079 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-24 17:35:16,774 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:35:18,064 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:35:20,645 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:35:20,648 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:35:22,285 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-24 17:35:23,181 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:35:25,110 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:35:27,109 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:35:27,110 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:35:27,110 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:36:21,463 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:36:22,904 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-24 17:36:24,871 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:36:26,632 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:36:27,030 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:36:31,593 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:36:42,333 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-24 17:36:52,803 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:36:54,880 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:36:57,350 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:37:30,123 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:37:31,189 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-24 17:37:32,859 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:37:35,991 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:37:37,915 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:37:37,917 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:37:39,149 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-24 17:37:39,892 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:37:41,899 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:37:52,395 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:37:52,396 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:37:55,914 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 2
+2018-10-24 17:37:57,206 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-24 17:38:00,074 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:38:02,762 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:38:02,762 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:38:02,764 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:38:59,620 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:39:01,173 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:39:01,859 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:39:05,832 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:39:08,053 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:39:08,056 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:39:11,228 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:39:11,996 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:39:13,885 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:39:16,019 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:39:16,019 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:39:16,923 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:39:18,011 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:39:19,653 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:39:20,555 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:39:51,722 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:40:00,333 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:40:01,411 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:40:04,495 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:40:04,495 [INFO ] (GameSelector.java:retry:62) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:41:40,986 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:41:42,615 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:41:43,206 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:41:46,436 [INFO ] (GameSelector.java:gameRun:155) --------Le jeu est terminé------
+2018-10-24 17:41:46,437 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:43:00,505 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:43:01,969 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:43:02,591 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:43:04,647 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:43:07,893 [INFO ] (GameSelector.java:retry:64) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:43:11,610 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:43:12,815 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-24 17:43:13,974 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:43:16,784 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:43:20,438 [INFO ] (GameSelector.java:retry:59) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:43:20,441 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:43:22,270 [ERROR] (GameSelector.java:manageException:112) Une exception est survenue lors du choix du jeu.
+2018-10-24 17:43:23,445 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 2
+2018-10-24 17:43:26,325 [INFO ] (GameSelector.java:gameMode:90) Le joueur a choisi le mode : 2
+2018-10-24 17:43:29,332 [INFO ] (GameSelector.java:gameRun:154) --------Le jeu est terminé------
+2018-10-24 17:43:31,604 [INFO ] (GameSelector.java:retry:64) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:44:32,168 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:44:34,163 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:44:34,833 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:44:39,178 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:44:41,824 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:44:41,828 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:44:43,159 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 2
+2018-10-24 17:44:44,351 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 1
+2018-10-24 17:45:11,325 [INFO ] (GameSelector.java:gameRun:153) --------Le jeu est terminé------
+2018-10-24 17:45:19,688 [INFO ] (GameSelector.java:retry:63) --------Le joueur vient de quitter le jeu------
+2018-10-24 17:55:59,392 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:56:00,773 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 1
+2018-10-24 17:56:04,174 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 1
+2018-10-24 17:56:23,124 [INFO ] (GameSelector.java:gameRun:151) --------Le jeu est terminé------
+2018-10-24 17:56:26,093 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de relancer le jeu------
+2018-10-24 17:56:26,095 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:56:28,853 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 2
+2018-10-24 17:56:29,892 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:56:32,237 [INFO ] (GameSelector.java:gameRun:151) --------Le jeu est terminé------
+2018-10-24 17:56:50,654 [INFO ] (GameSelector.java:numberRun:42) --------Le jeu a démarré------
+2018-10-24 17:56:51,976 [INFO ] (GameSelector.java:gamechoice:76) Le joueur a choisi le mode : 2
+2018-10-24 17:56:53,794 [INFO ] (GameSelector.java:gameMode:89) Le joueur a choisi le mode : 2
+2018-10-24 17:56:56,283 [INFO ] (GameSelector.java:gameRun:151) --------Le jeu est terminé------

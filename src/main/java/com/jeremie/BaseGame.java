@@ -1,12 +1,12 @@
 package com.jeremie;
-import org.apache.log4j.Logger;
 
+import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 public abstract class BaseGame implements GameMode{
     private boolean devMode;
     private char[] formatColoursGameS;
-    protected int nbCases;
+    protected int nbSize;
     protected int number;
     protected int nbTry;
     protected Scanner sc;
@@ -29,7 +29,7 @@ public abstract class BaseGame implements GameMode{
         this.myCombinationThatComputerFind = myCombinationThatComputerFind;
         this.randomNumber = randomNumber;
         this.tentative = 1;
-        this.nbCases = nbCases;
+        this.nbSize = nbCases;
         this.nbTry = nbTry;
         this.randomCombinationColors = new char[nbCases];
         this.combination = "";
@@ -39,7 +39,6 @@ public abstract class BaseGame implements GameMode{
         this.formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         this.counter1 = 1;
         this.counter2 = 1;
-
     }
 
     /**
@@ -59,12 +58,12 @@ public abstract class BaseGame implements GameMode{
      */
     protected void combinationRandom(String game, int nbAvailableColors) { //revoir cette méthode
         if(game.equals("moreLess")) {
-            int bMin = (int) Math.pow(10, nbCases - 1);
-            int bMax = (int) Math.pow(10, nbCases);
+            int bMin = (int) Math.pow(10, nbSize - 1);
+            int bMax = (int) Math.pow(10, nbSize);
             randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
         }
         else if(game.equals("mastermind")) {
-            for (int indexColour = 0; indexColour < nbCases; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
+            for (int indexColour = 0; indexColour < nbSize; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
                 int bMin = 0;
                 int bMax = nbAvailableColors;
                 int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
@@ -76,7 +75,6 @@ public abstract class BaseGame implements GameMode{
     /**
      * This method enabled to choice the combination that ordi have to find for the defense mode.
      */
-
     protected void choiceCombinationToComputer(String cases){
         System.out.print("Merci de choisir la combinaison à 4 chiffres que l'ordinateur doit trouver : ");
         myCombinationThatComputerFind = sc.nextLine();
@@ -115,7 +113,7 @@ public abstract class BaseGame implements GameMode{
                 System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse : ");
                 break;
         }
-}
+    }
 
     /**
      * Display some propositions possibles according combination, user type and mode selected.
@@ -124,7 +122,6 @@ public abstract class BaseGame implements GameMode{
      * @param counter to count turns.
      * @param combinationComputer computer answer.
      */
-
     protected void displayProposal(String gameAndMode, String user, int counter, String combinationComputer){
         int cases = 0;
         switch(user) {
@@ -175,16 +172,16 @@ public abstract class BaseGame implements GameMode{
             case "human":
                 switch (cases) {
                     case "numCombi":
-                        while (myAnswer.length() != nbCases || !myAnswer.matches("^\\d+$")) {
+                        while (myAnswer.length() != nbSize || !myAnswer.matches("^\\d+$")) {
                             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                            System.out.println("Merci de saisir un nombre à " + nbCases + " chiffres : ");
+                            System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
                             myAnswer = sc.nextLine();
                         }
                         break;
                     case "stringCombi":
-                        while (myAnswer.length() != nbCases || !myAnswer.matches("^[A-Z]+$")) {
+                        while (myAnswer.length() != nbSize || !myAnswer.matches("^[A-Z]+$")) {
                             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                            System.out.println("Merci de saisir un une combinaison à " + nbCases + " lettres MAJ (ex : RJBM).");
+                            System.out.println("Merci de saisir un une combinaison à " + nbSize + " lettres MAJ (ex : RJBM).");
                             myAnswer = sc.nextLine();
                         }
                         break;
@@ -193,16 +190,16 @@ public abstract class BaseGame implements GameMode{
             case "computer":
                 switch(cases) {
                     case "numCombiToComputer":
-                        while (myCombinationThatComputerFind.length() != nbCases || !myCombinationThatComputerFind.matches("^\\d+$")) {
+                        while (myCombinationThatComputerFind.length() != nbSize || !myCombinationThatComputerFind.matches("^\\d+$")) {
                             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                            System.out.println("Merci de saisir un nombre à " + nbCases + " chiffres : ");
+                            System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
                             myCombinationThatComputerFind = sc.nextLine();
                         }
                         break;
                     case "stringCombiToComputer":
-                        while (myCombinationThatComputerFind.length() != nbCases || !myCombinationThatComputerFind.matches("^[A-Z]+$")) {
+                        while (myCombinationThatComputerFind.length() != nbSize || !myCombinationThatComputerFind.matches("^[A-Z]+$")) {
                             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                            System.out.println("Merci de saisir un une combinaison à " + nbCases + " lettres MAJ (ex : RJBM).");
+                            System.out.println("Merci de saisir un une combinaison à " + nbSize + " lettres MAJ (ex : RJBM).");
                             myCombinationThatComputerFind = sc.nextLine();
                         }
                         break;

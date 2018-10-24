@@ -30,10 +30,9 @@ public class Mastermind extends BaseGame {
      * Display available colors and the input format for the game.
      */
     private void displayAvailableColors(){
-
         List<String> coloursAvailable = Arrays.asList("Rouge", "Jaune", "Bleu", "Indigo", "Marron", "Vert", "Gris", "Noir", "Orange", "Pourpre");
         List<String> stockColorsAvailable = new ArrayList();
-        System.out.println(String.format("La taille des combinaisons est de  " + nbCases + " et vous avez le droit à " + nbTry + " tentatives \n"));
+        System.out.println(String.format("La taille des combinaisons est de  " + nbSize + " et vous avez le droit à " + nbTry + " tentatives \n"));
         System.out.print("Les couleurs disponibles sont : ");
         stockColorsAvailable = coloursAvailable;
             for (int index = 1; index <= nbAvailableColors; index++) {
@@ -53,22 +52,21 @@ public class Mastermind extends BaseGame {
     }
 
     /**
-     * Compare the answer of the USER or the COMPUTER with the combination.
-     * @param myAnswer answer USER or COMPUT according who have to play this turn.
+     * Compare the answer of YOU or the COMPUTER with the combination.
+     * @param myAnswer answer YOU or COMPUT according who have to play this turn.
      * @param combinaisonSecrete combination at find.
      * @return find = true if the answer is equal with the combination.
      */
     public boolean compare(String myAnswer, char[] combinaisonSecrete) {
-
         int[] result = new int[2];
-        boolean [] checkDuplicate = new boolean[nbCases]; //Le tableau checkDuplicate permet de marquer les éléments correctement devinés et placés pour qu'ils ne soient pas considérés plusieurs fois.
+        boolean [] checkDuplicate = new boolean[nbSize]; //Le tableau checkDuplicate permet de marquer les éléments correctement devinés et placés pour qu'ils ne soient pas considérés plusieurs fois.
         int PMP = 0; // Présent(s) Mal Placé(s)
         int findGoodPlace = 0;
-        char[] answer = new char[nbCases];
+        char[] answer = new char[nbSize];
         find = true;
         answer = castMethodStringToArray(answer, myAnswer);
             // permet de marquer les éléments bien devinés bien placés.
-            for (int index = 0; index < nbCases; index++) {
+            for (int index = 0; index < nbSize; index++) {
                 if (combinaisonSecrete[index] == answer[index]) {
                     findGoodPlace++;
                     checkDuplicate[index] = true;
@@ -78,11 +76,11 @@ public class Mastermind extends BaseGame {
                 }
             }
             // permet d'identifier les éléments bien devinés mais mal placés.
-            for (int index = 0; index < nbCases; index++) {
+            for (int index = 0; index < nbSize; index++) {
                 if (combinaisonSecrete[index] != answer[index]) {
                     int j = 0;
                     boolean trouveMalPlace = false;
-                    while ((j < nbCases) && !trouveMalPlace) {
+                    while ((j < nbSize) && !trouveMalPlace) {
                         if (!checkDuplicate[j] && (combinaisonSecrete[index] == answer[j])) {
                             PMP++;
                             checkDuplicate[j] = true;
@@ -106,7 +104,7 @@ public class Mastermind extends BaseGame {
      * @return stringVariable with the contents of array.
      */
     public String castMethodArrayToString(String stringVariable, char[] charArray){
-        for(int index = 0; index < nbCases; index++)
+        for(int index = 0; index < nbSize; index++)
             stringVariable += charArray[index];
         return stringVariable;
     }
@@ -118,7 +116,7 @@ public class Mastermind extends BaseGame {
      * @return charArray with the contents of string.
      */
     public char[] castMethodStringToArray (char[] charArray, String stringVariable){
-        for(int index = 0; index < nbCases; index++)
+        for(int index = 0; index < nbSize; index++)
             charArray[index] = stringVariable.charAt(index);
         return charArray;
     }

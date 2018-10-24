@@ -3,25 +3,23 @@ package com.jeremie;
 
 public class PlusMoins extends BaseGame {
 
-
     private boolean find;
     private boolean[] equal;
     private boolean[] more;
     private boolean[] less;
 
     /**
-     * @param nbCases size of the combination.
+     * @param nbSize size of the combination.
      * @param nbTry maximum try/turn to find combination.
      * @param devMode enable display combination when the game at started in dev mode.
      */
-    public PlusMoins(int nbCases, int nbTry, boolean devMode) {
-        super(nbCases, nbTry, devMode);
+    public PlusMoins(int nbSize, int nbTry, boolean devMode) {
+        super(nbSize, nbTry, devMode);
         this.find = false;
-        this.equal = new boolean[nbCases];
-        this.more = new boolean[nbCases];
-        this.less = new boolean[nbCases];
+        this.equal = new boolean[nbSize];
+        this.more = new boolean[nbSize];
+        this.less = new boolean[nbSize];
     }
-
 
     /**
      * Start challenge mode, The user propose a secret combination that the computer have to find.
@@ -124,19 +122,19 @@ public class PlusMoins extends BaseGame {
     }
 
     /**
-     * The computer is thinking about proposing an answer based on the indicators/
+     * The computer is thinking about proposing an answer based on the indicators.
      * @param equal Array which catch with a boolean equal values between combination and answer
      * @param more  Array which catch with a boolean for greater number values between combination and answer
      * @param less  Array which catch with a boolean for smaller number values between combination and answer
      */
 
     public String computerReflexion(boolean[] equal, boolean[] more, boolean[] less, String yourResponseThatOrdiFind){
-        char[] computerAnswers = new char[nbCases];
+        char[] computerAnswers = new char[nbSize];
         String answer = "";
-        for(int index = 0; index < nbCases; index++){
+        for(int index = 0; index < nbSize; index++){
             computerAnswers[index] = computerAnswer.charAt(index);
         }
-        for(int index = 0; index < nbCases; index++){
+        for(int index = 0; index < nbSize; index++){
             int entier = 0;
             int newEntier = 0;
             if(equal[index] == true){
