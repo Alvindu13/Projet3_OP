@@ -272,3 +272,28 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-10-22 23:43:46,864 [INFO ] (GameSelector.java:gameMode:93) Le joueur a choisi le mode : 1
 2018-10-22 23:43:46,870 [INFO ] (BaseGame.java:displaySolutionForDev:53) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
 2018-10-22 23:44:00,842 [INFO ] (GameSelector.java:numberRun:45) --------Le jeu a démarré------
+2018-10-23 00:06:43,385 [INFO ] (GameSelector.java:numberRun:43) --------Le jeu a démarré------
+2018-10-23 00:06:45,258 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 2
+2018-10-23 00:06:46,657 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 1
+2018-10-23 00:06:46,662 [INFO ] (BaseGame.java:displaySolutionForDev:51) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-23 00:11:13,622 [INFO ] (GameSelector.java:numberRun:43) --------Le jeu a démarré------
+2018-10-23 00:11:15,229 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 2
+2018-10-23 00:11:16,832 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 1
+2018-10-23 20:41:00,773 [INFO ] (GameSelector.java:numberRun:43) --------Le jeu a démarré------
+2018-10-23 20:41:02,280 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-23 20:41:02,845 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 1
+2018-10-23 20:41:02,850 [INFO ] (BaseGame.java:displaySolutionForDev:51) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-23 20:41:08,225 [INFO ] (GameSelector.java:numberRun:43) --------Le jeu a démarré------
+2018-10-23 20:41:09,740 [ERROR] (GameSelector.java:manageException:108) Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  4
+2018-10-23 20:41:10,884 [ERROR] (GameSelector.java:manageException:114) Une exception est survenue lors du choix du jeu.
+2018-10-23 20:41:16,393 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 1
+2018-10-23 20:41:17,690 [ERROR] (GameSelector.java:manageException:108) Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  4
+2018-10-23 20:41:19,409 [ERROR] (GameSelector.java:manageException:108) Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  5
+2018-10-23 20:41:20,265 [ERROR] (GameSelector.java:manageException:114) Une exception est survenue lors du choix du jeu.
+2018-10-23 20:41:24,000 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 1
+2018-10-23 20:41:24,005 [INFO ] (BaseGame.java:displaySolutionForDev:51) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-23 20:41:54,527 [INFO ] (GameSelector.java:numberRun:43) --------Le jeu a démarré------
+2018-10-23 20:41:56,694 [INFO ] (GameSelector.java:gamechoice:77) Le joueur a choisi le mode : 2
+2018-10-23 20:41:59,702 [ERROR] (GameSelector.java:manageException:108) Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  4
+2018-10-23 20:42:00,549 [INFO ] (GameSelector.java:gameMode:91) Le joueur a choisi le mode : 1
+2018-10-23 20:42:00,559 [INFO ] (BaseGame.java:displaySolutionForDev:51) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
