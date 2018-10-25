@@ -146,7 +146,7 @@ public class Mastermind extends BaseGame {
         combination = castMethodArrayToString(combination, randomCombinationColors);
         displaySolutionForDev(combination);
         while(nbTry > 0 && !find) {
-            displayProposal(gameTypes.MASTERMIND, gameModes.CHALLENGE, "human", 0, null);
+            displayProposal(gameTypes.MASTERMIND, gameModes.CHALLENGE, userTypes.HUMAN, 0, null);
             find = compare(myAnswer, randomCombinationColors);
             nbTry--;
             System.out.println();
@@ -166,7 +166,7 @@ public class Mastermind extends BaseGame {
             computerAnswer = "";
             this.combinationRandom();
             computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
-            displayProposal(gameTypes.MASTERMIND, gameModes.DEFENSE, "computer", 0, computerAnswer);
+            displayProposal(gameTypes.MASTERMIND, gameModes.DEFENSE, userTypes.COMPUTER, 0, computerAnswer);
             find = compare(computerAnswer, combinationFixeMastermindArray);
             tentative++;
             nbTry--;
@@ -187,7 +187,7 @@ public class Mastermind extends BaseGame {
         displaySolutionForDev(combinationFixeMastermind);
         while(!find){
             if (number % 2 == 0) {
-                displayProposal(gameTypes.MASTERMIND, gameModes.DUAL,"human", counter1, null);
+                displayProposal(gameTypes.MASTERMIND, gameModes.DUAL,userTypes.HUMAN, counter1, null);
                 counter1++;
                 find = compare(myAnswer, combinationFixeMastermindArray);
                 result(combinationFixeMastermind, myAnswer, "human");
@@ -195,7 +195,7 @@ public class Mastermind extends BaseGame {
                 computerAnswer = "";
                 this.combinationRandom();
                 computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
-                displayProposal(gameTypes.MASTERMIND, gameModes.DUAL, "computer", counter2, computerAnswer);
+                displayProposal(gameTypes.MASTERMIND, gameModes.DUAL, userTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 find = compare(computerAnswer, combinationFixeMastermindArray);
                 result(combinationFixeMastermind, computerAnswer, "computer");

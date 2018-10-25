@@ -40,7 +40,7 @@ public class PlusMoins extends BaseGame {
         combination = String.valueOf(randomNumber);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            displayProposal(gameTypes.MORELESS, gameModes.CHALLENGE, "human", 0, null);
+            displayProposal(gameTypes.MORELESS, gameModes.CHALLENGE, userTypes.HUMAN, 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println();
             nbTry--;
@@ -57,7 +57,7 @@ public class PlusMoins extends BaseGame {
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {
-            displayProposal(gameTypes.MORELESS, gameModes.DEFENSE, "computer", 0, computerAnswer);
+            displayProposal(gameTypes.MORELESS, gameModes.DEFENSE, userTypes.COMPUTER, 0, computerAnswer);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
             find = result(myCombinationThatComputerFind, computerAnswer,"computer");
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
@@ -80,12 +80,12 @@ public class PlusMoins extends BaseGame {
 
         do {
             if (nombre % 2 == 0) {
-                displayProposal(gameTypes.MORELESS, gameModes.DUAL, "human", counter1, null);
+                displayProposal(gameTypes.MORELESS, gameModes.DUAL, userTypes.HUMAN, counter1, null);
                 counter1++;
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
                 find = result(combination, myAnswer, "human");
             } else {
-                displayProposal(gameTypes.MORELESS, gameModes.DUAL, "computer", counter2, computerAnswer);
+                displayProposal(gameTypes.MORELESS, gameModes.DUAL, userTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 compareAndDisplayIndicatorsPlacement(computerAnswer, combination);
                 find = result(combination, computerAnswer,"computer");

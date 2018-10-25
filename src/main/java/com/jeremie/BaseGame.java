@@ -52,6 +52,11 @@ public abstract class BaseGame implements GameMode{
         DUAL,
     }
 
+    public enum userTypes {
+        HUMAN,
+        COMPUTER,
+    }
+
     /**
      * Dislay the combination when the game at started in dev mode only.
      * @param combination combination secret.
@@ -71,10 +76,10 @@ public abstract class BaseGame implements GameMode{
         myCombinationThatComputerFind = sc.nextLine();
         switch(cases) {
             case "numCombiToComputer":
-                testAnswer("numCombiToComputer", "computer");
+                testAnswer("numCombiToComputer", userTypes.COMPUTER);
                 break;
             case "stringCombiToComputer":
-                testAnswer("stringCombiToComputer", "computer");
+                testAnswer("stringCombiToComputer", userTypes.COMPUTER);
                 break;
         }
         System.out.println();
@@ -111,17 +116,17 @@ public abstract class BaseGame implements GameMode{
      * to count turns.
      * computer answer.
      */
-    protected void displayProposal(gameTypes game, gameModes mode, String user, int counter, String combinationComputer) {
+    protected void displayProposal(gameTypes game, gameModes mode, userTypes user, int counter, String combinationComputer) {
         int cases = 0;
         switch (user) {
-            case "human":
+            case HUMAN:
                 if (mode.equals(gameModes.DUAL)) {
                     System.out.print("C'est à votre tour : ");
                     myAnswer = sc.nextLine();
                     if (game.equals(gameTypes.MORELESS))
-                        testAnswer("numCombi", "human");
+                        testAnswer("numCombi", userTypes.HUMAN);
                     else if (game.equals(gameTypes.MASTERMIND))
-                        testAnswer("stringCombi", "human");
+                        testAnswer("stringCombi", userTypes.HUMAN);
                     cases = 1;
                     displayResultSentence(counter, myAnswer, cases);
                 } else if (mode.equals(gameModes.CHALLENGE)) {
@@ -129,14 +134,14 @@ public abstract class BaseGame implements GameMode{
                     System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
                     myAnswer = sc.nextLine();
                     if (game.equals(gameTypes.MORELESS))
-                        testAnswer("numCombi", "human");
+                        testAnswer("numCombi", userTypes.HUMAN);
                     else if (game.equals(gameTypes.MASTERMIND))
-                        testAnswer("stringCombi", "human");
+                        testAnswer("stringCombi", userTypes.HUMAN);
                     cases = 2;
                     displayResultSentence(counter, myAnswer, cases);
                 }
                 break;
-            case "computer":
+            case COMPUTER:
                 if (mode.equals(gameModes.DEFENSE)) {
                     cases = 3;
                     displayResultSentence(counter, combinationComputer, cases);
@@ -153,9 +158,9 @@ public abstract class BaseGame implements GameMode{
      * Regex to check if the answer format is correct.
      * @param cases possibles cases (number or string combi).
      */
-    protected void testAnswer(String cases, String user) {
+    protected void testAnswer(String cases, userTypes user) {
         switch(user) {
-            case "human":
+            case HUMAN:
                 switch (cases) {
                     case "numCombi":
                         while (myAnswer.length() != nbSize || !myAnswer.matches("^\\d+$")) {
@@ -173,7 +178,7 @@ public abstract class BaseGame implements GameMode{
                         break;
                 }
                 break;
-            case "computer":
+            case COMPUTER:
                 switch(cases) {
                     case "numCombiToComputer":
                         while (myCombinationThatComputerFind.length() != nbSize || !myCombinationThatComputerFind.matches("^\\d+$")) {
