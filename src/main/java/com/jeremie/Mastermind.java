@@ -7,8 +7,9 @@ import java.util.List;
 public class Mastermind extends BaseGame {
     private int nbAvailableColors;
     private List<Character> formatColoursGame;
-    private String combinationFixeMastermind; //combinaison fixée après avoir était générée
+    private String combinationFixeMastermind;
     private char[] combinationFixeMastermindArray;
+    private char[] formatColoursGameS;
 
     /**
      * @param nbCases size of the combination.
@@ -23,6 +24,7 @@ public class Mastermind extends BaseGame {
         this.formatColoursGame = Arrays.asList('R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P');
         this.combinationFixeMastermind = "";
         this.combinationFixeMastermindArray = new char[nbCases];
+        this.formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         displayAvailableColors();
     }
 
@@ -50,6 +52,20 @@ public class Mastermind extends BaseGame {
             }
             System.out.println("Exemple d'une proposition valide : RJBJ (équivaut à Rouge, Jaune, Bleu, Jaune). \n");
     }
+
+    /**
+     * Calculation of a random number.
+     * @return the random number.
+     */
+    protected void combinationRandom() {
+
+        for (int indexColour = 0; indexColour < nbSize; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
+                int bMin = 0;
+                int bMax = nbAvailableColors;
+                int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
+                randomCombinationColors[indexColour] = formatColoursGameS[numRandom];
+            }
+        }
 
     /**
      * Compare the answer of YOU or the COMPUTER with the combination.
@@ -126,11 +142,11 @@ public class Mastermind extends BaseGame {
      */
     @Override
     public void challengeMode() {
-        combinationRandom("mastermind", nbAvailableColors); //génère une combinaison aléatoire randomColors
+        this.combinationRandom(); //génère une combinaison aléatoire randomColors
         combination = castMethodArrayToString(combination, randomCombinationColors);
         displaySolutionForDev(combination);
         while(nbTry > 0 && !find) {
-            displayProposal("mastermindAndChallenge", "human", 0, null);
+            displayProposal(gameTypes.MASTERMIND, gameModes.CHALLENGE, "human", 0, null);
             find = compare(myAnswer, randomCombinationColors);
             nbTry--;
             System.out.println();
@@ -148,9 +164,9 @@ public class Mastermind extends BaseGame {
         combinationFixeMastermindArray = castMethodStringToArray(combinationFixeMastermindArray, myCombinationThatComputerFind);
         while(nbTry > 0 && !find) {
             computerAnswer = "";
-            combinationRandom("mastermind", nbAvailableColors); //génère une combinaison aléatoire randomColors
+            this.combinationRandom();
             computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
-            displayProposal("mastermindAndDefense", "computer", 0, computerAnswer);
+            displayProposal(gameTypes.MASTERMIND, gameModes.DEFENSE, "computer", 0, computerAnswer);
             find = compare(computerAnswer, combinationFixeMastermindArray);
             tentative++;
             nbTry--;
@@ -165,21 +181,21 @@ public class Mastermind extends BaseGame {
     @Override
     public void duelMode() {
         combinationFixeMastermind = "";
-        combinationRandom("mastermind", nbAvailableColors);
+        this.combinationRandom();
         combinationFixeMastermind = castMethodArrayToString(combinationFixeMastermind, randomCombinationColors);
         combinationFixeMastermindArray = castMethodStringToArray(combinationFixeMastermindArray, combinationFixeMastermind);
         displaySolutionForDev(combinationFixeMastermind);
         while(!find){
             if (number % 2 == 0) {
-                displayProposal("mastermindAndDuel", "human", counter1, null);
+                displayProposal(gameTypes.MASTERMIND, gameModes.DUAL,"human", counter1, null);
                 counter1++;
                 find = compare(myAnswer, combinationFixeMastermindArray);
                 result(combinationFixeMastermind, myAnswer, "human");
             } else {
                 computerAnswer = "";
-                combinationRandom("mastermind", nbAvailableColors);
+                this.combinationRandom();
                 computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
-                displayProposal("mastermindAndDuel", "computer", counter2, computerAnswer);
+                displayProposal(gameTypes.MASTERMIND, gameModes.DUAL, "computer", counter2, computerAnswer);
                 counter2++;
                 find = compare(computerAnswer, combinationFixeMastermindArray);
                 result(combinationFixeMastermind, computerAnswer, "computer");

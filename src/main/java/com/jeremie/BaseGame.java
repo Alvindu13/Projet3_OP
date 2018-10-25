@@ -41,6 +41,17 @@ public abstract class BaseGame implements GameMode{
         this.counter2 = 1;
     }
 
+    public enum gameTypes {
+        MORELESS,
+        MASTERMIND,
+    }
+
+    public enum gameModes {
+        CHALLENGE,
+        DEFENSE,
+        DUAL,
+    }
+
     /**
      * Dislay the combination when the game at started in dev mode only.
      * @param combination combination secret.
@@ -49,26 +60,6 @@ public abstract class BaseGame implements GameMode{
         if(devMode == true){
             logger.info("Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.");
             System.out.println("Mode Développeur activé. Voici la combinaison secrète : " + combination + "\n");
-        }
-    }
-
-    /**
-     * Calculation of a random number.
-     * @return the random number.
-     */
-    protected void combinationRandom(String game, int nbAvailableColors) { //revoir cette méthode
-        if(game.equals("moreLess")) {
-            int bMin = (int) Math.pow(10, nbSize - 1);
-            int bMax = (int) Math.pow(10, nbSize);
-            randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
-        }
-        else if(game.equals("mastermind")) {
-            for (int indexColour = 0; indexColour < nbSize; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
-                int bMin = 0;
-                int bMax = nbAvailableColors;
-                int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
-                randomCombinationColors[indexColour] = formatColoursGameS[numRandom];
-            }
         }
     }
 
@@ -116,43 +107,40 @@ public abstract class BaseGame implements GameMode{
 
     /**
      * Display some propositions possibles according combination, user type and mode selected.
-     * @param gameAndMode
-     * @param user you or computer.
-     * @param counter to count turns.
-     * @param combinationComputer computer answer.
+     * you or computer.
+     * to count turns.
+     * computer answer.
      */
-    protected void displayProposal(String gameAndMode, String user, int counter, String combinationComputer){
+    protected void displayProposal(gameTypes game, gameModes mode, String user, int counter, String combinationComputer) {
         int cases = 0;
-        switch(user) {
+        switch (user) {
             case "human":
-                if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
+                if (mode.equals(gameModes.DUAL)) {
                     System.out.print("C'est à votre tour : ");
                     myAnswer = sc.nextLine();
-                    if(gameAndMode.equals("moreLessAndDuel"))
+                    if (game.equals(gameTypes.MORELESS))
                         testAnswer("numCombi", "human");
-                    else if(gameAndMode.equals("mastermindAndDuel"))
-                        testAnswer("stringCombi","human");
+                    else if (game.equals(gameTypes.MASTERMIND))
+                        testAnswer("stringCombi", "human");
                     cases = 1;
                     displayResultSentence(counter, myAnswer, cases);
-                }
-                else if (gameAndMode.equals("moreLessAndChallenge") || gameAndMode.equals("mastermindAndChallenge")) {
+                } else if (mode.equals(gameModes.CHALLENGE)) {
                     System.out.print("Merci de faire votre proposition (");
                     System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
                     myAnswer = sc.nextLine();
-                    if(gameAndMode.equals("moreLessAndChallenge"))
-                        testAnswer("numCombi","human");
-                    else if(gameAndMode.equals("mastermindAndChallenge"))
-                        testAnswer("stringCombi","human");
+                    if (game.equals(gameTypes.MORELESS))
+                        testAnswer("numCombi", "human");
+                    else if (game.equals(gameTypes.MASTERMIND))
+                        testAnswer("stringCombi", "human");
                     cases = 2;
                     displayResultSentence(counter, myAnswer, cases);
                 }
                 break;
             case "computer":
-                if (gameAndMode.equals("moreLessAndDefense") || gameAndMode.equals("mastermindAndDefense")){
+                if (mode.equals(gameModes.DEFENSE)) {
                     cases = 3;
                     displayResultSentence(counter, combinationComputer, cases);
-                }
-                else if (gameAndMode.equals("moreLessAndDuel") || gameAndMode.equals("mastermindAndDuel")) {
+                } else if (mode.equals(gameModes.DUAL)) {
                     System.out.print("C'est au tour de l'ordinateur ! \n");
                     cases = 4;
                     displayResultSentence(counter, combinationComputer, cases);
@@ -166,7 +154,6 @@ public abstract class BaseGame implements GameMode{
      * @param cases possibles cases (number or string combi).
      */
     protected void testAnswer(String cases, String user) {
-        System.out.println();
         switch(user) {
             case "human":
                 switch (cases) {
