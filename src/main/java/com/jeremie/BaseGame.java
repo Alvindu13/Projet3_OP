@@ -98,7 +98,6 @@ public abstract class BaseGame implements GameMode{
      * @param cases possibles cases.
      */
     public void displayResultSentence(int counter, String answer, int cases){
-
         switch(cases) {
             case 1:
                 System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse : ");
@@ -207,7 +206,6 @@ public abstract class BaseGame implements GameMode{
                 break;
         }
     }
-
 
     /**
      * Display a sentance according result of the game.
