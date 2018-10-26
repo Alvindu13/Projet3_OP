@@ -25,7 +25,7 @@ public abstract class BaseGame implements GameMode{
     public BaseGame(int nbCases, int nbTry, boolean devMode) {
         this.devMode = devMode;
         this.number = 0;
-        this.myCombinationThatComputerFind = myCombinationThatComputerFind;
+        this.myCombinationThatComputerFind = "";
         this.randomNumber = randomNumber;
         this.tentative = 1;
         this.nbSize = nbCases;
@@ -62,15 +62,18 @@ public abstract class BaseGame implements GameMode{
     protected void displaySolutionForDev(String combination) {
         if(devMode == true){
             logger.info("Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.");
-            System.out.println("Mode Développeur activé. Voici la combinaison secrète : " + combination + "\n");
+            System.out.println("Mode Développeur activé. Voici la combinaison secrète que l'utilisateur doit trouver : " + combination + "\n");
         }
     }
 
     /**
      * This method enabled to choice the combination that ordi have to find for the defense mode.
      */
-    protected void choiceCombinationToComputer(String cases){
-        System.out.print("Merci de choisir la combinaison à " + nbSize + " valeurs que l'ordinateur doit trouver : ");
+    protected void choiceCombinationToComputer(String cases, gameModes mode){
+        if(mode.equals(gameModes.DUAL)){
+            System.out.println("L'ordinateur a généré une combinaison que vous devez trouver. Attention, vous devez chercher des combinaisons différentes. \n");
+            System.out.print("C'est maintenant à vous de proposer une combinaison pour l'ordinateur : ");
+        }
         myCombinationThatComputerFind = sc.nextLine();
         switch(cases) {
             case "numCombiToComputer":
@@ -80,8 +83,7 @@ public abstract class BaseGame implements GameMode{
                 testAnswer("stringCombiToComputer", playerTypes.COMPUTER);
                 break;
         }
-        System.out.println();
-        System.out.println("L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
+        System.out.println("=> L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
         System.out.println();
     }
 
@@ -204,7 +206,7 @@ public abstract class BaseGame implements GameMode{
      * @param user human or computer.
      * @return a boolean according the result.
      */
-    protected boolean result(String combination, String answer, String user){
+    protected boolean result(String combination, String answer, String answerOfOther, String user){
         if (answer.contains(combination))
             find = true;
         else
@@ -212,13 +214,13 @@ public abstract class BaseGame implements GameMode{
         switch(user) {
             case "human":
                 if(find)
-                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison avant l'ordinateur ! La combinaison : " + answer);
+                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison (" + answer + ") avant l'ordinateur ! La combinaison que l'ordinateur devait trouver était : " + answerOfOther);
                 else if (!find && nbTry == 0 )
                     System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + combination);
                 break;
             case "computer":
                 if(find)
-                    System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse. Vous pouvez le féliciter ! La réponse :  " + answer);
+                    System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse (" + answer + "). Vous pouvez le féliciter ! La combinaison que vous deviez 1trouver était :  " + answerOfOther);
                 else if (!find && nbTry == 0 || !find && tentative == nbTry ){
                     System.out.println();
                     System.out.println("Malheureusement pour l'ordinateur, il n'a pas pu trouver la bonne réponse... La réponse était :  " + combination);
