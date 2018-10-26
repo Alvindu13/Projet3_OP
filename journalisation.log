@@ -965,3 +965,175 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-10-26 18:22:42,623 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3
 2018-10-26 18:22:48,675 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
 2018-10-26 18:22:57,647 [INFO ] (GameSelector.java:gameRun:149) --------Le jeu est terminé------
+2018-10-26 18:26:22,473 [INFO ] (GameSelector.java:retry:61) --------Le joueur vient de quitter le jeu------
+2018-10-26 18:26:26,049 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:26:27,284 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:26:27,892 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:26:34,779 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:26:35,759 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:26:36,462 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:26:45,729 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:26:47,302 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:26:47,814 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:26:57,114 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:26:57,916 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:26:58,598 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:27:03,512 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:27:04,380 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:27:04,931 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 1
+2018-10-26 18:27:04,938 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:27:10,163 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:27:10,890 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:27:11,603 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:28:21,707 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:28:24,026 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:28:24,994 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3
+2018-10-26 18:28:28,420 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:28:29,882 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:28:30,577 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:28:47,098 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:28:50,837 [ERROR] (GameSelector.java:manageException:109) Une exception est survenue lors du choix du jeu.
+2018-10-26 18:28:52,269 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:28:55,424 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:30:05,119 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:30:13,505 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:30:15,055 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:30:24,788 [ERROR] (GameSelector.java:manageException:109) Une exception est survenue lors du choix du jeu.
+2018-10-26 18:30:25,983 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:30:26,973 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:30:28,135 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-26 18:30:52,007 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:30:53,158 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-26 18:30:54,758 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-26 18:32:29,467 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:33:47,911 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-26 18:33:48,480 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-26 18:34:06,528 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:34:07,511 [INFO ] (GameSelector.java:gamechoice:75) Le joueur a choisi le mode : 1
+2018-10-26 18:34:07,991 [INFO ] (GameSelector.java:gameMode:88) Le joueur a choisi le mode : 2
+2018-10-26 18:35:03,562 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:35:04,935 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:35:05,503 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:35:10,930 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:36:11,062 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:36:15,013 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:36:15,581 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:36:33,956 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:36:35,784 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:36:36,325 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:36:39,747 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:36:43,325 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:38:02,321 [ERROR] (GameSelector.java:manageException:108) Une exception est survenue lors du choix du jeu.
+2018-10-26 18:38:04,749 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:38:06,120 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:38:06,777 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:38:13,987 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:38:15,433 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:38:16,185 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:39:02,799 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:39:03,470 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:39:04,014 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:39:19,971 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:39:21,283 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:39:21,859 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:40:34,070 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:40:37,866 [ERROR] (GameSelector.java:manageException:108) Une exception est survenue lors du choix du jeu.
+2018-10-26 18:40:40,647 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:40:41,707 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:40:42,307 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 3
+2018-10-26 18:40:42,312 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:40:50,559 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:41:19,296 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:41:25,132 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:41:25,940 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:41:29,435 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:48:12,069 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:48:13,262 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:48:13,821 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:48:17,988 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:48:24,956 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:48:25,869 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:48:26,630 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:48:28,978 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:48:32,511 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:48:33,493 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:48:34,509 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:48:34,513 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:49:36,205 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:49:37,499 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:49:38,715 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:49:38,718 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:49:42,845 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:50:11,023 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:50:12,594 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:50:13,690 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:50:13,694 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:50:22,931 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:50:30,305 [INFO ] (GameSelector.java:retry:56) --------Le joueur vient de relancer le jeu------
+2018-10-26 18:50:30,306 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:50:31,363 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:50:32,201 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:50:34,411 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:50:39,700 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:50:41,737 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:50:42,545 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 3
+2018-10-26 18:50:42,549 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:53:16,826 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:53:18,210 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:53:19,058 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:53:19,064 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:53:24,344 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:53:26,601 [INFO ] (GameSelector.java:retry:56) --------Le joueur vient de relancer le jeu------
+2018-10-26 18:53:26,601 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:53:27,657 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:53:28,600 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:53:33,666 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:53:38,984 [INFO ] (GameSelector.java:retry:56) --------Le joueur vient de relancer le jeu------
+2018-10-26 18:53:38,984 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:53:40,299 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:53:41,048 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 3
+2018-10-26 18:53:44,657 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:54:07,569 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:54:31,008 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:54:35,431 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:54:36,104 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:54:36,113 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:55:05,462 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:55:06,911 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:55:07,501 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:55:07,506 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:55:11,364 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:55:17,670 [INFO ] (GameSelector.java:retry:56) --------Le joueur vient de relancer le jeu------
+2018-10-26 18:55:17,670 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:55:20,829 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:55:22,429 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:55:22,430 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:55:31,181 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:55:37,396 [INFO ] (GameSelector.java:retry:56) --------Le joueur vient de relancer le jeu------
+2018-10-26 18:55:37,397 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:55:50,684 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:55:52,925 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:55:52,926 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:55:55,261 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:57:52,352 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:57:53,823 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:57:55,223 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:57:55,230 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:58:12,670 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:58:23,029 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 18:58:24,446 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:58:24,450 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:58:34,445 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:58:35,989 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:58:36,669 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 1
+2018-10-26 18:58:36,674 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.
+2018-10-26 18:58:48,436 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 18:59:11,199 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 18:59:12,351 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 18:59:13,351 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 2
+2018-10-26 18:59:16,148 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
+2018-10-26 19:00:06,013 [INFO ] (GameSelector.java:retry:56) --------Le joueur vient de relancer le jeu------
+2018-10-26 19:00:06,016 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 19:00:09,045 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 2
+2018-10-26 19:00:09,914 [INFO ] (GameSelector.java:gameMode:86) Le joueur a choisi le mode : 3
+2018-10-26 19:00:15,980 [INFO ] (BaseGame.java:displaySolutionForDev:64) Le mode développeur est activé. L'utilisateur peut voir la combinaison secrète.

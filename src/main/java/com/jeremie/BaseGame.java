@@ -74,8 +74,10 @@ public abstract class BaseGame implements GameMode{
             System.out.println("L'ordinateur a généré une combinaison que vous devez trouver. Attention, vous devez chercher des combinaisons différentes. \n");
             System.out.print("C'est maintenant à vous de proposer une combinaison pour l'ordinateur : ");
         }
+        if ((mode.equals(gameModes.DEFENSE)))
+            System.out.print("Merci de proposer une combinaison de " + nbSize + " valeurs que l'ordinateur doit retrouver : ");
         myCombinationThatComputerFind = sc.nextLine();
-        switch(cases) {
+        switch (cases) {
             case "numCombiToComputer":
                 testAnswer("numCombiToComputer", playerTypes.COMPUTER);
                 break;
@@ -86,6 +88,7 @@ public abstract class BaseGame implements GameMode{
         System.out.println("=> L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
         System.out.println();
     }
+
 
     /**
      * Display a sentence with your answer every turn.
@@ -206,21 +209,29 @@ public abstract class BaseGame implements GameMode{
      * @param user human or computer.
      * @return a boolean according the result.
      */
-    protected boolean result(String combination, String answer, String answerOfOther, String user){
+    protected boolean result(String combination, String answer, String answerOfOther, String user, gameModes mode){
         if (answer.contains(combination))
             find = true;
         else
             find = false;
         switch(user) {
             case "human":
-                if(find)
-                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison (" + answer + ") avant l'ordinateur ! La combinaison que l'ordinateur devait trouver était : " + answerOfOther);
+                if(find){
+                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison (" + answer + ") ! ");
+                    if(mode.equals(gameModes.DUAL))
+                        System.out.println(("La combinaison que l'ordinateur devait trouver était : " + answerOfOther));
+                    System.out.println();
+                }
                 else if (!find && nbTry == 0 )
                     System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + combination);
                 break;
             case "computer":
-                if(find)
-                    System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse (" + answer + "). Vous pouvez le féliciter ! La combinaison que vous deviez 1trouver était :  " + answerOfOther);
+                if(find) {
+                    System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse (" + answer + "). Vous pouvez le féliciter ! ");
+                    if(mode.equals(gameModes.DUAL))
+                        System.out.println("La combinaison que vous deviez trouver était :  " + answerOfOther);
+                    System.out.println();
+                }
                 else if (!find && nbTry == 0 || !find && tentative == nbTry ){
                     System.out.println();
                     System.out.println("Malheureusement pour l'ordinateur, il n'a pas pu trouver la bonne réponse... La réponse était :  " + combination);

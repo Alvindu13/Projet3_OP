@@ -78,7 +78,6 @@ public class GameSelector {
      * Display different game modes and selected from among them the mode for the game.
      */
     public void gameMode() {
-
         String[] arrayMode = {"1 - Mode Challenger : vous devez trouver la combinaison secrète de l'ordinateur", "2 - Mode Défenseur : où c'est à l'ordinateur de trouver votre combinaison secrète ", "3 - Mode duel : où l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné"};
         System.out.println("Veuillez choisir le mode de jeu :");
         for (int index = 0; index < arrayMode.length; index++)
@@ -119,33 +118,35 @@ public class GameSelector {
      * Run different games and modes depending on parameters.
      */
     public void gameRun(){
-
-            this.readParameters();
-            if (numberGame == 1){
-                plusMoinsGame = new PlusMoins(nbSize, nbTry, devMode);
-                switch (gameMode){
-                    case 1: plusMoinsGame.challengeMode();
+        this.readParameters();
+        if (numberGame == 1){
+            plusMoinsGame = new PlusMoins(nbSize, nbTry, devMode);
+            switch (gameMode){
+                case 1:
+                    plusMoinsGame.challengeMode();
                     break;
-                    case 2: plusMoinsGame.defenseMode();
+                case 2:
+                    plusMoinsGame.defenseMode();
                     break;
-                    case 3:plusMoinsGame.duelMode();
+                case 3:
+                    plusMoinsGame.duelMode();
                     break;
-                }
             }
-            if (numberGame == 2) {
-                mastermindGame = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
-                switch(gameMode) {
-                    case 1:
-                        mastermindGame.challengeMode();
-                        break;
-                    case 2:
-                        mastermindGame.defenseMode();
-                        break;
-                    case 3:
-                        mastermindGame.duelMode();
-                        break;
-                }
+        }
+        if (numberGame == 2) {
+            mastermindGame = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
+            switch (gameMode) {
+                case 1:
+                    mastermindGame.challengeMode();
+                    break;
+                case 2:
+                    mastermindGame.defenseMode();
+                    break;
+                case 3:
+                    mastermindGame.duelMode();
+                    break;
             }
+        }
         logger.info("--------Le jeu est terminé------");
         this.retry();
     }

@@ -151,9 +151,8 @@ public class Mastermind extends BaseGame {
             displayProposal(gameTypes.MASTERMIND, gameModes.CHALLENGE, playerTypes.HUMAN, 0, null);
             find = compare(myAnswer, randomCombinationColors);
             nbTry--;
-            System.out.println();
         }
-        result(combination, myAnswer, null,"human");
+        result(combination, myAnswer, null,"human", gameModes.CHALLENGE);
     }
 
     /**
@@ -173,7 +172,7 @@ public class Mastermind extends BaseGame {
             nbTry--;
         }
         System.out.println();
-        result(myCombinationThatComputerFind, computerAnswer, null,"computer");
+        result(myCombinationThatComputerFind, computerAnswer, null,"computer", gameModes.CHALLENGE);
     }
 
     /**
@@ -192,7 +191,7 @@ public class Mastermind extends BaseGame {
                 displayProposal(gameTypes.MASTERMIND, gameModes.DUAL, playerTypes.HUMAN, counter1, null);
                 counter1++;
                 find = compare(myAnswer, combinationFixeMastermindArrayHu);
-                result(combinationFixeMastermind, myAnswer, myCombinationThatComputerFind, "human");
+                result(combinationFixeMastermind, myAnswer, myCombinationThatComputerFind, "human", gameModes.DUAL);
             } else {
                 computerAnswer = "";
                 this.combinationRandom();
@@ -200,7 +199,7 @@ public class Mastermind extends BaseGame {
                 displayProposal(gameTypes.MASTERMIND, gameModes.DUAL, playerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 find = compare(computerAnswer, combinationFixeMastermindArrayCompu);
-                result(myCombinationThatComputerFind, computerAnswer, combinationFixeMastermind, "computer");
+                result(myCombinationThatComputerFind, computerAnswer, combinationFixeMastermind, "computer", gameModes.DUAL);
             }
             System.out.println();
             number++;
