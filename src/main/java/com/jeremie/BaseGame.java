@@ -39,18 +39,18 @@ public abstract class BaseGame implements GameMode{
         this.counter2 = 1;
     }
 
-    protected enum gameTypes {
+    protected enum GameTypes {
         MORELESS,
         MASTERMIND,
     }
 
-    protected enum gameModes {
+    protected enum GameModes {
         CHALLENGE,
         DEFENSE,
         DUAL,
     }
 
-    protected enum playerTypes {
+    protected enum PlayerTypes {
         HUMAN,
         COMPUTER,
     }
@@ -69,20 +69,20 @@ public abstract class BaseGame implements GameMode{
     /**
      * This method enabled to choice the combination that ordi have to find for the defense mode.
      */
-    protected void choiceCombinationToComputer(String cases, gameModes mode){
-        if(mode.equals(gameModes.DUAL)){
+    protected void choiceCombinationToComputer(String cases, GameModes mode){
+        if(mode.equals(GameModes.DUAL)){
             System.out.println("L'ordinateur a généré une combinaison que vous devez trouver. Attention, vous devez chercher des combinaisons différentes. \n");
             System.out.print("C'est maintenant à vous de proposer une combinaison pour l'ordinateur : ");
         }
-        if ((mode.equals(gameModes.DEFENSE)))
+        if ((mode.equals(GameModes.DEFENSE)))
             System.out.print("Merci de proposer une combinaison de " + nbSize + " valeurs que l'ordinateur doit retrouver : ");
         myCombinationThatComputerFind = sc.nextLine();
         switch (cases) {
             case "numCombiToComputer":
-                testAnswer("numCombiToComputer", playerTypes.COMPUTER);
+                testAnswer("numCombiToComputer", PlayerTypes.COMPUTER);
                 break;
             case "stringCombiToComputer":
-                testAnswer("stringCombiToComputer", playerTypes.COMPUTER);
+                testAnswer("stringCombiToComputer", PlayerTypes.COMPUTER);
                 break;
         }
         System.out.println("=> L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
@@ -119,36 +119,36 @@ public abstract class BaseGame implements GameMode{
      * to count turns.
      * computer answer.
      */
-    protected void displayProposal(gameTypes game, gameModes mode, playerTypes user, int counter, String combinationComputer) {
+    protected void displayProposal(GameTypes game, GameModes mode, PlayerTypes user, int counter, String combinationComputer) {
         int cases = 0;
         switch (user) {
             case HUMAN:
-                if (mode.equals(gameModes.DUAL)) {
+                if (mode.equals(GameModes.DUAL)) {
                     System.out.print("C'est à votre tour : ");
                     myAnswer = sc.nextLine();
-                    if (game.equals(gameTypes.MORELESS))
-                        this.testAnswer("numCombi", playerTypes.HUMAN);
-                    else if (game.equals(gameTypes.MASTERMIND))
-                        this.testAnswer("stringCombi", playerTypes.HUMAN);
+                    if (game.equals(GameTypes.MORELESS))
+                        this.testAnswer("numCombi", PlayerTypes.HUMAN);
+                    else if (game.equals(GameTypes.MASTERMIND))
+                        this.testAnswer("stringCombi", PlayerTypes.HUMAN);
                     cases = 1;
                     this.displayResultSentence(counter, myAnswer, cases);
-                } else if (mode.equals(gameModes.CHALLENGE)) {
+                } else if (mode.equals(GameModes.CHALLENGE)) {
                     System.out.print("Merci de faire votre proposition (");
                     System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
                     myAnswer = sc.nextLine();
-                    if (game.equals(gameTypes.MORELESS))
-                        this.testAnswer("numCombi", playerTypes.HUMAN);
-                    else if (game.equals(gameTypes.MASTERMIND))
-                        this.testAnswer("stringCombi", playerTypes.HUMAN);
+                    if (game.equals(GameTypes.MORELESS))
+                        this.testAnswer("numCombi", PlayerTypes.HUMAN);
+                    else if (game.equals(GameTypes.MASTERMIND))
+                        this.testAnswer("stringCombi", PlayerTypes.HUMAN);
                     cases = 2;
                     this.displayResultSentence(counter, myAnswer, cases);
                 }
                 break;
             case COMPUTER:
-                if (mode.equals(gameModes.DEFENSE)) {
+                if (mode.equals(GameModes.DEFENSE)) {
                     cases = 3;
                     this.displayResultSentence(counter, combinationComputer, cases);
-                } else if (mode.equals(gameModes.DUAL)) {
+                } else if (mode.equals(GameModes.DUAL)) {
                     System.out.print("C'est au tour de l'ordinateur ! \n");
                     cases = 4;
                     this.displayResultSentence(counter, combinationComputer, cases);
@@ -161,7 +161,7 @@ public abstract class BaseGame implements GameMode{
      * Regex to check if the answer format is correct.
      * @param cases possibles cases (number or string combi).
      */
-    private void testAnswer(String cases, playerTypes user) {
+    private void testAnswer(String cases, PlayerTypes user) {
         switch(user) {
             case HUMAN:
                 switch (cases) {
@@ -209,7 +209,7 @@ public abstract class BaseGame implements GameMode{
      * @param user human or computer.
      * @return a boolean according the result.
      */
-    protected boolean result(String combination, String answer, String answerOfOther, String user, gameModes mode){
+    protected boolean result(String combination, String answer, String answerOfOther, String user, GameModes mode){
         if (answer.contains(combination))
             find = true;
         else
@@ -217,23 +217,22 @@ public abstract class BaseGame implements GameMode{
         switch(user) {
             case "human":
                 if(find){
-                    System.out.print("\n" + "Bravo ! Vous avez trouvé la bonne combinaison (" + answer + ") ! ");
-                    if(mode.equals(gameModes.DUAL))
-                        System.out.println(("La combinaison que l'ordinateur devait trouver était : " + answerOfOther));
-                    System.out.println();
+                    System.out.print("Bravo ! Vous avez trouvé la bonne combinaison (" + answer + ") ! ");
+                    if(mode.equals(GameModes.DUAL))
+                        System.out.print(("La combinaison que l'ordinateur devait trouver était : " + answerOfOther));
+                    System.out.println("");
                 }
                 else if (!find && nbTry == 0 )
                     System.out.println("Malheureusement vous n'avez pas trouvé la bonne combinaison qui était :  " + combination);
                 break;
             case "computer":
                 if(find) {
-                    System.out.print("\n" + "L'ordinateur a trouvé la bonne réponse (" + answer + "). Vous pouvez le féliciter ! ");
-                    if(mode.equals(gameModes.DUAL))
+                    System.out.print("L'ordinateur a trouvé la bonne réponse (" + answer + "). Vous pouvez le féliciter ! ");
+                    if(mode.equals(GameModes.DUAL))
                         System.out.println("La combinaison que vous deviez trouver était :  " + answerOfOther);
-                    System.out.println();
+                    System.out.println("");
                 }
                 else if (!find && nbTry == 0 || !find && tentative == nbTry ){
-                    System.out.println();
                     System.out.println("Malheureusement pour l'ordinateur, il n'a pas pu trouver la bonne réponse... La réponse était :  " + combination);
                 }
                 break;

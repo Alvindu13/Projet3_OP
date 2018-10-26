@@ -40,11 +40,10 @@ public class PlusMoins extends BaseGame {
         combination = String.valueOf(randomNumber);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            displayProposal(gameTypes.MORELESS, gameModes.CHALLENGE, playerTypes.HUMAN, 0, null);
+            displayProposal(GameTypes.MORELESS, GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
-            System.out.println();
             nbTry--;
-            find = result(combination, myAnswer, null,"human", gameModes.CHALLENGE);
+            find = result(combination, myAnswer, null,"human", GameModes.CHALLENGE);
         } while (!find && nbTry != 0);
     }
 
@@ -53,13 +52,13 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer("numCombiToComputer", gameModes.DEFENSE);
+        choiceCombinationToComputer("numCombiToComputer", GameModes.DEFENSE);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {
-            displayProposal(gameTypes.MORELESS, gameModes.DEFENSE, playerTypes.COMPUTER, 0, computerAnswer);
+            displayProposal(GameTypes.MORELESS, GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-            find = result(myCombinationThatComputerFind, computerAnswer, null,"computer", gameModes.DEFENSE);
+            find = result(myCombinationThatComputerFind, computerAnswer, null,"computer", GameModes.DEFENSE);
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
             computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             tentative++;
@@ -74,25 +73,24 @@ public class PlusMoins extends BaseGame {
         int nombre = 0;
         this.combinationRandom();
         combination = String.valueOf(randomNumber);
-        choiceCombinationToComputer("numCombiToComputer", gameModes.DUAL);
+        choiceCombinationToComputer("numCombiToComputer", GameModes.DUAL);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
         do {
             if (nombre % 2 == 0) {
-                displayProposal(gameTypes.MORELESS, gameModes.DUAL, playerTypes.HUMAN, counter1, null);
+                displayProposal(GameTypes.MORELESS, GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
-                find = result(combination, myAnswer, myCombinationThatComputerFind,"human", gameModes.DUAL);
+                find = result(combination, myAnswer, myCombinationThatComputerFind,"human", GameModes.DUAL);
             } else {
-                displayProposal(gameTypes.MORELESS, gameModes.DUAL, playerTypes.COMPUTER, counter2, computerAnswer);
+                displayProposal(GameTypes.MORELESS, GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-                find = result(myCombinationThatComputerFind, computerAnswer, combination, "computer", gameModes.DUAL);
+                find = result(myCombinationThatComputerFind, computerAnswer, combination, "computer", GameModes.DUAL);
                 comparePlacement(computerAnswer, myCombinationThatComputerFind);
                 computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             }
-            System.out.println();
             nombre++;
         } while (!find);
     }
@@ -112,7 +110,7 @@ public class PlusMoins extends BaseGame {
                 System.out.print("-");
             }
         }
-        System.out.println();
+        System.out.println("\n");
     }
 
     /**
