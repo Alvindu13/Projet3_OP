@@ -155,6 +155,7 @@ public class GameSelector {
      * Reading parameters of properties file.
      */
     public void readParameters() {
+        //Warning : if you change parameters the number of available colours is limited at 10.
         try {
             Properties prop = new Properties();
             prop.load(new FileReader("src/main/resources/config.properties"));

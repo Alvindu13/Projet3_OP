@@ -43,7 +43,7 @@ public class PlusMoins extends BaseGame {
             displayProposal(GameTypes.MORELESS, GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             nbTry--;
-            find = result(combination, myAnswer, null,"human", GameModes.CHALLENGE);
+            find = result(combination, myAnswer, null,PlayerTypes.HUMAN, GameModes.CHALLENGE);
         } while (!find && nbTry != 0);
     }
 
@@ -52,13 +52,13 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer("numCombiToComputer", GameModes.DEFENSE);
+        choiceCombinationToComputer(GameTypes.MORELESS, GameModes.DEFENSE);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {
             displayProposal(GameTypes.MORELESS, GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-            find = result(myCombinationThatComputerFind, computerAnswer, null,"computer", GameModes.DEFENSE);
+            find = result(myCombinationThatComputerFind, computerAnswer, null,PlayerTypes.COMPUTER, GameModes.DEFENSE);
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
             computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             tentative++;
@@ -73,7 +73,7 @@ public class PlusMoins extends BaseGame {
         int nombre = 0;
         this.combinationRandom();
         combination = String.valueOf(randomNumber);
-        choiceCombinationToComputer("numCombiToComputer", GameModes.DUAL);
+        choiceCombinationToComputer(GameTypes.MORELESS, GameModes.DUAL);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
@@ -82,12 +82,12 @@ public class PlusMoins extends BaseGame {
                 displayProposal(GameTypes.MORELESS, GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
-                find = result(combination, myAnswer, myCombinationThatComputerFind,"human", GameModes.DUAL);
+                find = result(combination, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
             } else {
                 displayProposal(GameTypes.MORELESS, GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-                find = result(myCombinationThatComputerFind, computerAnswer, combination, "computer", GameModes.DUAL);
+                find = result(myCombinationThatComputerFind, computerAnswer, combination, PlayerTypes.COMPUTER, GameModes.DUAL);
                 comparePlacement(computerAnswer, myCombinationThatComputerFind);
                 computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             }

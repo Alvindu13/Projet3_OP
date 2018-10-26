@@ -10,7 +10,6 @@ public class Mastermind extends BaseGame {
     private String combinationFixeMastermind;
     private char[] combinationFixeMastermindArrayHu;
     private char[] combinationFixeMastermindArrayCompu;
-    private char[] formatColoursGameS;
 
     /**
      * @param nbCases size of the combination.
@@ -26,7 +25,6 @@ public class Mastermind extends BaseGame {
         this.combinationFixeMastermind = "";
         this.combinationFixeMastermindArrayHu = new char[nbCases];
         this.combinationFixeMastermindArrayCompu = new char[nbCases];
-        this.formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         displayAvailableColors();
     }
 
@@ -65,7 +63,7 @@ public class Mastermind extends BaseGame {
                 int bMin = 0;
                 int bMax = nbAvailableColors;
                 int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
-                randomCombinationColors[indexColour] = formatColoursGameS[numRandom];
+                randomCombinationColors[indexColour] = formatColoursGame.get(numRandom);
             }
         }
 
@@ -152,7 +150,7 @@ public class Mastermind extends BaseGame {
             find = compare(myAnswer, randomCombinationColors);
             nbTry--;
         }
-        result(combination, myAnswer, null,"human", GameModes.CHALLENGE);
+        result(combination, myAnswer, null,PlayerTypes.HUMAN, GameModes.CHALLENGE);
     }
 
     /**
@@ -160,7 +158,7 @@ public class Mastermind extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer("stringCombiToComputer", GameModes.DEFENSE);
+        choiceCombinationToComputer(GameTypes.MASTERMIND, GameModes.DEFENSE);
         combinationFixeMastermindArrayCompu = castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
         while(nbTry > 0 && !find) {
             computerAnswer = "";
@@ -172,7 +170,7 @@ public class Mastermind extends BaseGame {
             nbTry--;
         }
         System.out.println();
-        result(myCombinationThatComputerFind, computerAnswer, null,"computer", GameModes.CHALLENGE);
+        result(myCombinationThatComputerFind, computerAnswer, null,PlayerTypes.COMPUTER, GameModes.CHALLENGE);
     }
 
     /**
@@ -181,7 +179,7 @@ public class Mastermind extends BaseGame {
     @Override
     public void duelMode() {
         this.combinationRandom();
-        choiceCombinationToComputer("stringCombiToComputer", GameModes.DUAL);
+        choiceCombinationToComputer(GameTypes.MASTERMIND, GameModes.DUAL);
         combinationFixeMastermind = castMethodArrayToString(combinationFixeMastermind, randomCombinationColors);
         combinationFixeMastermindArrayHu = castMethodStringToArray(combinationFixeMastermindArrayHu, combinationFixeMastermind);
         combinationFixeMastermindArrayCompu = castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
@@ -191,7 +189,7 @@ public class Mastermind extends BaseGame {
                 displayProposal(GameTypes.MASTERMIND, GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
                 find = compare(myAnswer, combinationFixeMastermindArrayHu);
-                result(combinationFixeMastermind, myAnswer, myCombinationThatComputerFind, "human", GameModes.DUAL);
+                result(combinationFixeMastermind, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
             } else {
                 computerAnswer = "";
                 this.combinationRandom();
@@ -199,7 +197,7 @@ public class Mastermind extends BaseGame {
                 displayProposal(GameTypes.MASTERMIND, GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 find = compare(computerAnswer, combinationFixeMastermindArrayCompu);
-                result(myCombinationThatComputerFind, computerAnswer, combinationFixeMastermind, "computer", GameModes.DUAL);
+                result(myCombinationThatComputerFind, computerAnswer, combinationFixeMastermind, PlayerTypes.COMPUTER, GameModes.DUAL);
             }
             number++;
         }
