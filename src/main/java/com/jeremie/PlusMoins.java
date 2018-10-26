@@ -40,7 +40,7 @@ public class PlusMoins extends BaseGame {
         combination = String.valueOf(randomNumber);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            displayProposal(gameTypes.MORELESS, gameModes.CHALLENGE, userTypes.HUMAN, 0, null);
+            displayProposal(gameTypes.MORELESS, gameModes.CHALLENGE, playerTypes.HUMAN, 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             System.out.println();
             nbTry--;
@@ -57,7 +57,7 @@ public class PlusMoins extends BaseGame {
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {
-            displayProposal(gameTypes.MORELESS, gameModes.DEFENSE, userTypes.COMPUTER, 0, computerAnswer);
+            displayProposal(gameTypes.MORELESS, gameModes.DEFENSE, playerTypes.COMPUTER, 0, computerAnswer);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
             find = result(myCombinationThatComputerFind, computerAnswer,"computer");
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
@@ -74,23 +74,25 @@ public class PlusMoins extends BaseGame {
         int nombre = 0;
         this.combinationRandom();
         combination = String.valueOf(randomNumber);
+        System.out.println("L'ordinateur a généré une combinaison que vous devez trouver. Attention, vous devez chercher des combinaisons différentes. \n");
+        choiceCombinationToComputer("numCombiToComputer");
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
 
         do {
             if (nombre % 2 == 0) {
-                displayProposal(gameTypes.MORELESS, gameModes.DUAL, userTypes.HUMAN, counter1, null);
+                displayProposal(gameTypes.MORELESS, gameModes.DUAL, playerTypes.HUMAN, counter1, null);
                 counter1++;
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
                 find = result(combination, myAnswer, "human");
             } else {
-                displayProposal(gameTypes.MORELESS, gameModes.DUAL, userTypes.COMPUTER, counter2, computerAnswer);
+                displayProposal(gameTypes.MORELESS, gameModes.DUAL, playerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
-                compareAndDisplayIndicatorsPlacement(computerAnswer, combination);
-                find = result(combination, computerAnswer,"computer");
-                comparePlacement(computerAnswer, combination);
-                computerAnswer = computerReflexion(equal, more, less, combination);
+                compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
+                find = result(myCombinationThatComputerFind, computerAnswer,"computer");
+                comparePlacement(computerAnswer, myCombinationThatComputerFind);
+                computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             }
             System.out.println();
             nombre++;

@@ -783,3 +783,27 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-10-25 16:49:01,672 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
 2018-10-25 16:49:02,438 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
 2018-10-25 16:49:04,850 [INFO ] (GameSelector.java:gameRun:149) --------Le jeu est terminé------
+2018-10-25 17:08:23,568 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-25 17:08:26,205 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-25 17:08:27,108 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 1
+2018-10-25 17:08:31,701 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-25 17:08:32,668 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-25 17:08:33,437 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 2
+2018-10-25 17:08:35,090 [INFO ] (GameSelector.java:gameRun:149) --------Le jeu est terminé------
+2018-10-26 17:13:17,166 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 17:13:20,974 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 17:13:21,756 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3
+2018-10-26 17:15:07,111 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 17:15:08,172 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 17:15:08,908 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3
+2018-10-26 17:16:25,714 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 17:16:26,850 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 17:16:27,986 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3
+2018-10-26 17:17:00,619 [INFO ] (GameSelector.java:gameRun:149) --------Le jeu est terminé------
+2018-10-26 17:17:46,834 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 17:17:47,513 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 17:17:48,201 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3
+2018-10-26 17:18:38,123 [INFO ] (GameSelector.java:gameRun:149) --------Le jeu est terminé------
+2018-10-26 17:20:04,870 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-10-26 17:20:05,826 [INFO ] (GameSelector.java:gamechoice:74) Le joueur a choisi le mode : 1
+2018-10-26 17:20:06,370 [INFO ] (GameSelector.java:gameMode:87) Le joueur a choisi le mode : 3

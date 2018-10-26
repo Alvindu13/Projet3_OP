@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public abstract class BaseGame implements GameMode{
     private boolean devMode;
-    private char[] formatColoursGameS;
     protected int nbSize;
     protected int number;
     protected int nbTry;
@@ -36,23 +35,22 @@ public abstract class BaseGame implements GameMode{
         this.logger = Logger.getLogger(BaseGame.class);
         this.sc = new Scanner(System.in);
         this.find = false;
-        this.formatColoursGameS = new char[]{'R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P'};
         this.counter1 = 1;
         this.counter2 = 1;
     }
 
-    public enum gameTypes {
+    protected enum gameTypes {
         MORELESS,
         MASTERMIND,
     }
 
-    public enum gameModes {
+    protected enum gameModes {
         CHALLENGE,
         DEFENSE,
         DUAL,
     }
 
-    public enum playerTypes {
+    protected enum playerTypes {
         HUMAN,
         COMPUTER,
     }
@@ -72,7 +70,7 @@ public abstract class BaseGame implements GameMode{
      * This method enabled to choice the combination that ordi have to find for the defense mode.
      */
     protected void choiceCombinationToComputer(String cases){
-        System.out.print("Merci de choisir la combinaison à 4 chiffres que l'ordinateur doit trouver : ");
+        System.out.print("Merci de choisir la combinaison à " + nbSize + " valeurs que l'ordinateur doit trouver : ");
         myCombinationThatComputerFind = sc.nextLine();
         switch(cases) {
             case "numCombiToComputer":
@@ -93,7 +91,7 @@ public abstract class BaseGame implements GameMode{
      * @param answer your answer or computer answer.
      * @param cases possibles cases.
      */
-    public void displayResultSentence(int counter, String answer, int cases){
+    private void displayResultSentence(int counter, String answer, int cases){
         switch(cases) {
             case 1:
                 System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse : ");
@@ -124,31 +122,31 @@ public abstract class BaseGame implements GameMode{
                     System.out.print("C'est à votre tour : ");
                     myAnswer = sc.nextLine();
                     if (game.equals(gameTypes.MORELESS))
-                        testAnswer("numCombi", playerTypes.HUMAN);
+                        this.testAnswer("numCombi", playerTypes.HUMAN);
                     else if (game.equals(gameTypes.MASTERMIND))
-                        testAnswer("stringCombi", playerTypes.HUMAN);
+                        this.testAnswer("stringCombi", playerTypes.HUMAN);
                     cases = 1;
-                    displayResultSentence(counter, myAnswer, cases);
+                    this.displayResultSentence(counter, myAnswer, cases);
                 } else if (mode.equals(gameModes.CHALLENGE)) {
                     System.out.print("Merci de faire votre proposition (");
                     System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
                     myAnswer = sc.nextLine();
                     if (game.equals(gameTypes.MORELESS))
-                        testAnswer("numCombi", playerTypes.HUMAN);
+                        this.testAnswer("numCombi", playerTypes.HUMAN);
                     else if (game.equals(gameTypes.MASTERMIND))
-                        testAnswer("stringCombi", playerTypes.HUMAN);
+                        this.testAnswer("stringCombi", playerTypes.HUMAN);
                     cases = 2;
-                    displayResultSentence(counter, myAnswer, cases);
+                    this.displayResultSentence(counter, myAnswer, cases);
                 }
                 break;
             case COMPUTER:
                 if (mode.equals(gameModes.DEFENSE)) {
                     cases = 3;
-                    displayResultSentence(counter, combinationComputer, cases);
+                    this.displayResultSentence(counter, combinationComputer, cases);
                 } else if (mode.equals(gameModes.DUAL)) {
                     System.out.print("C'est au tour de l'ordinateur ! \n");
                     cases = 4;
-                    displayResultSentence(counter, combinationComputer, cases);
+                    this.displayResultSentence(counter, combinationComputer, cases);
                 }
                 break;
         }
@@ -158,7 +156,7 @@ public abstract class BaseGame implements GameMode{
      * Regex to check if the answer format is correct.
      * @param cases possibles cases (number or string combi).
      */
-    protected void testAnswer(String cases, playerTypes user) {
+    private void testAnswer(String cases, playerTypes user) {
         switch(user) {
             case HUMAN:
                 switch (cases) {
