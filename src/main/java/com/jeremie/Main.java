@@ -26,7 +26,6 @@ public class Main {
         Properties prop = new Properties();
         String propertiesDevMode;
         Boolean devMode = false;
-        Boolean.parseBoolean(args[0]);
         try {
             prop.load(new FileReader("src/main/resources/config.properties"));
             propertiesDevMode = prop.getProperty("dev.mode");
