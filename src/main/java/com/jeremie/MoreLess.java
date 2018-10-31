@@ -41,7 +41,7 @@ public class MoreLess extends BaseGame {
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
             displayProposal(GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
-            compareAndDisplayIndicatorsPlacement(myAnswer, combination);
+            this.compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             nbTry--;
             find = result(combination, myAnswer, null,PlayerTypes.HUMAN, GameModes.CHALLENGE);
         } while (!find && nbTry != 0);
@@ -55,13 +55,13 @@ public class MoreLess extends BaseGame {
         choiceCombinationToComputer(GameModes.DEFENSE);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
-        while(!find && tentative <= nbTry) {
+        while(!find && essay <= nbTry) {
             displayProposal(GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
-            compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
+            this.compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
             find = result(myCombinationThatComputerFind, computerAnswer, null, PlayerTypes.COMPUTER, GameModes.DEFENSE);
-            comparePlacement(computerAnswer, myCombinationThatComputerFind);
-            computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
-            tentative++;
+            this.comparePlacement(computerAnswer, myCombinationThatComputerFind);
+            computerAnswer = this.computerReflexion(equal, more, less, myCombinationThatComputerFind);
+            essay++;
         }
     }
 
@@ -74,8 +74,6 @@ public class MoreLess extends BaseGame {
         this.combinationRandom();
         combination = String.valueOf(randomNumber);
         choiceCombinationToComputer(GameModes.DUAL);
-
-
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
@@ -83,15 +81,15 @@ public class MoreLess extends BaseGame {
             if (nombre % 2 == 0) {
                 displayProposal(GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
-                compareAndDisplayIndicatorsPlacement(myAnswer, combination);
+                this.compareAndDisplayIndicatorsPlacement(myAnswer, combination);
                 find = result(combination, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
             } else {
                 displayProposal(GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
-                compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
+                this.compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
                 find = result(myCombinationThatComputerFind, computerAnswer, combination, PlayerTypes.COMPUTER, GameModes.DUAL);
-                comparePlacement(computerAnswer, myCombinationThatComputerFind);
-                computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
+                this.comparePlacement(computerAnswer, myCombinationThatComputerFind);
+                computerAnswer = this.computerReflexion(equal, more, less, myCombinationThatComputerFind);
             }
             nombre++;
         } while (!find);

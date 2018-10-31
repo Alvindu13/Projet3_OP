@@ -16,7 +16,7 @@ public abstract class BaseGame implements GameMode{
     protected String combination;
     protected int randomNumber;
     protected String myCombinationThatComputerFind;
-    protected int tentative = 1;
+    protected int essay = 1;
     protected char[] randomCombinationColors;
     protected int counter1;
     protected int counter2;
@@ -26,7 +26,7 @@ public abstract class BaseGame implements GameMode{
         this.devMode = devMode;
         this.number = 0;
         this.myCombinationThatComputerFind = "";
-        this.tentative = 1;
+        this.essay = 1;
         this.nbSize = nbSize;
         this.nbTry = nbTry;
         this.randomCombinationColors = new char[nbSize];
@@ -36,7 +36,6 @@ public abstract class BaseGame implements GameMode{
         this.find = false;
         this.counter1 = 1;
         this.counter2 = 1;
-
     }
 
     protected enum GameModes {
@@ -91,7 +90,7 @@ public abstract class BaseGame implements GameMode{
                 System.out.print("Votre proposition : " + answer + " -> réponse : ");
                 break;
             case 3:
-                System.out.print("Proposition " + tentative + " : " + answer + " vérification des placements : ");
+                System.out.print("Proposition " + essay + " : " + answer + " vérification des placements : ");
                 break;
             case 4:
                 System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse : ");
@@ -183,7 +182,7 @@ public abstract class BaseGame implements GameMode{
                         System.out.println("La combinaison que vous deviez trouver était :  " + answerOfOther);
                     System.out.println("");
                 }
-                else if (!find && nbTry == 0 || !find && tentative == nbTry ){
+                else if (!find && nbTry == 0 || !find && essay == nbTry ){
                     System.out.println("Malheureusement pour l'ordinateur, il n'a pas pu trouver la bonne réponse... La réponse était :  " + combination);
                 }
                 break;

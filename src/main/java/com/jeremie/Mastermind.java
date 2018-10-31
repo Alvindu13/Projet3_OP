@@ -12,20 +12,20 @@ public class Mastermind extends BaseGame {
     private char[] combinationFixeMastermindArrayCompu;
 
     /**
-     * @param nbCases size of the combination.
+     * @param nbSize size of the combination.
      * @param nbTry maximum try/turn to find combination.
      * @param nbAvailableColors size of available colors.
      * @param devMode enable display combination when the game at started in dev mode.
      */
 
-    public Mastermind(int nbCases, int nbTry, int nbAvailableColors, boolean devMode) {
-        super(nbCases, nbTry, devMode);
+    public Mastermind(int nbSize, int nbTry, int nbAvailableColors, boolean devMode) {
+        super(nbSize, nbTry, devMode);
         this.nbAvailableColors = nbAvailableColors;
         this.formatColoursGame = Arrays.asList('R', 'J', 'B', 'I', 'M', 'V', 'G', 'N', 'O', 'P');
         this.combinationFixeMastermind = "";
-        this.combinationFixeMastermindArrayHu = new char[nbCases];
-        this.combinationFixeMastermindArrayCompu = new char[nbCases];
-        displayAvailableColors();
+        this.combinationFixeMastermindArrayHu = new char[nbSize];
+        this.combinationFixeMastermindArrayCompu = new char[nbSize];
+        this.displayAvailableColors();
     }
 
     /**
@@ -80,7 +80,7 @@ public class Mastermind extends BaseGame {
         int findGoodPlace = 0;
         char[] answer = new char[nbSize];
         find = true;
-        answer = castMethodStringToArray(answer, myAnswer);
+        answer = this.castMethodStringToArray(answer, myAnswer);
             // permet de marquer les éléments bien devinés bien placés.
             for (int index = 0; index < nbSize; index++) {
                 if (combinaisonSecrete[index] == answer[index]) {
@@ -143,11 +143,11 @@ public class Mastermind extends BaseGame {
     @Override
     public void challengeMode() {
         this.combinationRandom();
-        combination = castMethodArrayToString(combination, randomCombinationColors);
+        combination = this.castMethodArrayToString(combination, randomCombinationColors);
         displaySolutionForDev(combination);
         while(nbTry > 0 && !find) {
             displayProposal(GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
-            find = compare(myAnswer, randomCombinationColors);
+            find = this.compare(myAnswer, randomCombinationColors);
             nbTry--;
         }
         result(combination, myAnswer, null,PlayerTypes.HUMAN, GameModes.CHALLENGE);
@@ -159,14 +159,14 @@ public class Mastermind extends BaseGame {
     @Override
     public void defenseMode() {
         choiceCombinationToComputer(GameModes.DEFENSE);
-        combinationFixeMastermindArrayCompu = castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
+        combinationFixeMastermindArrayCompu = this.castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
         while(nbTry > 0 && !find) {
             computerAnswer = "";
             this.combinationRandom();
-            computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
+            computerAnswer = this.castMethodArrayToString(computerAnswer, randomCombinationColors);
             displayProposal(GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
-            find = compare(computerAnswer, combinationFixeMastermindArrayCompu);
-            tentative++;
+            find = this.compare(computerAnswer, combinationFixeMastermindArrayCompu);
+            essay++;
             nbTry--;
         }
         System.out.println();
@@ -180,15 +180,15 @@ public class Mastermind extends BaseGame {
     public void duelMode() {
         this.combinationRandom();
         choiceCombinationToComputer(GameModes.DUAL);
-        combinationFixeMastermind = castMethodArrayToString(combinationFixeMastermind, randomCombinationColors);
-        combinationFixeMastermindArrayHu = castMethodStringToArray(combinationFixeMastermindArrayHu, combinationFixeMastermind);
-        combinationFixeMastermindArrayCompu = castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
+        combinationFixeMastermind = this.castMethodArrayToString(combinationFixeMastermind, randomCombinationColors);
+        combinationFixeMastermindArrayHu = this.castMethodStringToArray(combinationFixeMastermindArrayHu, combinationFixeMastermind);
+        combinationFixeMastermindArrayCompu = this.castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
         displaySolutionForDev(combinationFixeMastermind);
         while(!find){
             if (number % 2 == 0) {
                 displayProposal(GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
-                find = compare(myAnswer, combinationFixeMastermindArrayHu);
+                find = this.compare(myAnswer, combinationFixeMastermindArrayHu);
                 result(combinationFixeMastermind, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
             } else {
                 computerAnswer = "";
@@ -196,7 +196,7 @@ public class Mastermind extends BaseGame {
                 computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
                 displayProposal(GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
-                find = compare(computerAnswer, combinationFixeMastermindArrayCompu);
+                find = this.compare(computerAnswer, combinationFixeMastermindArrayCompu);
                 result(myCombinationThatComputerFind, computerAnswer, combinationFixeMastermind, PlayerTypes.COMPUTER, GameModes.DUAL);
             }
             number++;
