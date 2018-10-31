@@ -1,7 +1,7 @@
 package com.jeremie;
 
 
-public class PlusMoins extends BaseGame {
+public class MoreLess extends BaseGame {
 
     private boolean find;
     private boolean[] equal;
@@ -13,7 +13,7 @@ public class PlusMoins extends BaseGame {
      * @param nbTry maximum try/turn to find combination.
      * @param devMode enable display combination when the game at started in dev mode.
      */
-    public PlusMoins(int nbSize, int nbTry, boolean devMode) {
+    public MoreLess(int nbSize, int nbTry, boolean devMode) {
         super(nbSize, nbTry, devMode);
         this.find = false;
         this.equal = new boolean[nbSize];
@@ -40,7 +40,7 @@ public class PlusMoins extends BaseGame {
         combination = String.valueOf(randomNumber);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            displayProposal(GameTypes.MORELESS, GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
+            displayProposal(GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
             compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             nbTry--;
             find = result(combination, myAnswer, null,PlayerTypes.HUMAN, GameModes.CHALLENGE);
@@ -52,13 +52,13 @@ public class PlusMoins extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer(GameTypes.MORELESS, GameModes.DEFENSE);
+        choiceCombinationToComputer(GameModes.DEFENSE);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         while(!find && tentative <= nbTry) {
-            displayProposal(GameTypes.MORELESS, GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
+            displayProposal(GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
             compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-            find = result(myCombinationThatComputerFind, computerAnswer, null,PlayerTypes.COMPUTER, GameModes.DEFENSE);
+            find = result(myCombinationThatComputerFind, computerAnswer, null, PlayerTypes.COMPUTER, GameModes.DEFENSE);
             comparePlacement(computerAnswer, myCombinationThatComputerFind);
             computerAnswer = computerReflexion(equal, more, less, myCombinationThatComputerFind);
             tentative++;
@@ -73,18 +73,20 @@ public class PlusMoins extends BaseGame {
         int nombre = 0;
         this.combinationRandom();
         combination = String.valueOf(randomNumber);
-        choiceCombinationToComputer(GameTypes.MORELESS, GameModes.DUAL);
+        choiceCombinationToComputer(GameModes.DUAL);
+
+
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
         do {
             if (nombre % 2 == 0) {
-                displayProposal(GameTypes.MORELESS, GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
+                displayProposal(GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
                 compareAndDisplayIndicatorsPlacement(myAnswer, combination);
                 find = result(combination, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
             } else {
-                displayProposal(GameTypes.MORELESS, GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
+                displayProposal(GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
                 find = result(myCombinationThatComputerFind, computerAnswer, combination, PlayerTypes.COMPUTER, GameModes.DUAL);
@@ -162,6 +164,17 @@ public class PlusMoins extends BaseGame {
             answer += computerAnswers[index];
         }
         return answer;
+    }
+
+    @Override
+    protected boolean testMyAnswer(String answer) {
+        boolean answerCorrect = true;
+        if (answer.length() != nbSize || !answer.matches("^\\d+$")) {
+            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+            System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
+            answerCorrect = false;
+        }
+        return answerCorrect;
     }
 }
 

@@ -22,16 +22,14 @@ public abstract class BaseGame implements GameMode{
     protected int counter2;
 
 
-
-    public BaseGame(int nbCases, int nbTry, boolean devMode) {
+    public BaseGame(int nbSize, int nbTry, boolean devMode) {
         this.devMode = devMode;
         this.number = 0;
         this.myCombinationThatComputerFind = "";
-        this.randomNumber = randomNumber;
         this.tentative = 1;
-        this.nbSize = nbCases;
+        this.nbSize = nbSize;
         this.nbTry = nbTry;
-        this.randomCombinationColors = new char[nbCases];
+        this.randomCombinationColors = new char[nbSize];
         this.combination = "";
         this.logger = Logger.getLogger(BaseGame.class);
         this.sc = new Scanner(System.in);
@@ -39,11 +37,6 @@ public abstract class BaseGame implements GameMode{
         this.counter1 = 1;
         this.counter2 = 1;
 
-    }
-
-    protected enum GameTypes {
-        MORELESS,
-        MASTERMIND,
     }
 
     protected enum GameModes {
@@ -69,24 +62,16 @@ public abstract class BaseGame implements GameMode{
     }
 
     /**
-     * This method enabled to choice the combination that ordi have to find for the defense mode.
+     * This method enabled to choice the combination that the computer have to find for the defense mode.
      */
-    protected void choiceCombinationToComputer(GameTypes types, GameModes mode){
+    protected void choiceCombinationToComputer(GameModes mode){
         if(mode.equals(GameModes.DUAL)){
             System.out.println("L'ordinateur a généré une combinaison que vous devez trouver. Attention, vous devez chercher des combinaisons différentes. \n");
             System.out.print("C'est maintenant à vous de proposer une combinaison pour l'ordinateur : ");
         }
         else if ((mode.equals(GameModes.DEFENSE)))
             System.out.print("Merci de proposer une combinaison de " + nbSize + " valeurs que l'ordinateur doit retrouver : ");
-        myCombinationThatComputerFind = sc.nextLine();
-        switch (types){
-            case MORELESS:
-                testMyAnswersCombiForComputer(GameTypes.MORELESS);
-                break;
-            case MASTERMIND:
-                testMyAnswersCombiForComputer(GameTypes.MASTERMIND);
-            break;
-        }
+        myCombinationThatComputerFind = this.getAnswerFromUser();
         System.out.println("=> L'ordinateur doit retrouver la réponse suivante : " + myCombinationThatComputerFind);
         System.out.println();
     }
@@ -115,35 +100,44 @@ public abstract class BaseGame implements GameMode{
     }
 
     /**
-     * Display some propositions possibles according combination, user type and mode selected.
-     * you or computer.
-     * to count turns.
-     * computer answer.
+     * Regex to check if the answer format is correct.
+     * */
+    protected abstract boolean testMyAnswer(String answer);
+
+    /**
+     * Check if the format of your answer is correct.
+     * @return correct answer.
      */
-    protected void displayProposal(GameTypes game, GameModes mode, PlayerTypes user, int counter, String combinationComputer) {
+    private String getAnswerFromUser() {
+         String answer = sc.nextLine();
+         while (testMyAnswer(answer) == false) {
+             answer = sc.nextLine();
+         }
+         return answer;
+     }
+
+    /**
+     * Display some propositions possibles according combination, user type and mode selected.
+     * @param mode game mode selected.
+     * @param user you or computer.
+     * @param counter to count turns.
+     * @param combinationComputer computer answer.
+     */
+    protected void displayProposal(GameModes mode, PlayerTypes user, int counter, String combinationComputer) {
         int cases = 0;
         switch (user) {
             case HUMAN:
                 if (mode.equals(GameModes.DUAL)) {
                     System.out.print("C'est à votre tour : ");
-                    myAnswer = sc.nextLine();
-                    if (game.equals(GameTypes.MORELESS))
-                        this.testMyAnswers(GameTypes.MORELESS);
-                    else if (game.equals(GameTypes.MASTERMIND))
-                        this.testMyAnswers(GameTypes.MASTERMIND);
+                    myAnswer = this.getAnswerFromUser();
                     cases = 1;
-                    displayResultSentence(counter, myAnswer, cases);
+                    this.displayResultSentence(counter, myAnswer, cases);
                 } else if (mode.equals(GameModes.CHALLENGE)) {
                     System.out.print("Merci de faire votre proposition (");
                     System.out.print("il vous reste encore " + (nbTry) + " tentatives) : ");
-                    myAnswer = sc.nextLine();
-                    if (game.equals(GameTypes.MORELESS))
-                        this.testMyAnswers(GameTypes.MORELESS);
-                    else if (game.equals(GameTypes.MASTERMIND))
-                        this.testMyAnswers(GameTypes.MASTERMIND);
-                    this.displayResultSentence(counter, myAnswer, cases);
+                    myAnswer = this.getAnswerFromUser();
                     cases = 2;
-                    displayResultSentence(counter, myAnswer, cases);
+                    this.displayResultSentence(counter, myAnswer, cases);
                 }
                 break;
             case COMPUTER:
@@ -154,52 +148,6 @@ public abstract class BaseGame implements GameMode{
                     System.out.print("C'est au tour de l'ordinateur ! \n");
                     cases = 4;
                     this.displayResultSentence(counter, combinationComputer, cases);
-                }
-                break;
-        }
-    }
-
-    /**
-     * Regex to check if the answer format is correct.
-     * @param types
-     */
-    private void testMyAnswers(GameTypes types) { // ça fait un peu redondant voir avec Bastien
-        switch (types) {
-            case MORELESS:
-                while (myAnswer.length() != nbSize || !myAnswer.matches("^\\d+$")) {
-                    System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                    System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
-                    myAnswer = sc.nextLine();
-                }
-                break;
-            case MASTERMIND:
-                while (myAnswer.length() != nbSize || !myAnswer.matches("^[A-Z]+$")) {
-                    System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                    System.out.println("Merci de saisir un une combinaison à " + nbSize + " lettres MAJ (ex : RJBM).");
-                    myAnswer = sc.nextLine();
-                }
-                break;
-        }
-    }
-
-    /**
-     * Regex to check if the answer format is correct.
-     * @param types
-     */
-    private void testMyAnswersCombiForComputer(GameTypes types) {
-        switch (types) {
-            case MORELESS:
-                while (myCombinationThatComputerFind.length() != nbSize || !myCombinationThatComputerFind.matches("^\\d+$")) {
-                    System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                    System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
-                    myCombinationThatComputerFind = sc.nextLine();
-                }
-                break;
-            case MASTERMIND:
-                while (myCombinationThatComputerFind.length() != nbSize || !myCombinationThatComputerFind.matches("^[A-Z]+$")) {
-                    System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-                    System.out.println("Merci de saisir un une combinaison à " + nbSize + " lettres MAJ (ex : RJBM).");
-                    myCombinationThatComputerFind = sc.nextLine();
                 }
                 break;
         }

@@ -146,7 +146,7 @@ public class Mastermind extends BaseGame {
         combination = castMethodArrayToString(combination, randomCombinationColors);
         displaySolutionForDev(combination);
         while(nbTry > 0 && !find) {
-            displayProposal(GameTypes.MASTERMIND, GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
+            displayProposal(GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
             find = compare(myAnswer, randomCombinationColors);
             nbTry--;
         }
@@ -158,13 +158,13 @@ public class Mastermind extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer(GameTypes.MASTERMIND, GameModes.DEFENSE);
+        choiceCombinationToComputer(GameModes.DEFENSE);
         combinationFixeMastermindArrayCompu = castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
         while(nbTry > 0 && !find) {
             computerAnswer = "";
             this.combinationRandom();
             computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
-            displayProposal(GameTypes.MASTERMIND, GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
+            displayProposal(GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
             find = compare(computerAnswer, combinationFixeMastermindArrayCompu);
             tentative++;
             nbTry--;
@@ -179,14 +179,14 @@ public class Mastermind extends BaseGame {
     @Override
     public void duelMode() {
         this.combinationRandom();
-        choiceCombinationToComputer(GameTypes.MASTERMIND, GameModes.DUAL);
+        choiceCombinationToComputer(GameModes.DUAL);
         combinationFixeMastermind = castMethodArrayToString(combinationFixeMastermind, randomCombinationColors);
         combinationFixeMastermindArrayHu = castMethodStringToArray(combinationFixeMastermindArrayHu, combinationFixeMastermind);
         combinationFixeMastermindArrayCompu = castMethodStringToArray(combinationFixeMastermindArrayCompu, myCombinationThatComputerFind);
         displaySolutionForDev(combinationFixeMastermind);
         while(!find){
             if (number % 2 == 0) {
-                displayProposal(GameTypes.MASTERMIND, GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
+                displayProposal(GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
                 counter1++;
                 find = compare(myAnswer, combinationFixeMastermindArrayHu);
                 result(combinationFixeMastermind, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
@@ -194,13 +194,24 @@ public class Mastermind extends BaseGame {
                 computerAnswer = "";
                 this.combinationRandom();
                 computerAnswer = castMethodArrayToString(computerAnswer, randomCombinationColors);
-                displayProposal(GameTypes.MASTERMIND, GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
+                displayProposal(GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 find = compare(computerAnswer, combinationFixeMastermindArrayCompu);
                 result(myCombinationThatComputerFind, computerAnswer, combinationFixeMastermind, PlayerTypes.COMPUTER, GameModes.DUAL);
             }
             number++;
         }
+    }
+
+    @Override
+    protected boolean testMyAnswer(String answer) {
+        boolean answerCorrect = true;
+        if (answer.length() != nbSize || !answer.matches("^[A-Z]+$")) {
+            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+            System.out.println("Merci de saisir un une combinaison à " + nbSize + " lettres MAJ (ex : RJBM).");
+            answerCorrect = false;
+        }
+        return answerCorrect;
     }
 }
 

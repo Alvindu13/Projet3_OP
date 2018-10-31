@@ -7,10 +7,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
 
-
 public class GameSelector {
     private Mastermind mastermindGame;
-    private PlusMoins plusMoinsGame;
+    private MoreLess moreLessGame;
     private int nbSize;
     private int gameMode;
     private int numberGame;
@@ -48,7 +47,7 @@ public class GameSelector {
      */
     public void retry() {
         System.out.println();
-        System.out.println("Voulez-vous rejouer ? Si oui, veuillez entrer OK. Si non, appuyez sur n'importe quelle touche puis sur entrée");
+        System.out.println("Voulez-vous rejouer ? Si oui, veuillez entrer OK. Si non, appuyez sur entrée pour quitter le jeu.");
         String ansRetry = "";
         sc = new Scanner(System.in);
         ansRetry = sc.nextLine();
@@ -120,16 +119,16 @@ public class GameSelector {
     public void gameRun(){
         this.readParameters();
         if (numberGame == 1){
-            plusMoinsGame = new PlusMoins(nbSize, nbTry, devMode);
+            moreLessGame = new MoreLess(nbSize, nbTry, devMode);
             switch (gameMode){
                 case 1:
-                    plusMoinsGame.challengeMode();
+                    moreLessGame.challengeMode();
                     break;
                 case 2:
-                    plusMoinsGame.defenseMode();
+                    moreLessGame.defenseMode();
                     break;
                 case 3:
-                    plusMoinsGame.duelMode();
+                    moreLessGame.duelMode();
                     break;
             }
         }
