@@ -2,15 +2,14 @@ package com.jeremie;
 
 
 public class MoreLess extends BaseGame {
-
     private boolean find;
     private boolean[] equal;
     private boolean[] more;
     private boolean[] less;
 
     /**
-     * @param nbSize size of the combination.
-     * @param nbTry maximum try/turn to find combination.
+     * @param nbSize  size of the combination.
+     * @param nbTry   maximum try/turn to find combination.
      * @param devMode enable display combination when the game at started in dev mode.
      */
     public MoreLess(int nbSize, int nbTry, boolean devMode) {
@@ -23,12 +22,13 @@ public class MoreLess extends BaseGame {
 
     /**
      * Calculation of a random number.
+     *
      * @return the random number.
      */
-    public void combinationRandom() { //revoir cette méthode
-            int bMin = (int) Math.pow(10, nbSize - 1);
-            int bMax = (int) Math.pow(10, nbSize);
-            randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
+    public void combinationRandom() {
+        int bMin = (int) Math.pow(10, nbSize - 1);
+        int bMax = (int) Math.pow(10, nbSize);
+        randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
     }
 
     /**
@@ -55,7 +55,7 @@ public class MoreLess extends BaseGame {
         choiceCombinationToComputer(GameMode.DEFENSE);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
-        while(!find && essay <= nbTry) {
+        while (!find && essay <= nbTry) {
             displayProposal(GameMode.DEFENSE, PlayerType.COMPUTER, 0, computerAnswer);
             this.compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
             find = result(myCombinationThatComputerFind, computerAnswer, null, PlayerType.COMPUTER, GameMode.DEFENSE);
@@ -97,7 +97,8 @@ public class MoreLess extends BaseGame {
 
     /**
      * Comparison between answer and combination.
-     * @param answer your answer or computer answer.
+     *
+     * @param answer      your answer or computer answer.
      * @param combination secret combination.
      */
     private void compareAndDisplayIndicatorsPlacement(String answer, String combination) {
@@ -115,7 +116,8 @@ public class MoreLess extends BaseGame {
 
     /**
      * Comparison between answer and combination.
-     * @param answer your answer or computer answer.
+     *
+     * @param answer      your answer or computer answer.
      * @param combination secret combination.
      */
     private void comparePlacement(String answer, String combination) {
@@ -132,32 +134,31 @@ public class MoreLess extends BaseGame {
 
     /**
      * The computer is thinking about proposing an answer based on the indicators.
+     *
      * @param equal Array which catch with a boolean equal values between combination and answer
      * @param more  Array which catch with a boolean for greater number values between combination and answer
      * @param less  Array which catch with a boolean for smaller number values between combination and answer
      */
 
-    private String computerReflexion(boolean[] equal, boolean[] more, boolean[] less, String yourResponseThatOrdiFind){
+    private String computerReflexion(boolean[] equal, boolean[] more, boolean[] less, String yourResponseThatOrdiFind) {
         char[] computerAnswers = new char[nbSize];
         String answer = "";
-        for(int index = 0; index < nbSize; index++){
+        for (int index = 0; index < nbSize; index++) {
             computerAnswers[index] = computerAnswer.charAt(index);
         }
-        for(int index = 0; index < nbSize; index++){
+        for (int index = 0; index < nbSize; index++) {
             int entier = 0;
             int newEntier = 0;
-            if(equal[index] == true){
+            if (equal[index] == true) {
                 computerAnswers[index] = yourResponseThatOrdiFind.charAt(index);
-            }
-            else if(more[index] == true){
+            } else if (more[index] == true) {
                 entier = Character.getNumericValue(computerAnswer.charAt(index));
                 newEntier = entier + 1;
-                computerAnswers[index] = Character.forDigit(newEntier,10);
-            }
-            else if(less[index] == true){
+                computerAnswers[index] = Character.forDigit(newEntier, 10);
+            } else if (less[index] == true) {
                 entier = Character.getNumericValue(computerAnswer.charAt(index));
                 newEntier = entier - 1;
-                computerAnswers[index] = Character.forDigit(newEntier,10);
+                computerAnswers[index] = Character.forDigit(newEntier, 10);
             }
             answer += computerAnswers[index];
         }
@@ -167,7 +168,7 @@ public class MoreLess extends BaseGame {
     @Override
     protected boolean testMyAnswer(String answer) {
         boolean answerCorrect = true;
-        if (!answer.matches("^\\d{"+nbSize+"}$")) {
+        if (!answer.matches("^\\d{" + nbSize + "}$")) {
             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
             System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
             answerCorrect = false;

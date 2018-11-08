@@ -1,6 +1,7 @@
 package com.jeremie;
 
 import org.apache.log4j.Logger;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -54,8 +55,7 @@ public class GameSelector {
         if (ansRetry.equals("OK")) {
             logger.info("--------Le joueur vient de relancer le jeu------");
             this.numberRun();
-        }
-        else {
+        } else {
             System.out.println("Je vous remercie d'avoir joué. À bientôt ! ");
             logger.info("--------Le joueur vient de quitter le jeu------");
         }
@@ -64,7 +64,7 @@ public class GameSelector {
     /**
      * Display different games and selected from among them the game you want to play.
      */
-    public void gamechoice()  {
+    public void gamechoice() {
         System.out.println("Veuillez choisir le jeu que vous voulez lancer : ");
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
         for (int i = 0; i < 2; i++)
@@ -88,10 +88,11 @@ public class GameSelector {
 
     /**
      * Function wich enable to manage exceptions
+     *
      * @param value number of possible values.
      * @return
      */
-    private int manageException(int value, int numberChoice){
+    private int manageException(int value, int numberChoice) {
         do {
             try {
                 value = sc.nextInt();
@@ -116,11 +117,11 @@ public class GameSelector {
     /**
      * Run different games and modes depending on parameters.
      */
-    public void gameRun(){
+    public void gameRun() {
         this.readParameters();
-        if (numberGame == 1){
+        if (numberGame == 1) {
             moreLessGame = new MoreLess(nbSize, nbTry, devMode);
-            switch (gameMode){
+            switch (gameMode) {
                 case 1:
                     moreLessGame.challengeMode();
                     break;

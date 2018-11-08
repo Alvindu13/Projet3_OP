@@ -1933,3 +1933,6 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-11-08 14:28:50,563 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
 2018-11-08 14:28:53,665 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 1
 2018-11-08 14:28:55,231 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1
+2018-11-08 14:39:33,735 [INFO ] (GameSelector.java:numberRun:40) --------Le jeu a démarré------
+2018-11-08 14:39:34,806 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 2
+2018-11-08 14:39:35,525 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1

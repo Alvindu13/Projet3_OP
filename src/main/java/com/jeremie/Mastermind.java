@@ -1,6 +1,5 @@
 package com.jeremie;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +10,6 @@ public class Mastermind extends BaseGame {
     private char[] combinationFixeMastermindArrayHu;
     private char[] combinationFixeMastermindArrayCompu;
     private char[] randomCombinationColors;
-
 
     /**
      * @param nbSize            size of the combination.
@@ -61,7 +59,7 @@ public class Mastermind extends BaseGame {
      * @return the random number.
      */
     protected void combinationRandom() {
-        for (int indexColour = 0; indexColour < nbSize; indexColour++) { //génère une série de 4 couleurs aléatoire pour la réponse de l'ordi
+        for (int indexColour = 0; indexColour < nbSize; indexColour++) {
             int bMin = 0;
             int bMax = nbAvailableColors;
             int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
@@ -78,13 +76,12 @@ public class Mastermind extends BaseGame {
      */
     public boolean compare(String myAnswer, char[] combinaisonSecrete) {
         int[] result = new int[2];
-        boolean[] checkDuplicate = new boolean[nbSize]; //Le tableau checkDuplicate permet de marquer les éléments correctement devinés et placés pour qu'ils ne soient pas considérés plusieurs fois.
-        int PMP = 0; // Présent(s) Mal Placé(s)
+        boolean[] checkDuplicate = new boolean[nbSize]; //this array enable to mark correct elements which are well guessed and well placed
+        int PMP = 0; // Present(s) misplaced(s)
         int findGoodPlace = 0;
         char[] answer = new char[nbSize];
         find = true;
         answer = this.castMethodStringToArray(answer, myAnswer);
-        // permet de marquer les éléments bien devinés bien placés.
         for (int index = 0; index < nbSize; index++) {
             if (combinaisonSecrete[index] == answer[index]) {
                 findGoodPlace++;
@@ -94,7 +91,7 @@ public class Mastermind extends BaseGame {
                 checkDuplicate[index] = false;
             }
         }
-        // permet d'identifier les éléments bien devinés mais mal placés.
+        //Identify the elements well guess but bad placed
         for (int index = 0; index < nbSize; index++) {
             if (combinaisonSecrete[index] != answer[index]) {
                 int j = 0;
