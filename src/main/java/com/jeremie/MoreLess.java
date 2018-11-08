@@ -40,10 +40,10 @@ public class MoreLess extends BaseGame {
         combination = String.valueOf(randomNumber);
         displaySolutionForDev(combination); // if mode dev then display solution
         do {
-            displayProposal(GameModes.CHALLENGE, PlayerTypes.HUMAN, 0, null);
+            displayProposal(GameMode.CHALLENGE, PlayerType.HUMAN, 0, null);
             this.compareAndDisplayIndicatorsPlacement(myAnswer, combination);
             nbTry--;
-            find = result(combination, myAnswer, null,PlayerTypes.HUMAN, GameModes.CHALLENGE);
+            find = result(combination, myAnswer, null, PlayerType.HUMAN, GameMode.CHALLENGE);
         } while (!find && nbTry != 0);
     }
 
@@ -52,13 +52,13 @@ public class MoreLess extends BaseGame {
      */
     @Override
     public void defenseMode() {
-        choiceCombinationToComputer(GameModes.DEFENSE);
+        choiceCombinationToComputer(GameMode.DEFENSE);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         while(!find && essay <= nbTry) {
-            displayProposal(GameModes.DEFENSE, PlayerTypes.COMPUTER, 0, computerAnswer);
+            displayProposal(GameMode.DEFENSE, PlayerType.COMPUTER, 0, computerAnswer);
             this.compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-            find = result(myCombinationThatComputerFind, computerAnswer, null, PlayerTypes.COMPUTER, GameModes.DEFENSE);
+            find = result(myCombinationThatComputerFind, computerAnswer, null, PlayerType.COMPUTER, GameMode.DEFENSE);
             this.comparePlacement(computerAnswer, myCombinationThatComputerFind);
             computerAnswer = this.computerReflexion(equal, more, less, myCombinationThatComputerFind);
             essay++;
@@ -73,21 +73,21 @@ public class MoreLess extends BaseGame {
         int nombre = 0;
         this.combinationRandom();
         combination = String.valueOf(randomNumber);
-        choiceCombinationToComputer(GameModes.DUAL);
+        choiceCombinationToComputer(GameMode.DUAL);
         this.combinationRandom();
         computerAnswer = String.valueOf(randomNumber);
         displaySolutionForDev(combination);
         do {
             if (nombre % 2 == 0) {
-                displayProposal(GameModes.DUAL, PlayerTypes.HUMAN, counter1, null);
+                displayProposal(GameMode.DUAL, PlayerType.HUMAN, counter1, null);
                 counter1++;
                 this.compareAndDisplayIndicatorsPlacement(myAnswer, combination);
-                find = result(combination, myAnswer, myCombinationThatComputerFind, PlayerTypes.HUMAN, GameModes.DUAL);
+                find = result(combination, myAnswer, myCombinationThatComputerFind, PlayerType.HUMAN, GameMode.DUAL);
             } else {
-                displayProposal(GameModes.DUAL, PlayerTypes.COMPUTER, counter2, computerAnswer);
+                displayProposal(GameMode.DUAL, PlayerType.COMPUTER, counter2, computerAnswer);
                 counter2++;
                 this.compareAndDisplayIndicatorsPlacement(computerAnswer, myCombinationThatComputerFind);
-                find = result(myCombinationThatComputerFind, computerAnswer, combination, PlayerTypes.COMPUTER, GameModes.DUAL);
+                find = result(myCombinationThatComputerFind, computerAnswer, combination, PlayerType.COMPUTER, GameMode.DUAL);
                 this.comparePlacement(computerAnswer, myCombinationThatComputerFind);
                 computerAnswer = this.computerReflexion(equal, more, less, myCombinationThatComputerFind);
             }
@@ -167,7 +167,7 @@ public class MoreLess extends BaseGame {
     @Override
     protected boolean testMyAnswer(String answer) {
         boolean answerCorrect = true;
-        if (answer.length() != nbSize || !answer.matches("^\\d+$")) {
+        if (!answer.matches("^\\d{"+nbSize+"}$")) {
             System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
             System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
             answerCorrect = false;

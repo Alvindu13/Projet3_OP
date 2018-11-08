@@ -1917,3 +1917,19 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-10-31 17:39:43,412 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 2
 2018-10-31 17:39:45,416 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 2
 2018-10-31 17:39:47,640 [INFO ] (GameSelector.java:gameRun:149) --------Le jeu est terminé------
+2018-11-08 13:35:59,250 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-08 13:36:01,937 [ERROR] (GameSelector.java:manageException:107) Une exception est survenue lors du choix du jeu.
+2018-11-08 13:36:09,758 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 2
+2018-11-08 13:36:15,180 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1
+2018-11-08 13:42:54,550 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-08 13:43:36,343 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 2
+2018-11-08 13:43:37,245 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1
+2018-11-08 13:47:43,645 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-08 13:47:51,812 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 2
+2018-11-08 13:47:52,571 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1
+2018-11-08 14:27:07,879 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-08 14:27:10,907 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 2
+2018-11-08 14:27:13,427 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1
+2018-11-08 14:28:50,563 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-08 14:28:53,665 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 1
+2018-11-08 14:28:55,231 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 1
