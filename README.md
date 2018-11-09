@@ -78,7 +78,8 @@ Pour IntelliJ vous avez les 3 possibilités.
 
 <h3>3.1.2 Console</h3>
 Vous pouvez aussi démarrer le programme depuis votre console en utilisant l'application javac avec la ligne de commande suivante :
- javac -d classes/ sources/MonFichierACompiler.java
+javac -d classes/ sources/MonFichierACompiler.java
+Pour compiler le projet java avec maven vous pouvez utiliser : mvn package en ligne de commande
  
 <h2>3.2 Exécution</h2>
 
