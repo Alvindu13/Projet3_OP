@@ -9,8 +9,7 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class GameSelector {
-    private Mastermind mastermindGame;
-    private MoreLess moreLessGame;
+    private BaseGame game;
     private int nbSize;
     private int gameMode;
     private int numberGame;
@@ -22,10 +21,10 @@ public class GameSelector {
     private Logger logger;
 
     /**
-     * @param dev dev mode (args[0] = true, args[1] = false)
+     * @param dev program argument to run this program in dev mode or not.
      */
     public GameSelector(boolean dev) {
-        this.devMode = dev; //switch for dev mode true or false
+        this.devMode = dev;
         this.gameMode = 0;
         this.numberGame = 0;
         this.numberchoiceIsGood = false;
@@ -69,7 +68,7 @@ public class GameSelector {
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
         for (int i = 0; i < 2; i++)
             System.out.println(i + 1 + " - " + gameCh[i]);
-        numberGame = manageException(numberGame, 2);
+        numberGame = checkUserChoice(numberGame, 2);
         logger.info("Le joueur a choisi le mode : " + numberGame);
     }
 
@@ -81,7 +80,7 @@ public class GameSelector {
         System.out.println("Veuillez choisir le mode de jeu :");
         for (int index = 0; index < arrayMode.length; index++)
             System.out.println(arrayMode[index]);
-        gameMode = manageException(gameMode, 3);
+        gameMode = checkUserChoice(gameMode, 3);
         logger.info("Le joueur a choisi le mode : " + gameMode);
         System.out.println(" ");
     }
@@ -92,7 +91,7 @@ public class GameSelector {
      * @param value number of possible values.
      * @return
      */
-    private int manageException(int value, int numberChoice) {
+    private int checkUserChoice(int value, int numberChoice) {
         do {
             try {
                 value = sc.nextInt();
@@ -120,33 +119,23 @@ public class GameSelector {
     public void gameRun() {
         this.readParameters();
         if (numberGame == 1) {
-            moreLessGame = new MoreLess(nbSize, nbTry, devMode);
-            switch (gameMode) {
-                case 1:
-                    moreLessGame.challengeMode();
-                    break;
-                case 2:
-                    moreLessGame.defenseMode();
-                    break;
-                case 3:
-                    moreLessGame.duelMode();
-                    break;
-            }
+            game = new MoreLess(nbSize, nbTry, devMode);
+        } else if (numberGame == 2) {
+            game = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
         }
-        if (numberGame == 2) {
-            mastermindGame = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
-            switch (gameMode) {
-                case 1:
-                    mastermindGame.challengeMode();
-                    break;
-                case 2:
-                    mastermindGame.defenseMode();
-                    break;
-                case 3:
-                    mastermindGame.duelMode();
-                    break;
-            }
+
+        switch (gameMode) {
+            case 1:
+                game.challengeMode();
+                break;
+            case 2:
+                game.defenseMode();
+                break;
+            case 3:
+                game.duelMode();
+                break;
         }
+
         logger.info("--------Le jeu est terminé------");
         this.retry();
     }
