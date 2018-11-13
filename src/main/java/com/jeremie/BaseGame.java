@@ -74,44 +74,16 @@ public abstract class BaseGame implements GameMode {
     }
 
     /**
-     * Display a sentence with your answer every turn.
-     * @param counter parameter only in duel mode for count every turn up to find the combination.
-     * @param answer your answer or computer answer.
-     * @param cases possibles cases.
-     */
-    private void displayResultSentence(int counter, String answer, int cases){
-        switch(cases) {
-            case 1:
-                System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse : ");
-                break;
-            case 2:
-                System.out.print("Votre proposition : " + answer + " -> réponse : ");
-                break;
-            case 3:
-                System.out.print("Proposition " + essay + " : " + answer + " vérification des placements : ");
-                break;
-            case 4:
-                System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse : ");
-                break;
-        }
-    }
-
-    /**
      * Regex to check if the answer format is correct.
-     * */
+     * @return a check boolean
+     */
     protected abstract boolean testMyAnswer(String answer);
 
     /**
-     * Check if the format of your answer is correct.
-     * @return correct answer.
+     * Generate a random combination.
      */
-    private String getAnswerFromUser() {
-         String answer = sc.nextLine();
-         while (this.testMyAnswer(answer) == false) {
-             answer = sc.nextLine();
-         }
-         return answer;
-     }
+    protected abstract void combinationRandom();
+
 
     /**
      * Display some propositions possibles according combination, user type and mode selected.
@@ -187,5 +159,41 @@ public abstract class BaseGame implements GameMode {
         }
         return find;
     }
+
+    /**
+     * Check if the format of your answer is correct.
+     * @return correct answer.
+     */
+    private String getAnswerFromUser() {
+        String answer = sc.nextLine();
+        while (this.testMyAnswer(answer) == false) {
+            answer = sc.nextLine();
+        }
+        return answer;
+    }
+
+    /**
+     * Display a sentence with your answer every turn.
+     * @param counter parameter only in duel mode for count every turn up to find the combination.
+     * @param answer your answer or computer answer.
+     * @param cases possibles cases.
+     */
+    private void displayResultSentence(int counter, String answer, int cases){
+        switch(cases) {
+            case 1:
+                System.out.print("Votre proposition pour le tour " + counter +   " : " + answer + " => réponse : ");
+                break;
+            case 2:
+                System.out.print("Votre proposition : " + answer + " -> réponse : ");
+                break;
+            case 3:
+                System.out.print("Proposition " + essay + " : " + answer + " vérification des placements : ");
+                break;
+            case 4:
+                System.out.print("L'ordinateur propose pour le tour " + counter +   " : " + answer + " => réponse : ");
+                break;
+        }
+    }
+
 }
 

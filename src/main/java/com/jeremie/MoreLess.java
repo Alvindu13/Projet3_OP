@@ -21,17 +21,6 @@ public class MoreLess extends BaseGame {
     }
 
     /**
-     * Calculation of a random number.
-     *
-     * @return the random number.
-     */
-    public void combinationRandom() {
-        int bMin = (int) Math.pow(10, nbSize - 1);
-        int bMax = (int) Math.pow(10, nbSize);
-        randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
-    }
-
-    /**
      * Start challenge mode, The user propose a secret combination that the computer have to find.
      */
     @Override
@@ -174,6 +163,13 @@ public class MoreLess extends BaseGame {
             answerCorrect = false;
         }
         return answerCorrect;
+    }
+
+    @Override
+    protected void combinationRandom() {
+        int bMin = (int) Math.pow(10, nbSize - 1);
+        int bMax = (int) Math.pow(10, nbSize);
+        randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
     }
 }
 

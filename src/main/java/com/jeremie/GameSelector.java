@@ -45,7 +45,7 @@ public class GameSelector {
     /**
      * Retry game.
      */
-    public void retry() {
+    private void retry() {
         System.out.println();
         System.out.println("Voulez-vous rejouer ? Si oui, veuillez entrer OK. Si non, appuyez sur entrée pour quitter le jeu.");
         String ansRetry = "";
@@ -63,25 +63,26 @@ public class GameSelector {
     /**
      * Display different games and selected from among them the game you want to play.
      */
-    public void gamechoice() {
+    private void gamechoice() {
         final int numberOfChoice = 2;
         System.out.println("Veuillez choisir le jeu que vous voulez lancer : ");
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
         for (int i = 0; i < 2; i++)
             System.out.println(i + 1 + " - " + gameCh[i]);
-        numberGame = checkUserChoice(numberGame, numberOfChoice);
+        numberGame = this.checkUserChoice(numberGame, numberOfChoice);
         logger.info("Le joueur a choisi le mode : " + numberGame);
     }
 
     /**
      * Display different game modes and selected from among them the mode for the game.
      */
-    public void gameMode() {
+    private void gameMode() {
+        final int numberOfChoice = 3;
         String[] arrayMode = {"1 - Mode Challenger : vous devez trouver la combinaison secrète de l'ordinateur", "2 - Mode Défenseur : où c'est à l'ordinateur de trouver votre combinaison secrète ", "3 - Mode duel : où l'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné"};
         System.out.println("Veuillez choisir le mode de jeu :");
         for (int index = 0; index < arrayMode.length; index++)
             System.out.println(arrayMode[index]);
-        gameMode = checkUserChoice(gameMode, 3);
+        gameMode = this.checkUserChoice(gameMode, numberOfChoice);
         logger.info("Le joueur a choisi le mode : " + gameMode);
         System.out.println(" ");
     }
@@ -117,7 +118,7 @@ public class GameSelector {
     /**
      * Run different games and modes depending on parameters.
      */
-    public void gameRun() {
+    private void gameRun() {
         this.readParameters();
         if (numberGame == 1) {
             game = new MoreLess(nbSize, nbTry, devMode);
@@ -143,7 +144,7 @@ public class GameSelector {
     /**
      * Reading parameters of properties file.
      */
-    public void readParameters() {
+    private void readParameters() {
         //Warning : if you change parameters the number of available colours is limited at 10.
         try {
             Properties prop = new Properties();
