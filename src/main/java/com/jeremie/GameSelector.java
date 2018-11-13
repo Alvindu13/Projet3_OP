@@ -49,7 +49,7 @@ public class GameSelector {
         System.out.println();
         System.out.println("Voulez-vous rejouer ? Si oui, veuillez entrer OK. Si non, appuyez sur entrée pour quitter le jeu.");
         String ansRetry = "";
-        sc = new Scanner(System.in);
+        sc.nextLine();
         ansRetry = sc.nextLine();
         if (ansRetry.equals("OK")) {
             logger.info("--------Le joueur vient de relancer le jeu------");
@@ -64,11 +64,12 @@ public class GameSelector {
      * Display different games and selected from among them the game you want to play.
      */
     public void gamechoice() {
+        final int numberOfChoice = 2;
         System.out.println("Veuillez choisir le jeu que vous voulez lancer : ");
         String[] gameCh = {"Recherche d'une combinaison de chiffre avec indicateurs +/-", "Recherche d'une combinaison de couleurs avec indicateurs de placement - Mastermind"};
         for (int i = 0; i < 2; i++)
             System.out.println(i + 1 + " - " + gameCh[i]);
-        numberGame = checkUserChoice(numberGame, 2);
+        numberGame = checkUserChoice(numberGame, numberOfChoice);
         logger.info("Le joueur a choisi le mode : " + numberGame);
     }
 
@@ -87,15 +88,15 @@ public class GameSelector {
 
     /**
      * Function wich enable to manage exceptions
-     *
+     * @param numberOfChoice
      * @param value number of possible values.
      * @return
      */
-    private int checkUserChoice(int value, int numberChoice) {
+    private int checkUserChoice(int value, final int numberOfChoice) {
         do {
             try {
                 value = sc.nextInt();
-                if (value >= 1 && value <= numberChoice) {
+                if (value >= 1 && value <= numberOfChoice) {
                     numberchoiceIsGood = true;
                 } else {
                     logger.error("Le joueur n'a pas entré un numéro valide lors de la sélection du jeu ou du mode. Valeur :  " + value);
@@ -123,7 +124,6 @@ public class GameSelector {
         } else if (numberGame == 2) {
             game = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
         }
-
         switch (gameMode) {
             case 1:
                 game.challengeMode();

@@ -1942,3 +1942,28 @@ INFO  BaseGame - Le mode développeur est activé. L'utilisateur peut voir la co
 2018-11-08 16:27:45,537 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 2
 2018-11-08 16:27:48,238 [INFO ] (GameSelector.java:gameRun:150) --------Le jeu est terminé------
 2018-11-09 22:50:02,351 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 12:54:16,738 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 12:54:18,742 [INFO ] (GameSelector.java:gamechoice:71) Le joueur a choisi le mode : 1
+2018-11-13 12:54:19,836 [INFO ] (GameSelector.java:gameMode:83) Le joueur a choisi le mode : 2
+2018-11-13 12:54:23,879 [INFO ] (GameSelector.java:gameRun:138) --------Le jeu est terminé------
+2018-11-13 12:54:23,879 [INFO ] (GameSelector.java:retry:58) --------Le joueur vient de quitter le jeu------
+2018-11-13 12:54:43,435 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 12:54:45,268 [INFO ] (GameSelector.java:gamechoice:72) Le joueur a choisi le mode : 1
+2018-11-13 12:54:46,091 [INFO ] (GameSelector.java:gameMode:84) Le joueur a choisi le mode : 2
+2018-11-13 12:54:47,712 [INFO ] (GameSelector.java:gameRun:139) --------Le jeu est terminé------
+2018-11-13 12:54:50,187 [INFO ] (GameSelector.java:retry:55) --------Le joueur vient de relancer le jeu------
+2018-11-13 12:54:50,190 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 12:54:52,987 [INFO ] (GameSelector.java:gamechoice:72) Le joueur a choisi le mode : 2
+2018-11-13 12:54:53,883 [INFO ] (GameSelector.java:gameMode:84) Le joueur a choisi le mode : 2
+2018-11-13 12:54:58,075 [INFO ] (GameSelector.java:gameRun:139) --------Le jeu est terminé------
+2018-11-13 12:55:04,153 [INFO ] (GameSelector.java:retry:55) --------Le joueur vient de relancer le jeu------
+2018-11-13 12:55:04,153 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 13:24:12,886 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 13:24:13,895 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 1
+2018-11-13 13:24:15,487 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 2
+2018-11-13 13:24:16,908 [INFO ] (GameSelector.java:gameRun:140) --------Le jeu est terminé------
+2018-11-13 13:24:20,788 [INFO ] (GameSelector.java:retry:55) --------Le joueur vient de relancer le jeu------
+2018-11-13 13:24:20,791 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
+2018-11-13 13:24:22,695 [INFO ] (GameSelector.java:gamechoice:73) Le joueur a choisi le mode : 1
+2018-11-13 13:24:23,647 [INFO ] (GameSelector.java:gameMode:85) Le joueur a choisi le mode : 3
+2018-11-13 13:37:30,717 [INFO ] (GameSelector.java:numberRun:39) --------Le jeu a démarré------
