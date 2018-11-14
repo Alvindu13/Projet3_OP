@@ -95,6 +95,9 @@ public class MoreLess extends BaseGame {
         return answerCorrect;
     }
 
+    /**
+     * Generate a random combination of numbers.
+     */
     private void combinationRandom() {
         int bMin = (int) Math.pow(10, nbSize - 1);
         int bMax = (int) Math.pow(10, nbSize);

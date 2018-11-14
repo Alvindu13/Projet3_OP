@@ -106,12 +106,15 @@ public class Mastermind extends BaseGame {
         return answerCorrect;
     }
 
+    /**
+     * Generate a random combination of colors.
+     */
     private void combinationRandom() {
-        for (int indexColour = 0; indexColour < nbSize; indexColour++) {
+        for (int indexColor = 0; indexColor < nbSize; indexColor++) {
             int bMin = 0;
             int bMax = nbAvailableColors;
             int numRandom = (int) (Math.random() * (bMax - bMin)) + bMin;
-            randomCombinationColors[indexColour] = formatColoursGame.get(numRandom);
+            randomCombinationColors[indexColor] = formatColoursGame.get(numRandom);
         }
     }
 
@@ -165,8 +168,8 @@ public class Mastermind extends BaseGame {
      * Display available colors and the input format for the game.
      */
     private void displayAvailableColors() {
-        List<String> coloursAvailable = Arrays.asList("Rouge", "Jaune", "Bleu", "Indigo", "Marron", "Vert", "Gris", "Noir", "Orange", "Pourpre");
-        List<String> stockColorsAvailable = coloursAvailable;
+        List<String> colorsAvailable = Arrays.asList("Rouge", "Jaune", "Bleu", "Indigo", "Marron", "Vert", "Gris", "Noir", "Orange", "Pourpre");
+        List<String> stockColorsAvailable = colorsAvailable;
         System.out.println(String.format("La taille des combinaisons est de  " + nbSize + " et vous avez le droit à " + nbTry + " tentatives \n"));
         System.out.print("Les couleurs disponibles sont : ");
         for (int index = 1; index <= nbAvailableColors; index++) {
