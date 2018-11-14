@@ -14,9 +14,8 @@ public abstract class BaseGame implements GameMode {
     protected boolean find;
     protected String computerAnswer;
     protected String combination;
-    protected int randomNumber;
     protected String myCombinationThatComputerFind;
-    protected int essay = 1;
+    protected int essay;
     protected int counter1;
     protected int counter2;
 

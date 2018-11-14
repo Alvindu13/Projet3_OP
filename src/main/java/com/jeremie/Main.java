@@ -13,7 +13,7 @@ public class Main {
      */
     public static void main(String[] args) {
         boolean devMode = devMode(args);
-        GameSelector game = new GameSelector(devMode);;
+        GameSelector game = new GameSelector(devMode);
         game.numberRun();
     }
 

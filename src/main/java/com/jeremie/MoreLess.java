@@ -1,11 +1,11 @@
 package com.jeremie;
 
-
 public class MoreLess extends BaseGame {
     private boolean find;
     private boolean[] equal;
     private boolean[] more;
     private boolean[] less;
+    private int randomNumber;
 
     /**
      * @param nbSize  size of the combination.
@@ -156,18 +156,18 @@ public class MoreLess extends BaseGame {
             computerAnswers[index] = computerAnswer.charAt(index);
         }
         for (int index = 0; index < nbSize; index++) {
-            int entier = 0;
-            int newEntier = 0;
+            int element = 0;
+            int newElement = 0;
             if (equal[index] == true) {
                 computerAnswers[index] = yourResponseThatOrdiFind.charAt(index);
             } else if (more[index] == true) {
-                entier = Character.getNumericValue(computerAnswer.charAt(index));
-                newEntier = entier + 1;
-                computerAnswers[index] = Character.forDigit(newEntier, 10);
+                element = Character.getNumericValue(computerAnswer.charAt(index));
+                newElement = element + 1;
+                computerAnswers[index] = Character.forDigit(newElement, 10);
             } else if (less[index] == true) {
-                entier = Character.getNumericValue(computerAnswer.charAt(index));
-                newEntier = entier - 1;
-                computerAnswers[index] = Character.forDigit(newEntier, 10);
+                element = Character.getNumericValue(computerAnswer.charAt(index));
+                newElement = element - 1;
+                computerAnswers[index] = Character.forDigit(newElement, 10);
             }
             answer += computerAnswers[index];
         }

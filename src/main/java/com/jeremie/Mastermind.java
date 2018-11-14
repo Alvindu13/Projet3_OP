@@ -1,5 +1,7 @@
 package com.jeremie;
 
+import com.jeremie.BaseGame;
+
 import java.util.Arrays;
 import java.util.List;
 

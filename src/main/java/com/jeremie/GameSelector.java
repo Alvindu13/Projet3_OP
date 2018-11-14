@@ -124,6 +124,7 @@ public class GameSelector {
             game = new MoreLess(nbSize, nbTry, devMode);
         } else if (numberGame == 2) {
             game = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
+
         }
         switch (gameMode) {
             case 1:
