@@ -106,8 +106,7 @@ public class Mastermind extends BaseGame {
         return answerCorrect;
     }
 
-    @Override
-    protected void combinationRandom() {
+    private void combinationRandom() {
         for (int indexColour = 0; indexColour < nbSize; indexColour++) {
             int bMin = 0;
             int bMax = nbAvailableColors;

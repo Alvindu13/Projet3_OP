@@ -89,7 +89,7 @@ public class GameSelector {
 
     /**
      * Function wich enable to manage exceptions
-     * @param numberOfChoice
+     * @param numberOfChoice number of case possible
      * @param value number of possible values.
      * @return
      */

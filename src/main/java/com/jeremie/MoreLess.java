@@ -84,6 +84,23 @@ public class MoreLess extends BaseGame {
         } while (!find);
     }
 
+    @Override
+    protected boolean testMyAnswer(String answer) {
+        boolean answerCorrect = true;
+        if (!answer.matches("^\\d{" + nbSize + "}$")) {
+            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
+            System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
+            answerCorrect = false;
+        }
+        return answerCorrect;
+    }
+
+    private void combinationRandom() {
+        int bMin = (int) Math.pow(10, nbSize - 1);
+        int bMax = (int) Math.pow(10, nbSize);
+        randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
+    }
+
     /**
      * Comparison between answer and combination.
      *
@@ -152,24 +169,6 @@ public class MoreLess extends BaseGame {
             answer += computerAnswers[index];
         }
         return answer;
-    }
-
-    @Override
-    protected boolean testMyAnswer(String answer) {
-        boolean answerCorrect = true;
-        if (!answer.matches("^\\d{" + nbSize + "}$")) {
-            System.out.println("Ce n'est pas bon, la taille ou le format n'est pas bon.");
-            System.out.println("Merci de saisir un nombre à " + nbSize + " chiffres : ");
-            answerCorrect = false;
-        }
-        return answerCorrect;
-    }
-
-    @Override
-    protected void combinationRandom() {
-        int bMin = (int) Math.pow(10, nbSize - 1);
-        int bMax = (int) Math.pow(10, nbSize);
-        randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
     }
 }
 

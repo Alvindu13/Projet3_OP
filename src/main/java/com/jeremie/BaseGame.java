@@ -80,12 +80,6 @@ public abstract class BaseGame implements GameMode {
     protected abstract boolean testMyAnswer(String answer);
 
     /**
-     * Generate a random combination.
-     */
-    protected abstract void combinationRandom();
-
-
-    /**
      * Display some propositions possibles according combination, user type and mode selected.
      * @param mode game mode selected.
      * @param user you or computer.
