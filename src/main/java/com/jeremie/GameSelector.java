@@ -104,7 +104,6 @@ public class GameSelector {
                     numberchoiceIsGood = false;
                     System.out.println("Vous devez saisir un nombre valide.");
                 }
-
             } catch (RuntimeException e) {
                 logger.error("Une exception est survenue lors du choix du jeu.");
                 sc.next();
@@ -120,12 +119,8 @@ public class GameSelector {
      */
     private void gameRun() {
         this.readParameters();
-        if (numberGame == 1) {
-            game = new MoreLess(nbSize, nbTry, devMode);
-        } else if (numberGame == 2) {
-            game = new Mastermind(nbSize, nbTry, nbAvailableColors, devMode);
-
-        }
+        GameFactory gameFactory = new GameFactory(numberGame, nbSize, nbTry, devMode, nbAvailableColors);
+        game = gameFactory.gameObj();
         switch (gameMode) {
             case 1:
                 game.challengeMode();
@@ -137,7 +132,6 @@ public class GameSelector {
                 game.duelMode();
                 break;
         }
-
         logger.info("--------Le jeu est terminé------");
         this.retry();
     }
