@@ -100,7 +100,7 @@ public class MoreLess extends BaseGame {
      */
     private void combinationRandom() {
         int bMin = (int) Math.pow(10, nbSize - 1);
-        int bMax = (int) Math.pow(10, nbSize);
+        int bMax = (int) (Math.pow(10, nbSize))-1;
         randomNumber = (int) (Math.random() * (bMax - bMin)) + bMin;
     }
 

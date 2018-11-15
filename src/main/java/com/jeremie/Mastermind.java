@@ -124,10 +124,10 @@ public class Mastermind extends BaseGame {
      * Compare the answer of YOU or the COMPUTER with the combination.
      *
      * @param myAnswer           answer YOU or COMPUT according who have to play this turn.
-     * @param combinaisonSecrete combination at find.
+     * @param combinationSecret combination at find.
      * @return find = true if the answer is equal with the combination.
      */
-    private boolean compare(String myAnswer, char[] combinaisonSecrete) {
+    private boolean compare(String myAnswer, char[] combinationSecret) {
         int[] result = new int[2];
         boolean[] checkDuplicate = new boolean[nbSize]; //this array enable to mark correct elements which are well guessed and well placed
         int PMP = 0; // Present(s) misplaced(s)
@@ -136,7 +136,7 @@ public class Mastermind extends BaseGame {
         find = true;
         answer = this.castMethodStringToArray(answer, myAnswer);
         for (int index = 0; index < nbSize; index++) {
-            if (combinaisonSecrete[index] == answer[index]) {
+            if (combinationSecret[index] == answer[index]) {
                 findGoodPlace++;
                 checkDuplicate[index] = true;
             } else {
@@ -146,14 +146,14 @@ public class Mastermind extends BaseGame {
         }
         //Identify the elements well guess but bad placed
         for (int index = 0; index < nbSize; index++) {
-            if (combinaisonSecrete[index] != answer[index]) {
+            if (combinationSecret[index] != answer[index]) {
                 int j = 0;
-                boolean trouveMalPlace = false;
-                while ((j < nbSize) && !trouveMalPlace) {
-                    if (!checkDuplicate[j] && (combinaisonSecrete[index] == answer[j])) {
+                boolean findBadPlace = false;
+                while ((j < nbSize) && !findBadPlace) {
+                    if (!checkDuplicate[j] && (combinationSecret[index] == answer[j])) {
                         PMP++;
                         checkDuplicate[j] = true;
-                        trouveMalPlace = true;
+                        findBadPlace = true;
                     }
                     j++;
                 }
